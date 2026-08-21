@@ -6,13 +6,99 @@
 <meta name="description" content="灰测路由正反双方证据提交与评论页">
 <title>证据提交与评论</title>
 <style>
-:root{color-scheme:light;--paper:#f2efe7;--paper-2:#e8e3d8;--ink:#172024;--muted:#59656a;--line:#c8c3b8;--blue:#174f68;--blue-soft:#dce8eb;--rust:#985333;--rust-soft:#eee0d6;--green:#23624e;--green-soft:#dce9e2;--red:#863f38;--red-soft:#eddad6}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.65 Inter,"Noto Sans SC","Microsoft YaHei",sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer}a{color:inherit}.topbar{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line);background:rgba(242,239,231,.96);backdrop-filter:blur(10px)}.topbar-inner{max-width:1400px;margin:auto;padding:0 28px;min-height:54px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{font:800 12px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.13em;text-transform:uppercase}.topbar a{min-height:44px;padding:0 15px;display:inline-flex;align-items:center;background:var(--ink);color:#f7f4ec;text-decoration:none;font-weight:800}.hero{max-width:1400px;margin:auto;padding:70px 28px 48px;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(300px,.55fr);gap:58px;border-bottom:1px solid var(--line)}.eyebrow{margin:0 0 18px;color:var(--rust);font:800 12px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase}h1{margin:0;font:800 clamp(44px,7vw,92px)/.96 "Noto Serif SC","Songti SC",serif;letter-spacing:-.055em}.hero p{max-width:760px;margin:28px 0 0;color:var(--muted);font-size:17px}.rules{align-self:end;border-top:4px solid var(--ink);padding-top:18px}.rules h2{margin:0 0 10px;font:800 24px/1.2 "Noto Serif SC","Songti SC",serif}.rules ul{margin:0;padding-left:20px;color:var(--muted)}main{max-width:1400px;margin:auto;padding:54px 28px 100px}.notice{padding:20px 22px;border:1px solid #d5b49c;background:var(--rust-soft);color:#5d4133}.notice b{color:var(--rust)}.workspace{display:grid;grid-template-columns:minmax(320px,.72fr) minmax(0,1.28fr);gap:46px;margin-top:42px}.composer{position:sticky;top:78px;align-self:start;border-top:4px solid var(--ink);padding-top:22px}.composer h2,.board-head h2{margin:0 0 8px;font:800 34px/1.1 "Noto Serif SC","Songti SC",serif;letter-spacing:-.03em}.sub{margin:0 0 24px;color:var(--muted)}form{display:grid;gap:16px}.field{display:grid;gap:7px}.field label,.label{font-weight:800;font-size:13px}.field small{color:var(--muted)}input,select,textarea{width:100%;min-height:46px;border:1px solid var(--line);border-radius:0;background:#f8f5ed;color:var(--ink);padding:11px 12px}textarea{min-height:126px;resize:vertical}.side-toggle{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line)}.side-toggle label{position:relative;min-height:48px;display:flex;align-items:center;justify-content:center;background:#f8f5ed;font-weight:800;cursor:pointer}.side-toggle label+label{border-left:1px solid var(--line)}.side-toggle input{position:absolute;opacity:0}.side-toggle label:has(input:checked){background:var(--blue);color:#f4f0e7}.side-toggle label:last-child:has(input:checked){background:var(--rust)}.upload{position:relative;min-height:132px;border:1px dashed #9a958b;background:var(--paper-2);display:grid;place-items:center;text-align:center;padding:20px;cursor:pointer}.upload input{position:absolute;inset:0;opacity:0;cursor:pointer}.upload b{display:block}.upload span{color:var(--muted);font-size:13px}.thumbs{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.file-preview{min-height:74px;padding:10px;border:1px solid var(--line);background:#f8f5ed;display:grid;grid-template-columns:52px 1fr;gap:10px;align-items:center;text-align:left;overflow:hidden}.file-preview img{width:52px;height:52px;object-fit:cover;background:var(--paper-2);cursor:zoom-in}.file-icon{width:52px;height:52px;display:grid;place-items:center;background:var(--ink);color:#f7f4ec;font:800 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace}.file-preview b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}.file-preview span{font-size:11px}.actions{display:flex;gap:10px;align-items:center}.primary,.secondary{min-height:46px;border:0;padding:0 18px;font-weight:800}.primary{background:var(--ink);color:#f7f4ec}.primary:disabled{opacity:.5;cursor:not-allowed}.secondary{background:var(--paper-2);color:var(--ink);border:1px solid var(--line)}.status{min-height:24px;color:var(--muted);font-size:13px}.board-head{display:flex;justify-content:space-between;gap:24px;align-items:end;padding-bottom:22px;border-bottom:1px solid var(--ink)}.filters{display:flex;gap:8px;flex-wrap:wrap}.filters button{min-height:40px;border:1px solid var(--line);background:transparent;padding:0 13px}.filters button.active{background:var(--ink);color:#f7f4ec}.empty{padding:54px 24px;border-bottom:1px solid var(--line);text-align:center;color:var(--muted)}.entry{padding:28px 0;border-bottom:1px solid var(--line)}.entry-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}.entry-side{display:inline-flex;padding:5px 9px;font:800 11px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em}.entry-side.pro{background:var(--blue-soft);color:var(--blue)}.entry-side.con{background:var(--rust-soft);color:var(--rust)}.entry h3{margin:12px 0 7px;font:800 24px/1.22 "Noto Serif SC","Songti SC",serif}.meta{color:var(--muted);font-size:12px}.entry p{margin:15px 0;color:#3f4b50;white-space:pre-wrap}.entry-files{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:16px 0}.attachment{min-height:78px;border:1px solid var(--line);background:#f8f5ed;padding:10px;display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:12px;align-items:center}.attachment img{display:block;width:56px;height:56px;object-fit:cover;background:var(--paper-2);cursor:zoom-in}.attachment .kind{width:56px;height:56px;display:grid;place-items:center;background:var(--ink);color:#f7f4ec;font:800 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace}.attachment-info{min-width:0}.attachment-info b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}.attachment-info span{color:var(--muted);font-size:11px}.download{min-height:40px;padding:0 12px;display:inline-flex;align-items:center;border:1px solid var(--line);color:var(--blue);text-decoration:none;font-weight:800;font-size:12px}.giscus-section{margin-top:58px;padding-top:34px;border-top:4px solid var(--ink)}.giscus-section h2{margin:0 0 8px;font:800 34px/1.1 "Noto Serif SC","Songti SC",serif}.giscus-placeholder{padding:21px 22px;border:1px solid var(--line);background:var(--blue-soft);color:#345461}.giscus-placeholder b{color:var(--blue)}.comments{margin-top:19px;border-top:1px solid var(--line)}.comments h4{margin:16px 0 10px}.comment{padding:12px 0;border-bottom:1px solid #d9d4c9}.comment b{font-size:13px}.comment span{margin-left:8px;color:var(--muted);font-size:11px}.comment p{margin:4px 0 0;font-size:13px}.comment-form{display:grid;grid-template-columns:120px 1fr auto;gap:8px;margin-top:12px}.comment-form input{min-height:42px}.comment-form button{min-height:42px;border:0;background:var(--blue);color:#f7f4ec;padding:0 14px;font-weight:800}.storage-note{margin-top:22px;padding:15px 17px;background:var(--blue-soft);color:#345461;font-size:13px}.storage-note b{color:var(--blue)}.lightbox{position:fixed;inset:0;z-index:50;display:none;place-items:center;padding:24px;background:rgba(19,25,27,.94)}.lightbox.open{display:grid}.lightbox img{max-width:96vw;max-height:91vh;object-fit:contain;background:var(--paper)}.lightbox button{position:absolute;top:18px;right:18px;width:48px;height:48px;border:1px solid #8a9396;background:#273034;color:#f3f0e8;font-size:26px;cursor:pointer}:focus-visible{outline:3px solid var(--rust);outline-offset:3px}@media(max-width:980px){.hero,.workspace{grid-template-columns:1fr}.composer{position:static}.rules{max-width:720px}}@media(max-width:650px){.topbar-inner,.hero,main{padding-left:18px;padding-right:18px}.hero{padding-top:48px}.board-head{display:block}.filters{margin-top:18px}.comment-form{grid-template-columns:1fr}.entry-files,.thumbs{grid-template-columns:1fr}.actions{align-items:stretch;flex-direction:column}.primary,.secondary{width:100%}}@media(max-width:380px){.attachment{grid-template-columns:48px minmax(0,1fr)}.attachment img,.attachment .kind{width:48px;height:48px}.download{grid-column:1/-1;justify-content:center}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+:root{color-scheme:light;--bg:#efebdf;--surface:#f6f3ea;--ink:#1b2428;--muted:#6a7378;--line:#cfcab8;--accent:#8a4a2a;--accent-soft:#ece2d6;--blue:#2c5e78;--blue-soft:#dde8eb;--red:#853d36}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.62 Inter,"Noto Sans SC","Microsoft YaHei",sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer}a{color:inherit}
+header.bar{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line);background:rgba(239,235,223,.94);backdrop-filter:blur(8px)}
+.bar-inner{max-width:920px;margin:0 auto;padding:0 24px;min-height:46px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font:700 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.bar-inner nav{display:flex;gap:0}
+.bar-inner nav a{min-height:36px;padding:0 12px;display:inline-flex;align-items:center;background:var(--ink);color:#f4f0e7;text-decoration:none;font-weight:700;font-size:12px}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px}
+.hero{padding:44px 0 32px;border-bottom:1px solid var(--line)}
+.hero .eyebrow{margin:0 0 12px;color:var(--accent);font:700 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase}
+.hero h1{margin:0;font:700 22px/1.3 "Noto Serif SC","Songti SC",serif;letter-spacing:-.02em}
+.hero p.lead{max-width:640px;margin:16px 0 0;color:var(--muted);font-size:13px}
+.rules{margin-top:24px;padding:16px 0 0;border-top:3px solid var(--ink);max-width:640px}
+.rules h2{margin:0 0 8px;font:700 14px/1.3 "Noto Serif SC","Songti SC",serif}
+.rules ul{margin:0;padding-left:18px;color:var(--muted);font-size:12.5px}
+.rules li+li{margin-top:4px}
+main{padding:36px 0 80px}
+.notice{padding:14px 16px;border:1px solid #d4b094;background:var(--accent-soft);color:#5a3e2c;font-size:12.5px}
+.notice b{color:var(--accent)}
+.workspace{display:grid;grid-template-columns:1fr;gap:36px;margin-top:28px}
+.composer{border-top:3px solid var(--ink);padding-top:18px}
+.composer h2,.board-head h2{margin:0 0 6px;font:700 18px/1.2 "Noto Serif SC","Songti SC",serif}
+.sub{margin:0 0 18px;color:var(--muted);font-size:12.5px}
+form{display:grid;gap:14px}
+.field{display:grid;gap:5px}
+.field label,.label{font-weight:700;font-size:12px}
+.field small{color:var(--muted)}
+input,select,textarea{width:100%;min-height:42px;border:1px solid var(--line);border-radius:0;background:#f8f5ed;color:var(--ink);padding:10px 11px;font-size:13px}
+textarea{min-height:110px;resize:vertical}
+.side-toggle{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line)}
+.side-toggle label{position:relative;min-height:42px;display:flex;align-items:center;justify-content:center;background:#f8f5ed;font-weight:700;font-size:12px;cursor:pointer}
+.side-toggle label+label{border-left:1px solid var(--line)}
+.side-toggle input{position:absolute;opacity:0}
+.side-toggle label:has(input:checked){background:var(--blue);color:#f4f0e7}
+.side-toggle label:last-child:has(input:checked){background:var(--accent)}
+.upload{position:relative;min-height:100px;border:1px dashed #9a958b;background:var(--bg);display:grid;place-items:center;text-align:center;padding:16px;cursor:pointer}
+.upload input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.upload b{display:block;font-size:13px}
+.upload span{color:var(--muted);font-size:12px}
+.thumbs{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
+.file-preview{min-height:60px;padding:8px;border:1px solid var(--line);background:#f8f5ed;display:grid;grid-template-columns:44px 1fr;gap:8px;align-items:center;text-align:left;overflow:hidden}
+.file-preview img{width:44px;height:44px;object-fit:cover;background:var(--bg);cursor:zoom-in}
+.file-icon{width:44px;height:44px;display:grid;place-items:center;background:var(--ink);color:#f4f0e7;font:700 9px/1 ui-monospace,SFMono-Regular,Consolas,monospace}
+.file-preview b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px}
+.file-preview span{font-size:10px;color:var(--muted)}
+.actions{display:flex;gap:8px;align-items:center}
+.primary,.secondary{min-height:42px;border:0;padding:0 16px;font-weight:700;font-size:13px}
+.primary{background:var(--ink);color:#f4f0e7}
+.primary:disabled{opacity:.5;cursor:not-allowed}
+.secondary{background:var(--bg);color:var(--ink);border:1px solid var(--line)}
+.status{min-height:20px;color:var(--muted);font-size:12px}
+.board-head{display:flex;justify-content:space-between;gap:16px;align-items:end;padding-bottom:16px;border-bottom:1px solid var(--ink)}
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.filters button{min-height:36px;border:1px solid var(--line);background:transparent;padding:0 11px;font-size:12px}
+.filters button.active{background:var(--ink);color:#f4f0e7}
+.empty{padding:40px 20px;border-bottom:1px solid var(--line);text-align:center;color:var(--muted);font-size:13px}
+.entry{padding:22px 0;border-bottom:1px solid var(--line)}
+.entry-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+.entry-side{display:inline-flex;padding:4px 8px;font:700 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.06em}
+.entry-side.pro{background:var(--blue-soft);color:var(--blue)}
+.entry-side.con{background:var(--accent-soft);color:var(--accent)}
+.entry h3{margin:10px 0 5px;font:700 16px/1.25 "Noto Serif SC","Songti SC",serif}
+.meta{color:var(--muted);font-size:11px}
+.entry p{margin:12px 0;color:#3f4b50;white-space:pre-wrap;font-size:13px}
+.entry-files{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:14px 0}
+.attachment{min-height:64px;border:1px solid var(--line);background:#f8f5ed;padding:8px;display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:10px;align-items:center}
+.attachment img{display:block;width:48px;height:48px;object-fit:cover;background:var(--bg);cursor:zoom-in}
+.attachment .kind{width:48px;height:48px;display:grid;place-items:center;background:var(--ink);color:#f4f0e7;font:700 9px/1 ui-monospace,SFMono-Regular,Consolas,monospace}
+.attachment-info{min-width:0}
+.attachment-info b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px}
+.attachment-info span{color:var(--muted);font-size:10px}
+.download{min-height:36px;padding:0 10px;display:inline-flex;align-items:center;border:1px solid var(--line);color:var(--blue);text-decoration:none;font-weight:700;font-size:11px}
+.giscus-section{margin-top:44px;padding-top:28px;border-top:3px solid var(--ink)}
+.giscus-section h2{margin:0 0 6px;font:700 18px/1.2 "Noto Serif SC","Songti SC",serif}
+.giscus-section .sub{margin-bottom:14px}
+.giscus-placeholder{padding:16px;border:1px solid var(--line);background:var(--blue-soft);color:#345461;font-size:12.5px}
+.giscus-placeholder b{color:var(--blue)}
+.storage-note{margin-top:18px;padding:12px 14px;background:var(--blue-soft);color:#345461;font-size:12px}
+.storage-note b{color:var(--blue)}
+.lightbox{position:fixed;inset:0;z-index:50;display:none;place-items:center;padding:24px;background:rgba(18,24,26,.92)}
+.lightbox.open{display:grid}
+.lightbox img{max-width:95vw;max-height:90vh;object-fit:contain;background:var(--surface)}
+.lightbox button{position:absolute;top:16px;right:16px;width:44px;height:44px;border:1px solid #7a8386;background:#222a2e;color:#ece8e0;font-size:24px;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media(max-width:760px){.bar-inner,.wrap{padding:0 16px}.hero{padding-top:32px}.board-head{display:block}.filters{margin-top:14px}.entry-files,.thumbs{grid-template-columns:1fr}.actions{flex-direction:column;align-items:stretch}.primary,.secondary{width:100%}}
+@media(max-width:380px){.attachment{grid-template-columns:40px minmax(0,1fr)}.attachment img,.attachment .kind{width:40px;height:40px}.download{grid-column:1/-1;justify-content:center}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<header class="topbar"><div class="topbar-inner"><div class="brand">Evidence Exchange / Public</div><div><a href="https://github.com/komogu/evid-wall" target="_blank" rel="noopener noreferrer">GitHub</a> <a href="index.html">返回证据墙</a></div></div></header>
-<section class="hero"><div><p class="eyebrow">two-sided evidence board</p><h1>正反证据<br>提交与评论</h1><p>双方使用同一证据标准：至少提供可核对截图，清楚说明会话是否新建、上下文是否干净、测试提示词和观察结果。评论针对材料，不针对个人。</p></div><aside class="rules"><h2>最低提交门槛</h2><ul><li>至少一张截图；仅口述不接受</li><li>标明支持或反对哪项结论</li><li>说明 session、时间和上下文状态</li><li>视频、原始会话或日志优先</li></ul></aside></section>
+<header class="bar"><div class="bar-inner"><div class="brand">Evidence Exchange / Public</div><nav><a href="https://github.com/komogu/evid-wall" target="_blank" rel="noopener noreferrer">GitHub</a> <a href="index.html">返回证据墙</a></nav></div></header>
+<div class="wrap">
+<section class="hero"><div><p class="eyebrow">two-sided evidence board</p><h1>正反证据提交与评论</h1><p class="lead">双方使用同一证据标准：至少提供可核对截图，清楚说明会话是否新建、上下文是否干净、测试提示词和观察结果。评论针对材料，不针对个人。</p></div><aside class="rules"><h2>最低提交门槛</h2><ul><li>至少一张截图；仅口述不接受</li><li>标明支持或反对哪项结论</li><li>说明 session、时间和上下文状态</li><li>视频、原始会话或日志优先</li></ul></aside></section>
 <main>
 <div class="notice"><b>公开证据提交已接入 Cloudflare。</b>元数据写入 D1，附件写入 R2；每条最多 4 个文件、单文件不超过 20 MB，同一网络每天最多 5 条且总计不超过 50 MB。R2 文件会在 30 天后自动删除，重要原始材料请自行长期备份。</div>
 <div class="workspace">
@@ -29,14 +115,15 @@
 </form><div class="storage-note"><b>限额说明：</b>系统使用 Cloudflare 免费额度并主动设置更低的应用限额。附件只保留 30 天，元数据继续保留；危险类型只允许下载，不在站内执行。公共评论使用 GitHub 登录的 giscus。</div></section>
 <section class="board"><div class="board-head"><div><h2>证据板</h2><p class="sub" id="count">正在读取公开证据…</p></div><div class="filters"><button class="active" data-filter="all">全部</button><button data-filter="pro">支持</button><button data-filter="con">反对</button></div></div><div id="entries"></div><section class="giscus-section"><h2>公共讨论</h2><p class="sub">评论由 GitHub Discussions 托管，发表评论必须登录 GitHub；仓库管理员可以删除、锁定并限制互动。</p><div class="giscus"></div><script src="https://giscus.app/client.js" data-repo="komogu/evid-wall" data-repo-id="R_kgDOT_h4xw" data-category="Announcements" data-category-id="DIC_kwDOT_h4x84DD3fj" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="zh-CN" crossorigin="anonymous" async></script></section></section>
 </div></main>
+</div>
 <div class="lightbox" role="dialog" aria-modal="true" aria-label="图片预览"><button type="button" aria-label="关闭">×</button><img alt="放大预览"></div>
 <script>
-let filter='all', pending=[];
-const form=document.querySelector('#evidence-form'), files=document.querySelector('#files'), thumbs=document.querySelector('#thumbs'), entries=document.querySelector('#entries'), count=document.querySelector('#count');
+let filter='all',pending=[];
+const form=document.querySelector('#evidence-form'),files=document.querySelector('#files'),thumbs=document.querySelector('#thumbs'),entries=document.querySelector('#entries'),count=document.querySelector('#count');
 function setStatus(text,error=false){const el=document.querySelector('#form-status');el.textContent=text;el.style.color=error?'var(--red)':'var(--muted)'}
 function formatSize(bytes){if(bytes<1024)return `${bytes} B`;if(bytes<1024*1024)return `${(bytes/1024).toFixed(1)} KB`;return `${(bytes/1024/1024).toFixed(1)} MB`}
 function extension(name){const part=name.split('.').pop();return part&&part!==name?part.slice(0,6).toUpperCase():'FILE'}
-function isImage(file){return (file.type||'').startsWith('image/')}
+function isImage(file){return(file.type||'').startsWith('image/')}
 function escapeHTML(value){const div=document.createElement('div');div.textContent=value;return div.innerHTML}
 files.addEventListener('change',()=>{thumbs.innerHTML='';pending=[...files.files].slice(0,4);for(const file of pending){if(file.size>20*1024*1024){setStatus(`${file.name} 超过 20 MB。`,true);files.value='';pending=[];thumbs.innerHTML='';return}const card=document.createElement('div');card.className='file-preview';const url=isImage(file)?URL.createObjectURL(file):'';card.innerHTML=url?`<img src="${url}" alt="${escapeHTML(file.name)}"><span><b>${escapeHTML(file.name)}</b>${formatSize(file.size)}</span>`:`<span class="file-icon">${extension(file.name)}</span><span><b>${escapeHTML(file.name)}</b>${formatSize(file.size)}</span>`;thumbs.append(card)}bindZoom(thumbs);setStatus(pending.length?`已选择 ${pending.length} 个文件。`:'')});
 form.addEventListener('submit',async event=>{event.preventDefault();if(!pending.length)return setStatus('至少需要一个证据文件。',true);const button=form.querySelector('[type=submit]');button.disabled=true;setStatus('正在上传…');try{const body=new FormData(form);pending.forEach(file=>body.append('files',file,file.name));const response=await fetch('/api/evidence',{method:'POST',body});const result=await response.json();if(!response.ok)throw new Error(result.error||'提交失败。');form.reset();pending=[];thumbs.innerHTML='';setStatus('证据已发布。');await render()}catch(error){setStatus(error.message,true)}finally{button.disabled=false}});
