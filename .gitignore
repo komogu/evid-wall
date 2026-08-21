@@ -1,2 +1,5 @@
 preview-*.png
 hosting-research.md
+public/
+.dev.vars
+.wrangler/

@@ -1,21 +1,23 @@
-# 灰测路由证据链墙
+# Evidence Wall
 
-单页静态站点，基于 `archive.dht` 镜像内的消息与附件整理。
+灰测路由证据链墙与公开证据提交页。
 
-## 内容口径
+- 线上站点：<https://evid-wall.mitu233333.workers.dev>
+- `index.html`：完整证据链墙
+- `discussion.html`：正反双方提交证据、附件下载与图片放大
+- `src/worker.js`：Cloudflare Worker API
+- `schema.sql`：D1 数据结构
+- `wrangler.toml`：Workers Static Assets、D1、R2 与限流配置
+- `DEPLOYMENT.md`：部署与安全说明
 
-- 只收录当前证据链所需材料，外部消息跳转已全部移除。
-- 7 月和 8 月证据严格分期。
-- 7 月只表述为“可能属于 Fable 系列”。
-- 8 月只表述为“大概率属于 Opus 5.0”。
-- `antml` 证据强指向 Claude 请求链，但不证明直连 Anthropic 官方 API。
-- 关键实验多数另有视频或原始会话，可按需提供。
-- 支持或反对主张至少需要一张可核对截图；仅凭口述不进入证据链。
+## 当前云端资源
 
-## 页面
+- Worker：`evid-wall`
+- D1：`evid-wall-db`
+- R2：`evid-wall-files`
+- 附件保留：30 天
+- 单文件：20 MB
+- 每条证据：最多 4 个文件
+- 同一网络：每天最多 5 条、50 MB
 
-- `index.html`：完整证据链墙。
-- `discussion.html`：正反双方本地提交证据并评论。当前原型支持任意类型文件、下载与图片放大，数据和附件存入当前浏览器 IndexedDB。
-- `DEPLOYMENT.md`：giscus、GitHub 登录、Cloudflare Pages、R2、D1、上传安全与部署步骤。
-
-公开版推荐把评论切到 giscus，把证据文件切到 R2，把元数据切到 D1；不要继续用本地评论作为公共系统。
+公共评论预留 giscus。仓库已开启 GitHub Discussions；还需要把 giscus App 安装到本仓库后插入生成的脚本。
