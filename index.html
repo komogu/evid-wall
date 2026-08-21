@@ -222,7 +222,7 @@ footer a{color:var(--blue)}
 <div class="premises">
 <article class="premise"><span class="pnum">P01 / GREY PATH</span><h3>灰测常态：摘要式思维链，大块分段输出</h3><p>在稳定的灰测会话中，最显著的特征是系统先完成内部推理，再将思维链摘要以较大 Chunk（数据块）分段吐出。这与公开版"逐 Token 实时流式输出"的时序和分包形态有着本质区别。</p></article>
 <article class="premise"><span class="pnum">P02 / FALLBACK</span><h3>高危安全拦截：长延迟后降级为流式输出</h3><p>当触发高危安全规则（如生物危害提问）时，系统并非直接报错中断，而是经历显著拉长的首字延迟（TTFT），随后切换为 DeepSeek 标志性的逐 Token 流式思维链；且该会话在此之后彻底脱离灰测，符合向 0813 V4 Pro 正式版的回退逻辑。</p></article>
-<article class="premise"><span class="pnum">P03 / CONTEXT</span><h3>排除上下文污染：被引导的公开版无法作为反例</h3><p>如果公开版 DeepSeek 在历史上下文中已经接触到示例输出、特定角色设定或异常 Token，它会自然顺应上下文进行模仿。这种"上下文被污染后的复现"不具备独立鉴别力。同理，后续单次交互未能复现安全拦截，也不能推翻之前的路由记录。有效比对必须基于全新的空白会话及相同提示词。</p></article>
+<article class="premise"><span class="pnum">P03 / CONTEXT</span><h3>排除上下文污染：被引导的公开版无法作为反例</h3><p>如果公开版 DeepSeek 在历史上下文中已经接触到示例输出、特定角色设定或异常 Token，它会自然顺应上下文进行模仿。这种"上下文被污染后的复现"不具备独立鉴别力。同理，后续单次交互未能复现安全拦截，也不能推翻之前的路由记录。</p></article>
 </div>
 <div class="epolicy"><p><b>证据准则：</b>关键实验均保留有完整录屏或原始 Session 数据备查。任何支持或反对的论点，必须附带可供交叉验证的截图或日志，空口无凭者一律不予采纳。更高级别的反证需包含完整时间线、请求抓包或无剪辑视频。</p><a href="discussion.html">提交正反证据</a></div>
 </section>
