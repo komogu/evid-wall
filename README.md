@@ -20,4 +20,4 @@
 - 每条证据：最多 4 个文件
 - 同一网络：每天最多 5 条、50 MB
 
-公共评论预留 giscus。仓库已开启 GitHub Discussions；还需要把 giscus App 安装到本仓库后插入生成的脚本。
+公共评论已接入 giscus，评论者需要登录 GitHub。

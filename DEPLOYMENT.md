@@ -60,13 +60,15 @@ npx wrangler r2 bucket lifecycle add evid-wall-files expire-after-30-days "" --e
 
 ## giscus
 
-仓库已经开启 Discussions，并添加 `giscus` topic。剩余步骤：
+仓库已开启 Discussions，giscus App 已安装，`discussion.html` 已接入：
 
-1. 访问 <https://github.com/apps/giscus>，登录 `komogu` 并把 App 安装到 `komogu/evid-wall`。
-2. 访问 <https://giscus.app/zh-CN>，填写仓库。
-3. 分类选 `Announcements`，映射选 `pathname`，严格匹配开启，语言选中文。
-4. 把生成的 script 放入 `discussion.html` 的 `.giscus` 容器。
-5. `giscus.json` 已限制当前 Workers 域名；以后绑定自定义域名时同步加入。
+- 仓库：`komogu/evid-wall`
+- 分类：`Announcements`
+- 映射：`pathname`
+- 严格匹配：开启
+- 评论者必须登录 GitHub
+
+`giscus.json` 当前只允许 Workers 域名；以后绑定自定义域名时同步加入。
 
 ## 管理
 
