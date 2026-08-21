@@ -9,11 +9,12 @@
 :root{color-scheme:light;--bg:#efebdf;--surface:#f6f3ea;--ink:#1b2428;--muted:#6a7378;--line:#cfcab8;--accent:#8a4a2a;--blue:#2c5e78;--blue-soft:#dde8eb;--code:#1c272b;--code-ink:#edf0e8}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.72 Inter,"Noto Sans SC","Microsoft YaHei",sans-serif}a{color:inherit}
 header.bar{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line);background:rgba(239,235,223,.94);backdrop-filter:blur(8px)}
-.bar-inner{max-width:920px;margin:0 auto;padding:0 24px;min-height:46px;display:flex;align-items:center;gap:16px;overflow:auto;scrollbar-width:none}
+.bar-inner{max-width:1100px;margin:0 auto;padding:0 24px;min-height:72px;display:flex;align-items:center;gap:16px;overflow:auto;scrollbar-width:none}
 .bar-inner::-webkit-scrollbar{display:none}
 .brand{font:700 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;color:var(--muted)}
 .bar-inner nav{margin-left:auto;display:flex;white-space:nowrap}
-.bar-inner nav a{min-height:46px;padding:0 12px;display:flex;align-items:center;color:var(--muted);font-size:12px;font-weight:700;text-decoration:none}
+.bar-inner nav a{min-height:42px;padding:0 14px;display:flex;align-items:center;border:1px solid var(--line);color:var(--muted);font-size:13px;font-weight:700;text-decoration:none}
+.bar-inner nav a:last-child{background:var(--ink);border-color:var(--ink);color:#f4f0e7}
 .bar-inner nav a:hover{color:var(--ink)}
 .wrap{max-width:920px;margin:0 auto;padding:0 24px}
 .hero{padding:44px 0 32px;border-bottom:1px solid var(--line)}
@@ -55,7 +56,7 @@ footer a{color:var(--blue)}
 </style>
 </head>
 <body>
-<header class="bar"><div class="bar-inner"><div class="brand">Evidence Wall / Analysis</div><nav aria-label="页面导航"><a href="index.html">证据墙</a><a href="discussion.html">提交证据 / 评论</a><a href="https://github.com/komogu/evid-wall" target="_blank" rel="noopener noreferrer">GitHub</a></nav></div></header>
+<header class="bar"><div class="bar-inner"><div class="brand">Evidence Wall / Analysis</div><nav aria-label="页面导航"><a href="prompt.html">Prompt</a><a href="discussion.html">提交证据 / 评论</a><a href="https://github.com/justhil/evid-wall" target="_blank" rel="noopener noreferrer">GitHub</a><a href="index.html">证据墙</a></nav></div></header>
 <section class="hero"><div class="wrap"><p class="eyebrow">ANTML / Motivation & Distillation</p><h1>动机和蒸馏上分析 ANTML</h1><aside><p>独立技术分析页。正文按原始 Markdown 排版，未改写原文。</p></aside></div></section>
 <main class="layout"><nav class="rail" aria-label="文内导航"><b>阅读路径</b><a href="#article">从动机开始</a><a href="#samples">边界样本</a><a href="#distillation">蒸馏解释</a><a href="#explanation">最简解释</a><a href="#cleaner">清洗器动机</a><a href="#closing">讨论边界</a></nav><article id="article"><p>首先确定ds没有主动伪装成claude的动机，高度蒸馏 Claude 的能力本身也不等于主动复刻 Claude 的服务端指纹。</p>
 <p>然后确定如果上游真是claude 的api，输入的<code>&lt;antml:xxxxx&gt;</code>会被清洗，且上游如果不是claude的api，上游不会被清洗，除非主动伪装成claude</p>
@@ -213,6 +214,6 @@ thinking</code></pre>
 <blockquote><p>它额外复刻了 Anthropic 的 undocumented 服务端处理规则。</p></blockquote>
 <p>而这本身就是一个新的假设，不是"DS 高度蒸馏 Claude"这个假设自然推出的。</p>
 <div class="closing" id="closing"><p>如果假设ds使用了a/一样的服务端处理规则一样的清洗器，且模型同样有生物甲没有政治甲，思维链输出行为特征高度一致，且同提示词下输出风格主观一致，并且ds同样为这个灰度模型定制了思维链的总结小模型，生物甲触发后的回退检测与fallback模型，政治问题的截断检测机制而不是安全对齐(可以输出但是会被截断)，并且触发生物甲后自动失去该回话的'灰测'资格。那他做这一切的动机是什么呢？</p><p>我们都不是内部员工，请不要从动机上讨论问题。</p></div></article></main>
-<footer><span>ANTML technical note</span><span><a href="index.html">返回证据墙</a> · <a href="https://github.com/komogu/evid-wall" target="_blank" rel="noopener noreferrer">GitHub 源码</a></span></footer>
+<footer><span>ANTML technical note</span><span><a href="index.html">返回证据墙</a> · <a href="https://github.com/justhil/evid-wall" target="_blank" rel="noopener noreferrer">GitHub 源码</a></span></footer>
 </body>
 </html>
