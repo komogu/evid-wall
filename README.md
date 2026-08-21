@@ -8,6 +8,7 @@
 ## 文件
 
 - `index.html`：证据链墙
+- `antml-analysis.html`：ANTML 动机与蒸馏分析原文
 - `discussion.html`：证据提交、附件下载、图片放大和公共评论
 - `src/worker.js`：服务端接口
 - `schema.sql`：数据结构

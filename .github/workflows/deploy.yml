@@ -19,7 +19,7 @@ jobs:
       - run: npm install --global wrangler@4.125.0
       - run: |
           mkdir -p public/assets
-          cp index.html discussion.html public/
+          cp index.html discussion.html antml-analysis.html public/
           cp -r assets/. public/assets/
       - name: Deploy
         env:

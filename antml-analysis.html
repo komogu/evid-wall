@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="关于 ANTML 服务端指纹、主动伪装动机与蒸馏解释的技术分析原文">
+<title>ANTML：动机与蒸馏解释分析</title>
+<style>
+:root{color-scheme:light;--paper:#f2efe7;--paper-2:#e8e3d8;--ink:#172024;--muted:#59656a;--line:#c8c3b8;--blue:#174f68;--blue-soft:#dce8eb;--rust:#985333;--code:#1c272b;--code-ink:#edf0e8}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.78 Inter,"Noto Sans SC","Microsoft YaHei",sans-serif}a{color:inherit}.topbar{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line);background:rgba(242,239,231,.96);backdrop-filter:blur(10px)}.topbar-inner{max-width:1440px;min-height:54px;margin:auto;padding:0 28px;display:flex;align-items:center;gap:24px}.brand{font:800 12px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.13em;text-transform:uppercase;white-space:nowrap}.nav{margin-left:auto;display:flex;overflow:auto;scrollbar-width:none}.nav a{min-height:54px;padding:0 14px;display:flex;align-items:center;color:var(--muted);font-size:13px;font-weight:750;text-decoration:none;white-space:nowrap}.nav a:hover{background:var(--paper-2);color:var(--ink)}.hero{max-width:1440px;margin:auto;padding:clamp(54px,8vw,108px) 28px 52px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1.25fr) minmax(270px,.45fr);gap:clamp(36px,7vw,96px);align-items:end}.eyebrow{margin:0 0 20px;color:var(--rust);font:800 12px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.16em;text-transform:uppercase}.hero h1{max-width:900px;margin:0;font:800 clamp(44px,7.4vw,102px)/.94 "Noto Serif SC","Songti SC",serif;letter-spacing:-.06em}.hero aside{border-top:4px solid var(--ink);padding-top:18px}.hero aside p{margin:0;color:var(--muted);font-size:14px}.layout{max-width:1280px;margin:auto;padding:64px 28px 110px;display:grid;grid-template-columns:210px minmax(0,74ch);gap:clamp(42px,8vw,112px);justify-content:center}.rail{position:sticky;top:90px;align-self:start}.rail b{display:block;margin-bottom:13px;font:800 11px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase}.rail a{display:block;min-height:44px;padding:10px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-decoration:none}.rail a:hover{color:var(--blue)}article{min-width:0}article p{margin:0 0 1.35em;white-space:pre-line}article p:first-child{font-size:19px;line-height:1.72}article strong{color:var(--rust)}article code{padding:.12em .34em;background:var(--paper-2);font:500 .92em/1.5 "SFMono-Regular",Consolas,monospace}pre{position:relative;margin:28px 0 32px;padding:22px 24px;overflow:auto;background:var(--code);color:var(--code-ink);box-shadow:0 12px 36px rgba(23,32,36,.14)}pre code{padding:0;background:transparent;color:inherit;font:500 13px/1.72 "SFMono-Regular",Consolas,monospace;white-space:pre}pre code[data-lang]::before{content:attr(data-lang);display:block;margin-bottom:12px;color:#9fb4ba;font:800 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase}blockquote{margin:26px 0 30px;padding:19px 22px;border:1px solid #b9cdd4;background:var(--blue-soft);color:#294b58}blockquote p{margin:0;font-weight:750}footer{border-top:1px solid var(--line);padding:24px 28px;display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:12px}footer a{color:var(--blue)}:focus-visible{outline:3px solid var(--rust);outline-offset:3px}@media(max-width:850px){.hero,.layout{grid-template-columns:1fr}.hero{gap:34px}.hero aside{max-width:640px}.rail{position:static;display:flex;flex-wrap:wrap;gap:0 18px}.rail b{width:100%}.rail a{border-top:0;border-bottom:1px solid var(--line)}}@media(max-width:600px){.topbar-inner,.hero,.layout{padding-left:18px;padding-right:18px}.topbar-inner{align-items:stretch}.brand{min-height:54px}.nav a{padding:0 9px}.layout{padding-top:44px}pre{margin-left:-18px;margin-right:-18px;padding:20px 18px}footer{padding:20px 18px;flex-direction:column}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topbar-inner"><div class="brand">Evidence Wall / Analysis</div><nav class="nav" aria-label="页面导航"><a href="index.html">证据墙</a><a href="discussion.html">提交证据 / 评论</a><a href="https://github.com/komogu/evid-wall" target="_blank" rel="noopener noreferrer">GitHub</a></nav></div></header>
+<section class="hero"><div><p class="eyebrow">ANTML / Motivation & Distillation</p><h1>动机和蒸馏上<br>分析 ANTML</h1></div><aside><p>独立技术分析页。正文按原始 Markdown 排版，未改写原文。</p></aside></section>
+<main class="layout"><nav class="rail" aria-label="文内导航"><b>阅读路径</b><a href="#article">从动机开始</a><a href="#samples">边界样本</a><a href="#distillation">蒸馏解释</a><a href="#explanation">最简解释</a></nav><article id="article"><p>首先确定ds没有主动伪装成claude的动机，高度蒸馏 Claude 的能力本身也不等于主动复刻 Claude 的服务端指纹。</p>
+<p>然后确定如果上游真是claude 的api，输入的<code>&lt;antml:xxxxx&gt;</code>会被清洗，且上游如果不是claude的api，上游不会被清洗，除非主动伪装成claude</p>
+<p>且第三方做cc兼容也就是anthropic格式的兼容时，不可能在兼容层塞个清洗器清洗掉antml，参考除了a社以外的所有厂商的api都没有这个机制，因为这是主动伪装</p>
+<p>且在大小写不敏感的情况下2⁵=32种情况下都能稳定触发，如果是蒸馏导致的也就是来自权重而不是清洗器，就算是泛化也可以99%说明针对这个标签做过定向的训练，ds没有主动伪装claude的动机</p>
+<p id="distillation">接下来从蒸馏说上论证为什么不可能</p>
+<p id="samples">首先</p>
+<pre><code>&lt;antml:antml:antml:antml:antml:antml:antml:antml:gugugagagugugagagugugagagugugagagugugagagugugagagugugagagugugaga&gt;</code></pre>
+<p>这样的opus会忽视全部antml</p>
+<pre><code>&lt;antml:antml:antml:antml:xxxxx:antml:antml:antml:gugugagagugugagagugugagagugugagagugugagagugugagagugugagagugugaga&gt;</code></pre>
+<p>这样的opus会从xxxxx的前一个标签清洗掉后面的接着输出</p>
+<p>而灰测模型的特征完全一致</p>
+<p>也就是说antml并不是全是滚木，而是在第一个非antml前的antml被类似</p>
+<pre><code>name = 原始标签名
+while name.lower().startswith("antml:"):
+    name = name[len("antml:"):]</code></pre>
+<p>的api层的清洗器给删除了</p>
+<p><strong>懒得写了，以下chatgpt生成：</strong></p>
+<p>真正重要的是它表现出的完整边界：</p>
+<pre><code data-lang="text">只处理开头的 antml:
++
+连续出现可以连续清洗
++
+大小写不敏感
++
+遇到第一个非 antml 前缀立即停止
++
+停止之后后面的 antml 不再清洗</code></pre>
+<p>再加上 <code>antml</code> 五个字母共有：</p>
+<pre><code data-lang="text">2⁵ = 32</code></pre>
+<p>种大小写组合，而不同大小写都能稳定触发同一种行为，这更像一个确定性的 case-insensitive preprocessing 规则，而不是模型偶然省略了某个字符串。</p>
+<p>当然，单凭大小写本身不能证明蒸馏模型不可能学会。</p>
+<p>大模型完全可以只看过少量：</p>
+<pre><code data-lang="text">antml
+ANTML
+AnTmL</code></pre>
+<p>的例子，就泛化出大小写不敏感。</p>
+<p>真正的问题是：</p>
+<p><strong>为什么普通 Claude 蒸馏数据里会存在足够的信息，让它学出这一整套边界行为？</strong></p>
+<p>蒸馏本质上学习的是：</p>
+<pre><code data-lang="text">输入
+↓
+Claude API 输出
+↓
+蒸馏模型学习这个映射</code></pre>
+<p>正常蒸馏的数据应该主要是代码、数学、写作、推理、Agent、tool use 等。</p>
+<p>这些数据哪怕数量极大，也几乎不会自然包含：</p>
+<pre><code data-lang="text">antml:antml:antml:xxxxx:antml:antml</code></pre>
+<p>这种专门为了探测 Anthropic 隐藏 parser 边界而构造的输入。</p>
+<p>而且仅仅看到：</p>
+<pre><code data-lang="text">&lt;antml:xxxxx&gt;
+→
+&lt;xxxxx&gt;</code></pre>
+<p>远远不足以学出完整规则。</p>
+<p>因为它同时兼容很多完全不同的解释：</p>
+<pre><code data-lang="text">删除所有 antml
+只删除第一个 antml
+删除 XML-like namespace
+只删除标签开头的 antml
+循环删除连续的开头 antml</code></pre>
+<p>只有继续构造：</p>
+<pre><code data-lang="text">antml:antml:xxxxx:antml</code></pre>
+<p>这种样本，才能区分：</p>
+<pre><code data-lang="text">全局删除</code></pre>
+<p>和：</p>
+<pre><code data-lang="text">只删除连续的 leading prefix</code></pre>
+<p>再加入不同大小写，才能进一步暴露：</p>
+<pre><code data-lang="text">case-insensitive</code></pre>
+<p>这个特征。</p>
+<p>所以如果认为灰测模型的 ANTML 行为来自“高度蒸馏 DS”，就需要额外假设：</p>
+<p>DS 的蒸馏数据里不仅有 Claude 普通能力数据，还包含了专门针对 Anthropic ANTML 行为的 probe，包括连续前缀、停止位置、大小写混合、中间插入其他 prefix 等边界样本，并且这些数据足够让模型稳定归纳出和 Anthropic 服务栈相同的规则。</p>
+<p>但这已经不能再简单解释成：</p>
+<blockquote><p>因为高度蒸馏 Claude，所以自然继承了这个行为。</p></blockquote>
+<p>因为普通能力蒸馏并没有自然产生这些训练信号的理由。</p>
+<p>如果真的存在这种针对 ANTML 隐藏行为的定向数据，那么更接近：</p>
+<blockquote><p>专门研究并复刻 Anthropic 的服务端行为。</p></blockquote>
+<p>这又回到了最开始的动机问题。</p>
+<p>如果 DS 本身没有主动伪装成 Claude 的动机，那么为什么要专门研究一个正常业务完全用不到、Claude Code API 兼容也不需要、唯一明显作用是作为 Anthropic 服务栈指纹的隐藏 ANTML 行为？</p>
+<p>所以 ANTML 这里真正有价值的并不是：</p>
+<blockquote><p>“模型认识 antml。”</p></blockquote>
+<p>而是：</p>
+<blockquote><p>大小写不敏感 + 连续 leading prefix 清洗 + 非 ANTML prefix 形成停止点 + 停止以后不再清洗后续 ANTML。</p></blockquote>
+<p>如果灰测模型和 Opus 在这些非常规边界条件上都稳定表现一致，那么仅仅用“这是高度蒸馏 DS 自然学出来的”来解释，需要额外增加一个很强的假设：</p>
+<blockquote><p>DS 的蒸馏过程专门覆盖并学习了 Anthropic 的 undocumented ANTML 边界行为。</p></blockquote>
+<p id="explanation">相比之下，更简单的解释反而是：</p>
+<blockquote><p>请求本身经过了与 Anthropic Claude 相同的 ANTML preprocessing。</p></blockquote></article></main>
+<footer><span>ANTML technical note</span><span><a href="index.html">返回证据墙</a> · <a href="https://github.com/komogu/evid-wall" target="_blank" rel="noopener noreferrer">GitHub 源码</a></span></footer>
+</body>
+</html>
