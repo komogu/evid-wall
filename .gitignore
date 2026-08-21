@@ -3,3 +3,5 @@ hosting-research.md
 public/
 .dev.vars
 .wrangler/
+wrangler.toml
+DEPLOYMENT.md

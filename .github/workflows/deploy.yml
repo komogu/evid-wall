@@ -1,4 +1,4 @@
-name: Deploy to Cloudflare
+name: Deploy site
 
 on:
   push:
@@ -21,7 +21,11 @@ jobs:
           mkdir -p public/assets
           cp index.html discussion.html public/
           cp -r assets/. public/assets/
-      - run: wrangler deploy
+      - name: Deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          DEPLOY_CONFIG: ${{ secrets.DEPLOY_CONFIG }}
+        run: |
+          printf '%s' "$DEPLOY_CONFIG" > "$RUNNER_TEMP/deploy.toml"
+          wrangler deploy --config "$RUNNER_TEMP/deploy.toml"
