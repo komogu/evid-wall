@@ -38,6 +38,10 @@ h1{max-width:980px;margin:0;font:800 clamp(46px,7vw,102px)/.94 "Noto Serif SC","
 .boundary{max-width:1580px;margin:0 auto;padding:0 28px}
 .boundary-inner{margin-top:28px;padding:20px 24px;border:1px solid #d5b49c;background:var(--rust-soft);color:#523a2e}
 .boundary-inner b{color:var(--rust)}
+.challenge{max-width:1580px;margin:18px auto 0;padding:0 28px}
+.challenge-inner{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:center;padding:22px 24px;border:1px solid #b9cdd4;background:var(--blue-soft)}
+.challenge-copy{max-width:980px;color:#345461}.challenge-copy b{color:var(--blue)}.challenge-copy p{margin:0}.challenge-copy p+p{margin-top:8px;font-size:13px}
+.challenge-links{display:flex;gap:10px;flex-wrap:wrap}.challenge-links a{min-height:44px;padding:0 15px;display:inline-flex;align-items:center;border:1px solid var(--blue);color:var(--blue);text-decoration:none;font-weight:800;white-space:nowrap}.challenge-links a:first-child{background:var(--blue);color:#f7f4ec}
 main{max-width:1580px;margin:auto;padding:0 28px 100px}
 .section{padding:72px 0;border-bottom:1px solid var(--line)}
 .section-head{display:grid;grid-template-columns:170px minmax(0,900px);gap:24px;margin-bottom:38px}
@@ -119,19 +123,20 @@ footer{max-width:1580px;margin:auto;padding:28px;color:var(--muted);font-size:12
 .lightbox button{position:absolute;top:18px;right:18px;width:48px;height:48px;border:1px solid #8a9396;background:#273034;color:#f3f0e8;font-size:26px;cursor:pointer}
 :focus-visible{outline:3px solid var(--rust);outline-offset:3px}
 @media(max-width:1050px){.hero,.verdict{grid-template-columns:1fr}.hero-side{max-width:720px}.verdict-side{border-left:0;border-top:1px solid var(--line)}.cluster{grid-template-columns:1fr}.shots{grid-template-columns:1fr 1fr}.premises{grid-template-columns:1fr}}
-@media(max-width:760px){.topbar-inner{padding:0 18px;gap:14px}.brand{display:none}.hero,main,.boundary{padding-left:18px;padding-right:18px}.hero{padding-top:50px;grid-template-columns:1fr;gap:34px}.section{padding:52px 0}.section-head,.node,.method{grid-template-columns:1fr}.section-head,.node{gap:10px}.timeline{grid-template-columns:1fr}.era{border-right:0;border-bottom:1px solid var(--line)}.shots,.proof-grid,.limits{grid-template-columns:1fr}.shot.wide,.shot.full{grid-column:auto}.shot img,.shot.tall img{height:auto;max-height:480px}.cluster{padding:18px}.verdict-primary,.verdict-side{padding:25px 20px}.evidence-policy{grid-template-columns:1fr}.evidence-policy a{justify-content:center}footer{padding:24px 18px;display:block}}
+@media(max-width:760px){.topbar-inner{padding:0 18px;gap:14px}.brand{display:none}.hero,main,.boundary,.challenge{padding-left:18px;padding-right:18px}.hero{padding-top:50px;grid-template-columns:1fr;gap:34px}.section{padding:52px 0}.section-head,.node,.method{grid-template-columns:1fr}.section-head,.node{gap:10px}.timeline{grid-template-columns:1fr}.era{border-right:0;border-bottom:1px solid var(--line)}.shots,.proof-grid,.limits{grid-template-columns:1fr}.shot.wide,.shot.full{grid-column:auto}.shot img,.shot.tall img{height:auto;max-height:480px}.cluster{padding:18px}.verdict-primary,.verdict-side{padding:25px 20px}.evidence-policy,.challenge-inner{grid-template-columns:1fr}.evidence-policy a{justify-content:center}.challenge-links a{flex:1;justify-content:center}footer{padding:24px 18px;display:block}}
 @media(max-width:420px){h1{font-size:44px}.hero-copy{font-size:16px}.boundary-inner{padding:16px}.quote-strip span{width:100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media print{.topbar,.lightbox{display:none!important}.section{break-inside:avoid}body{background:#f7f4ec}}
 </style>
 </head>
 <body>
-<header class="topbar"><div class="topbar-inner"><div class="brand">Evidence Wall / 2026</div><nav class="nav" aria-label="页面导航"><a href="#verdict">结论</a><a href="#premises">前提</a><a href="#timeline">分期</a><a href="#chain">证据链</a><a href="#wall">证据墙</a><a href="#matrix">矩阵</a><a href="#limits">边界</a><a class="page-link" href="discussion.html">提交证据 / 评论</a></nav></div></header>
+<header class="topbar"><div class="topbar-inner"><div class="brand">Evidence Wall / 2026</div><nav class="nav" aria-label="页面导航"><a href="#verdict">结论</a><a href="#premises">前提</a><a href="#timeline">分期</a><a href="#chain">证据链</a><a href="#wall">证据墙</a><a href="#matrix">矩阵</a><a href="#limits">边界</a><a href="https://github.com/komogu/evid-wall" target="_blank" rel="noopener noreferrer">GitHub</a><a class="page-link" href="discussion.html">提交证据 / 评论</a></nav></div></header>
 <section class="hero">
   <div><p class="eyebrow">archive.dht / static evidence review</p><h1>灰测路由<br>证据链墙</h1><p class="hero-copy">将帖子中的接口字段、统计图、同会话差异、可重复输入规则和原始 session 串成一条可审阅的链。现有材料最支持：<strong>7 月与 8 月不是同一模型路径；8 月强指向 Claude 请求链，Opus 5.0 是大概率候选。</strong></p></div>
   <aside class="hero-side"><h2>阅读规则</h2><p>页面只保留可公开复核且符合本页范围的材料。图片本身、作者解释和型号归因分别评级。</p><ul><li><b>高置信度：</b>确定性规则、可量化字段、同会话对照</li><li><b>中高置信度：</b>多项独立线索汇合</li><li><b>中及以下：</b>知识、文风、自述、单次行为</li></ul></aside>
 </section>
 <div class="boundary"><div class="boundary-inner"><b>先排除一个常见误区：</b>模型不能接受文件或图片，不是反路由的有力证据。网关可以在模型调用前拦截、清洗或不转发附件；该现象只能证明产品链路未把附件交给模型。</div></div>
+<div class="challenge"><div class="challenge-inner"><div class="challenge-copy"><p><b>能力归因同样接受反证：</b>任何认为灰测模型能力明显高于 Fable 系列或 Opus 5.0 的论断，都可以提交同提示词、干净会话、可复现截图或原始记录。本页不会用主观观感封死候选。</p><p>前端任务可作为有限能力对照：现有外部样例中，标注为 Opus 5.0 的前端效果整体强于 Fable 对照；这只能作为能力上界与候选排序参考，不能单独确认灰测型号。</p></div><div class="challenge-links"><a href="https://deepdemos.top/demo/claude-opus-5-9d3ec162" target="_blank" rel="noopener noreferrer">查看 Opus 5.0 前端样例</a><a href="discussion.html">提交更强或相反证据</a></div></div></div>
 <main>
 <section class="section" id="verdict">
   <div class="section-head"><div class="section-code">01 / Assessment</div><div><h2>综合判断</h2><p>先给窄结论，再说明证据覆盖不到的部分。</p></div></div>
@@ -198,7 +203,7 @@ footer{max-width:1580px;margin:auto;padding:28px;color:var(--muted);font-size:12
   <div class="method"><div><h3>样本范围</h3><p>基于本地 <code>archive.dht</code> 镜像。完整审阅 N一串 211 条、楼主 237 条消息，并补入 mitu9527 的独立 <code>antml</code> 复现、生物安全 fallback 记录与原始 session。</p><p>本页仅收录当前证据链所需材料，外部消息跳转已全部移除。多数关键实验另有视频或原始会话记录，可按需提供。</p></div><div><h3>收录原则</h3><ul><li>截图与可量化字段优先于口述。</li><li>任何支持或反对主张至少附一张可核对截图；仅凭口述不进入证据链。</li><li>同一实验的连续图片按证据簇排列。</li><li>重复转发、梗图、动机争论不计入。</li><li>反例必须控制会话、上下文和提示词；污染后的模仿不承担独立反证。</li><li>置信度评价材料对窄结论的支持强度，不评价发言者。</li></ul><p><a href="assets/bio-fallback-session.zip" download>下载生物安全 fallback 原始 session ZIP</a> · <a href="discussion.html">提交证据或评论</a></p></div></div>
 </section>
 </main>
-<footer><span>archive.dht evidence wall</span><span>单页静态证据链</span></footer>
+<footer><span>archive.dht evidence wall</span><span><a href="https://github.com/komogu/evid-wall" target="_blank" rel="noopener noreferrer">GitHub 源码与版本记录</a></span></footer>
 <div class="lightbox" role="dialog" aria-modal="true" aria-label="图片预览"><button type="button" aria-label="关闭">×</button><img alt="放大预览"></div>
 <script>
 const box=document.querySelector('.lightbox'),view=box.querySelector('img');
