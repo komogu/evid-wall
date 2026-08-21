@@ -28,4 +28,6 @@ jobs:
           DEPLOY_CONFIG: ${{ secrets.DEPLOY_CONFIG }}
         run: |
           printf '%s' "$DEPLOY_CONFIG" > "$RUNNER_TEMP/deploy.toml"
+          sed -i "s|main = \"src/worker.js\"|main = \"$GITHUB_WORKSPACE/src/worker.js\"|" "$RUNNER_TEMP/deploy.toml"
+          sed -i "s|directory = \"./public\"|directory = \"$GITHUB_WORKSPACE/public\"|" "$RUNNER_TEMP/deploy.toml"
           wrangler deploy --config "$RUNNER_TEMP/deploy.toml"
