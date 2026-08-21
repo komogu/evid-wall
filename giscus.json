@@ -1,5 +1,5 @@
 {
-  "origins": [
-    "https://*.workers.dev"
+  "originsRegex": [
+    "^https://[^/]+\\.workers\\.dev$"
   ]
 }
