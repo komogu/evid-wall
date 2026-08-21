@@ -7,13 +7,13 @@
 <title>ANTML：动机与蒸馏解释分析</title>
 <style>
 :root{color-scheme:light;--paper:#f2efe7;--paper-2:#e8e3d8;--ink:#172024;--muted:#59656a;--line:#c8c3b8;--blue:#174f68;--blue-soft:#dce8eb;--rust:#985333;--code:#1c272b;--code-ink:#edf0e8}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.78 Inter,"Noto Sans SC","Microsoft YaHei",sans-serif}a{color:inherit}.topbar{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line);background:rgba(242,239,231,.96);backdrop-filter:blur(10px)}.topbar-inner{max-width:1440px;min-height:54px;margin:auto;padding:0 28px;display:flex;align-items:center;gap:24px}.brand{font:800 12px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.13em;text-transform:uppercase;white-space:nowrap}.nav{margin-left:auto;display:flex;overflow:auto;scrollbar-width:none}.nav a{min-height:54px;padding:0 14px;display:flex;align-items:center;color:var(--muted);font-size:13px;font-weight:750;text-decoration:none;white-space:nowrap}.nav a:hover{background:var(--paper-2);color:var(--ink)}.hero{max-width:1440px;margin:auto;padding:clamp(54px,8vw,108px) 28px 52px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1.25fr) minmax(270px,.45fr);gap:clamp(36px,7vw,96px);align-items:end}.eyebrow{margin:0 0 20px;color:var(--rust);font:800 12px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.16em;text-transform:uppercase}.hero h1{max-width:900px;margin:0;font:800 clamp(44px,7.4vw,102px)/.94 "Noto Serif SC","Songti SC",serif;letter-spacing:-.06em}.hero aside{border-top:4px solid var(--ink);padding-top:18px}.hero aside p{margin:0;color:var(--muted);font-size:14px}.layout{max-width:1280px;margin:auto;padding:64px 28px 110px;display:grid;grid-template-columns:210px minmax(0,74ch);gap:clamp(42px,8vw,112px);justify-content:center}.rail{position:sticky;top:90px;align-self:start}.rail b{display:block;margin-bottom:13px;font:800 11px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase}.rail a{display:block;min-height:44px;padding:10px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-decoration:none}.rail a:hover{color:var(--blue)}article{min-width:0}article p{margin:0 0 1.35em;white-space:pre-line}article p:first-child{font-size:19px;line-height:1.72}article strong{color:var(--rust)}article code{padding:.12em .34em;background:var(--paper-2);font:500 .92em/1.5 "SFMono-Regular",Consolas,monospace}pre{position:relative;margin:28px 0 32px;padding:22px 24px;overflow:auto;background:var(--code);color:var(--code-ink);box-shadow:0 12px 36px rgba(23,32,36,.14)}pre code{padding:0;background:transparent;color:inherit;font:500 13px/1.72 "SFMono-Regular",Consolas,monospace;white-space:pre}pre code[data-lang]::before{content:attr(data-lang);display:block;margin-bottom:12px;color:#9fb4ba;font:800 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase}blockquote{margin:26px 0 30px;padding:19px 22px;border:1px solid #b9cdd4;background:var(--blue-soft);color:#294b58}blockquote p{margin:0;font-weight:750}footer{border-top:1px solid var(--line);padding:24px 28px;display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:12px}footer a{color:var(--blue)}:focus-visible{outline:3px solid var(--rust);outline-offset:3px}@media(max-width:850px){.hero,.layout{grid-template-columns:1fr}.hero{gap:34px}.hero aside{max-width:640px}.rail{position:static;display:flex;flex-wrap:wrap;gap:0 18px}.rail b{width:100%}.rail a{border-top:0;border-bottom:1px solid var(--line)}}@media(max-width:600px){.topbar-inner,.hero,.layout{padding-left:18px;padding-right:18px}.topbar-inner{align-items:stretch}.brand{min-height:54px}.nav a{padding:0 9px}.layout{padding-top:44px}pre{margin-left:-18px;margin-right:-18px;padding:20px 18px}footer{padding:20px 18px;flex-direction:column}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.78 Inter,"Noto Sans SC","Microsoft YaHei",sans-serif}a{color:inherit}.topbar{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line);background:rgba(242,239,231,.96);backdrop-filter:blur(10px)}.topbar-inner{max-width:1440px;min-height:54px;margin:auto;padding:0 28px;display:flex;align-items:center;gap:24px}.brand{font:800 12px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.13em;text-transform:uppercase;white-space:nowrap}.nav{margin-left:auto;display:flex;overflow:auto;scrollbar-width:none}.nav a{min-height:54px;padding:0 14px;display:flex;align-items:center;color:var(--muted);font-size:13px;font-weight:750;text-decoration:none;white-space:nowrap}.nav a:hover{background:var(--paper-2);color:var(--ink)}.hero{max-width:1440px;margin:auto;padding:clamp(54px,8vw,108px) 28px 52px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1.25fr) minmax(270px,.45fr);gap:clamp(36px,7vw,96px);align-items:end}.eyebrow{margin:0 0 20px;color:var(--rust);font:800 12px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.16em;text-transform:uppercase}.hero h1{max-width:900px;margin:0;font:800 clamp(44px,7.4vw,102px)/.94 "Noto Serif SC","Songti SC",serif;letter-spacing:-.06em}.hero aside{border-top:4px solid var(--ink);padding-top:18px}.hero aside p{margin:0;color:var(--muted);font-size:14px}.layout{max-width:1280px;margin:auto;padding:64px 28px 110px;display:grid;grid-template-columns:210px minmax(0,74ch);gap:clamp(42px,8vw,112px);justify-content:center}.rail{position:sticky;top:90px;align-self:start}.rail b{display:block;margin-bottom:13px;font:800 11px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase}.rail a{display:block;min-height:44px;padding:10px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-decoration:none}.rail a:hover{color:var(--blue)}article{min-width:0}article p{margin:0 0 1.35em;white-space:pre-line}article p:first-child{font-size:19px;line-height:1.72}article h3{margin:3.2em 0 1em;padding-top:1.2em;border-top:1px solid var(--line);font:800 clamp(26px,4vw,38px)/1.25 "Noto Serif SC","Songti SC",serif;letter-spacing:-.035em}article strong{color:var(--rust)}article code{padding:.12em .34em;background:var(--paper-2);font:500 .92em/1.5 "SFMono-Regular",Consolas,monospace}pre{position:relative;margin:28px 0 32px;padding:22px 24px;overflow:auto;background:var(--code);color:var(--code-ink);box-shadow:0 12px 36px rgba(23,32,36,.14)}pre code{padding:0;background:transparent;color:inherit;font:500 13px/1.72 "SFMono-Regular",Consolas,monospace;white-space:pre}pre code[data-lang]::before{content:attr(data-lang);display:block;margin-bottom:12px;color:#9fb4ba;font:800 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase}blockquote{margin:26px 0 30px;padding:19px 22px;border:1px solid #b9cdd4;background:var(--blue-soft);color:#294b58}blockquote p{margin:0;font-weight:750}.closing{margin-top:62px;padding:28px;border-top:4px solid var(--ink);border-bottom:1px solid var(--line);background:var(--paper-2)}.closing p{margin:0 0 1em;font:700 18px/1.75 "Noto Serif SC","Songti SC",serif}.closing p:last-child{margin-bottom:0;color:var(--rust)}footer{border-top:1px solid var(--line);padding:24px 28px;display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:12px}footer a{color:var(--blue)}:focus-visible{outline:3px solid var(--rust);outline-offset:3px}@media(max-width:850px){.hero,.layout{grid-template-columns:1fr}.hero{gap:34px}.hero aside{max-width:640px}.rail{position:static;display:flex;flex-wrap:wrap;gap:0 18px}.rail b{width:100%}.rail a{border-top:0;border-bottom:1px solid var(--line)}}@media(max-width:600px){.topbar-inner,.hero,.layout{padding-left:18px;padding-right:18px}.topbar-inner{align-items:stretch}.brand{min-height:54px}.nav a{padding:0 9px}.layout{padding-top:44px}pre{margin-left:-18px;margin-right:-18px;padding:20px 18px}footer{padding:20px 18px;flex-direction:column}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 <header class="topbar"><div class="topbar-inner"><div class="brand">Evidence Wall / Analysis</div><nav class="nav" aria-label="页面导航"><a href="index.html">证据墙</a><a href="discussion.html">提交证据 / 评论</a><a href="https://github.com/komogu/evid-wall" target="_blank" rel="noopener noreferrer">GitHub</a></nav></div></header>
 <section class="hero"><div><p class="eyebrow">ANTML / Motivation & Distillation</p><h1>动机和蒸馏上<br>分析 ANTML</h1></div><aside><p>独立技术分析页。正文按原始 Markdown 排版，未改写原文。</p></aside></section>
-<main class="layout"><nav class="rail" aria-label="文内导航"><b>阅读路径</b><a href="#article">从动机开始</a><a href="#samples">边界样本</a><a href="#distillation">蒸馏解释</a><a href="#explanation">最简解释</a></nav><article id="article"><p>首先确定ds没有主动伪装成claude的动机，高度蒸馏 Claude 的能力本身也不等于主动复刻 Claude 的服务端指纹。</p>
+<main class="layout"><nav class="rail" aria-label="文内导航"><b>阅读路径</b><a href="#article">从动机开始</a><a href="#samples">边界样本</a><a href="#distillation">蒸馏解释</a><a href="#explanation">最简解释</a><a href="#cleaner">清洗器动机</a><a href="#closing">讨论边界</a></nav><article id="article"><p>首先确定ds没有主动伪装成claude的动机，高度蒸馏 Claude 的能力本身也不等于主动复刻 Claude 的服务端指纹。</p>
 <p>然后确定如果上游真是claude 的api，输入的<code>&lt;antml:xxxxx&gt;</code>会被清洗，且上游如果不是claude的api，上游不会被清洗，除非主动伪装成claude</p>
 <p>且第三方做cc兼容也就是anthropic格式的兼容时，不可能在兼容层塞个清洗器清洗掉antml，参考除了a社以外的所有厂商的api都没有这个机制，因为这是主动伪装</p>
 <p>且在大小写不敏感的情况下2⁵=32种情况下都能稳定触发，如果是蒸馏导致的也就是来自权重而不是清洗器，就算是泛化也可以99%说明针对这个标签做过定向的训练，ds没有主动伪装claude的动机</p>
@@ -97,7 +97,78 @@ Claude API 输出
 <p>如果灰测模型和 Opus 在这些非常规边界条件上都稳定表现一致，那么仅仅用“这是高度蒸馏 DS 自然学出来的”来解释，需要额外增加一个很强的假设：</p>
 <blockquote><p>DS 的蒸馏过程专门覆盖并学习了 Anthropic 的 undocumented ANTML 边界行为。</p></blockquote>
 <p id="explanation">相比之下，更简单的解释反而是：</p>
-<blockquote><p>请求本身经过了与 Anthropic Claude 相同的 ANTML preprocessing。</p></blockquote></article></main>
+<blockquote><p>请求本身经过了与 Anthropic Claude 相同的 ANTML preprocessing。</p></blockquote>
+<h3 id="cleaner">为什么 DS 自己的模型根本不需要一个 ANTML 清洗器</h3>
+<p>如果上游真的是 DS 自己的模型，那 <code>antml:</code> 对它本来就没有 Anthropic 那套内部协议意义。</p>
+<p>Anthropic 之所以有理由清洗：</p>
+<pre><code>&lt;antml:xxxxx&gt;</code></pre>
+<p>是因为 <code>antml:</code> 本身就是它内部保留的控制前缀，后面还会拿它承载类似：</p>
+<pre><code>&lt;antml:thinking&gt;
+&lt;antml:invoke&gt;
+&lt;antml:parameter&gt;</code></pre>
+<p>这种内部协议标记。</p>
+<p>所以对 Anthropic 来说，用户输入里的 <code>antml:</code> 和自己内部的 <code>antml:</code> 可能发生冲突，做 stripping / interception 是有功能意义的。</p>
+<p>但如果上游实际是 DS，那么链路更应该是：</p>
+<pre><code>Anthropic-compatible API
+↓
+把 messages / tools 转成 DS 自己的输入格式
+↓
+DS 模型</code></pre>
+<p>DS 自己并不使用 Anthropic 的 ANTML 作为内部协议。</p>
+<p>那对 DS 来说：</p>
+<pre><code>&lt;antml:xxxxx&gt;</code></pre>
+<p>就只是普通字符串。</p>
+<p>清洗它不会提高：</p>
+<pre><code>代码能力
+推理能力
+数学能力
+tool use
+Claude Code 兼容
+Messages API 兼容</code></pre>
+<p>甚至从兼容角度看，最自然的行为反而应该是<strong>原样透传用户文本</strong>。</p>
+<p>因为一个 Anthropic-compatible API 真正需要兼容的是：</p>
+<pre><code>messages
+system
+tools
+tool_use
+tool_result
+streaming
+thinking</code></pre>
+<p>而不是复刻一个未公开的：</p>
+<pre><code>用户输入里只要出现 antml:
+就按照 Anthropic 相同边界进行 stripping</code></pre>
+<p>这种内部实现细节。</p>
+<p>所以“DS 为了兼容 Claude Code，因此加 ANTML 清洗器”这个说法中间其实缺了一条因果链：</p>
+<blockquote><p>为什么 Claude Code 兼容需要 DS 对一个它自己根本不用的内部 namespace 做和 Anthropic 一模一样的清洗？</p></blockquote>
+<p>如果答案是：</p>
+<blockquote><p>为了性能。</p></blockquote>
+<p>那还得继续问：</p>
+<blockquote><p>到底提高什么性能？</p></blockquote>
+<p>因为把：</p>
+<pre><code>&lt;antml:foo&gt;</code></pre>
+<p>变成：</p>
+<pre><code>&lt;foo&gt;</code></pre>
+<p>并不会让 DS 更会写代码、更会推理，也不会让公开 API 的 tool call 更兼容。</p>
+<p>如果答案是：</p>
+<blockquote><p>为了让行为和 Claude 更一致。</p></blockquote>
+<p>那其实已经等于承认：</p>
+<blockquote><p>这个清洗器不是 DS 模型自身需要的，而是额外为了复刻 Claude 的服务端行为加上的。</p></blockquote>
+<p>这就不是“高度蒸馏所以自然相似”了，而是主动做了 Anthropic-like preprocessing。</p>
+<p>而且你现在观察到的还不是简单的：</p>
+<pre><code>删除 antml</code></pre>
+<p>而是：</p>
+<pre><code>大小写不敏感
++
+连续 leading prefix 递归删除
++
+遇到第一个非 antml 停止
++
+停止后后续 antml 不再删除</code></pre>
+<p>如果一个 DS 兼容层连这种完全不影响正常业务的边界行为都精确复刻，那就更难解释成“为了兼容”或者“为了性能”。</p>
+<p>更合理的描述只能是：</p>
+<blockquote><p>它额外复刻了 Anthropic 的 undocumented 服务端处理规则。</p></blockquote>
+<p>而这本身就是一个新的假设，不是“DS 高度蒸馏 Claude”这个假设自然推出的。</p>
+<div class="closing" id="closing"><p>如果假设ds使用了a/一样的服务端处理规则一样的清洗器，且模型同样有生物甲没有政治甲，思维链输出行为特征高度一致，且同提示词下输出风格主观一致，并且ds同样为这个灰度模型定制了思维链的总结小模型，生物甲触发后的回退检测与fallback模型，政治问题的截断检测机制而不是安全对齐(可以输出但是会被截断)，并且触发生物甲后自动失去该回话的'灰测'资格。那他做这一切的动机是什么呢？</p><p>我们都不是内部员工，请不要从动机上讨论问题。</p></div></article></main>
 <footer><span>ANTML technical note</span><span><a href="index.html">返回证据墙</a> · <a href="https://github.com/komogu/evid-wall" target="_blank" rel="noopener noreferrer">GitHub 源码</a></span></footer>
 </body>
 </html>
