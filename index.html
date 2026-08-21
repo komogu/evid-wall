@@ -274,7 +274,7 @@ footer a{color:var(--blue)}
 <figure class="shot full"><img src="assets/aug-summary-cot.png" alt="8 月灰测摘要式思维链" loading="lazy"><figcaption><b>摘要式大块思维链</b>用于识别降级前的特征形态；单凭行文风格无法直接作为模型铁证。</figcaption></figure>
 <figure class="shot"><img src="assets/aug-token-stream.png" alt="0813 正式版逐 token 输出" loading="lazy"><figcaption><b>0813 正式版基准链路</b>常规 DeepSeek 的逐 Token 实时流式输出对照。</figcaption></figure>
 <figure class="shot tall"><img src="assets/aug-tokenizer.png" alt="分词和流式边界对照" loading="lazy"><figcaption><b>分词与 Chunk 截断旁证</b>在中文断句和分包边界上与公开版 DeepSeek 存在明显偏差。</figcaption></figure>
-<figure class="shot"><img src="assets/bio-fallback.png" alt="生物安全触发 fallback 的会话" loading="lazy"><figcaption><b>高危安全提问降级实况</b>稳定灰测会话在触发敏感问题后切换为流式并永久失去灰测，附原始抓包 ZIP。</figcaption></figure>
+<figure class="shot"><img src="assets/bio-fallback.png" alt="生物安全触发 fallback 的会话" loading="lazy"><figcaption><b>高危安全提问降级实况</b>稳定灰测会话在触发敏感问题后经历长 TTFT 才开始输出，思维链切换为流式，且仅该 Session 失去灰测。附原始 Session；视频可联系站长获取。</figcaption></figure>
 <figure class="shot weak"><img src="assets/bio-t4-counterexample.png" alt="T4 噬菌体反例" loading="lazy"><figcaption><b>一般生物题反例</b>并非所有生物学问题均会触发降级，证明拦截依赖于具体的安全风险等级与上下文。</figcaption></figure>
 </div></article>
 <article class="cluster"><div class="stamp">Cluster D / Controls</div><h3>正式版反测与上下文污染排除</h3><p>干净对照证明公开版未继承 7 月特征；污染对照证明模型在上下文被诱导后会顺应模仿，该现象不能作为反证。</p><div class="shots">
