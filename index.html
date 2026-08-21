@@ -206,7 +206,7 @@ footer a{color:var(--blue)}
 </aside>
 </section>
 <div class="notice"><b>【前置排除】一个常见误区：</b>"模型无法接收文件或图片"并不能作为否定底层路由的证据。网关完全可以在请求到达底层模型前，直接拦截、清洗或丢弃附件；该现象仅能证明前端产品链路未将多模态数据透传给模型。</div>
-<div class="notice"><b>【灰测特征识别前提】请明确分辨什么是灰测特征：</b>目前较容易客观分辨的表现，是较长的首字延迟（TTFT），以及总结式思维链以较大文本块间隔输出；请勿仅凭思维链的文字风格判断是否仍处于灰测。灰测回退后，DeepSeek 仍可能延续并模仿此前的表达特征。若没有原始会话、亲眼所见或完整视频等材料能够证明思维链的实际输出形态，请不要贸然断言模型没有生物安全拦截，或会话仍处于灰测状态并据此继续测试；无效证据会污染讨论环境。<div class="links"><a href="https://www.bilibili.com/video/BV1Li8E6xECE" target="_blank" rel="noopener noreferrer">观看灰测思维链行为特征展示 ↗</a></div></div>
+<div class="notice"><b>【灰测特征识别前提】请明确分辨什么是灰测特征：</b>目前较容易客观分辨的表现，是较长的首字延迟（TTFT），以及总结式思维链以较大文本块间隔输出；请勿仅凭思维链的文字风格判断是否仍处于灰测。灰测回退后，DeepSeek 仍可能延续并模仿此前的表达特征。若没有原始会话、亲眼所见或完整视频等材料能够证明思维链的实际输出形态，请不要贸然断言模型没有生物安全拦截，或会话仍处于灰测状态并据此继续测试；无效证据会污染讨论环境。<div class="links"><a href="https://www.bilibili.com/video/BV1Li8E6xECE" target="_blank" rel="noopener noreferrer">观看灰测思维链行为特征展示 ↗</a><a href="https://pan.quark.cn/s/c08822e37a06" target="_blank" rel="noopener noreferrer">夸克网盘：灰测特征原视频 ↗</a></div></div>
 <div class="notice blue"><b>【能力归因与证伪标准】欢迎提交反证：</b>若您认为灰测模型的能力明显优于 Fable 系列或 Opus 5，请在干净会话（无历史上下文污染）中使用相同提示词进行对照，并提供可复现的截图或原始记录。本页拒绝仅凭主观体验下定论。<p style="margin:8px 0 0">前端生成任务可作为有限的能力对照：在目前的外部公开样本中，标注为 Opus 5 的前端表现整体优于 Fable 对照组；但这仅能作为能力上限与候选排序的参考，无法单独作为锁定具体型号的直接铁证。</p><div class="links"><a href="https://deepdemos.top/demo/claude-opus-5-9d3ec162" target="_blank" rel="noopener noreferrer">查看 Opus 5 前端样例</a><a href="discussion.html">提交更强或相反证据</a></div></div>
 </div>
 <main class="wrap">
@@ -274,7 +274,7 @@ footer a{color:var(--blue)}
 <figure class="shot full"><img src="assets/aug-summary-cot.png" alt="8 月灰测摘要式思维链" loading="lazy"><figcaption><b>摘要式大块思维链</b>用于识别降级前的特征形态；单凭行文风格无法直接作为模型铁证。</figcaption></figure>
 <figure class="shot"><img src="assets/aug-token-stream.png" alt="0813 正式版逐 token 输出" loading="lazy"><figcaption><b>0813 正式版基准链路</b>常规 DeepSeek 的逐 Token 实时流式输出对照。</figcaption></figure>
 <figure class="shot tall"><img src="assets/aug-tokenizer.png" alt="分词和流式边界对照" loading="lazy"><figcaption><b>分词与 Chunk 截断旁证</b>在中文断句和分包边界上与公开版 DeepSeek 存在明显偏差。</figcaption></figure>
-<figure class="shot"><img src="assets/bio-fallback.png" alt="生物安全触发 fallback 的会话" loading="lazy"><figcaption><b>高危安全提问降级实况</b>稳定灰测会话在触发敏感问题后经历长 TTFT 才开始输出，思维链切换为流式，且仅该 Session 失去灰测。附原始 Session；视频可联系站长获取。</figcaption></figure>
+<figure class="shot"><img src="assets/bio-fallback.png" alt="生物安全触发 fallback 的会话" loading="lazy"><figcaption><b>高危安全提问降级实况</b>稳定灰测会话在触发敏感问题后经历长 TTFT 才开始输出，思维链切换为流式，且仅该 Session 失去灰测。附原始 Session；<a href="https://pan.quark.cn/s/7094c40b3fbb" target="_blank" rel="noopener noreferrer">查看生物安全回退原视频 ↗</a></figcaption></figure>
 <figure class="shot weak"><img src="assets/bio-t4-counterexample.png" alt="T4 噬菌体反例" loading="lazy"><figcaption><b>一般生物题反例</b>并非所有生物学问题均会触发降级，证明拦截依赖于具体的安全风险等级与上下文。</figcaption></figure>
 </div></article>
 <article class="cluster"><div class="stamp">Cluster D / Controls</div><h3>正式版反测与上下文污染排除</h3><p>干净对照证明公开版未继承 7 月特征；污染对照证明模型在上下文被诱导后会顺应模仿，该现象不能作为反证。</p><div class="shots">
