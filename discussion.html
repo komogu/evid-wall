@@ -7,7 +7,7 @@
 <title>证据提交与评论</title>
 <style>
 :root{color-scheme:light;--bg:#efebdf;--surface:#f6f3ea;--ink:#1b2428;--muted:#6a7378;--line:#cfcab8;--accent:#8a4a2a;--accent-soft:#ece2d6;--blue:#2c5e78;--blue-soft:#dde8eb;--red:#853d36}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.62 Inter,"Noto Sans SC","Microsoft YaHei",sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer}a{color:inherit}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.68 Inter,"Noto Sans SC","Microsoft YaHei",sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer}a{color:inherit}
 header.bar{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line);background:rgba(239,235,223,.94);backdrop-filter:blur(8px)}
 .bar-inner{max-width:920px;margin:0 auto;padding:0 24px;min-height:46px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{font:700 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
@@ -93,6 +93,10 @@ textarea{min-height:110px;resize:vertical}
 @media(max-width:760px){.bar-inner,.wrap{padding:0 16px}.hero{padding-top:32px}.board-head{display:block}.filters{margin-top:14px}.entry-files,.thumbs{grid-template-columns:1fr}.actions{flex-direction:column;align-items:stretch}.primary,.secondary{width:100%}}
 @media(max-width:380px){.attachment{grid-template-columns:40px minmax(0,1fr)}.attachment img,.attachment .kind{width:40px;height:40px}.download{grid-column:1/-1;justify-content:center}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media(min-width:761px){
+  .bar-inner nav a,.hero p.lead,.rules ul,.notice,.sub,.field label,.label,input,select,textarea,.upload b,.primary,.secondary,.entry p,.giscus-placeholder{font-size:14px}
+  .storage-note{font-size:13px}
+}
 </style>
 </head>
 <body>

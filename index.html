@@ -9,7 +9,7 @@
 :root{color-scheme:light;--bg:#efebdf;--surface:#f6f3ea;--ink:#1b2428;--muted:#6a7378;--line:#cfcab8;--accent:#8a4a2a;--accent-soft:#ece2d6;--blue:#2c5e78;--blue-soft:#dde8eb;--green:#2a6450;--green-soft:#dae8e0;--amber:#856418;--amber-soft:#ede4ca;--red:#853d36;--red-soft:#ecd8d4}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.62 Inter,"Noto Sans SC","Microsoft YaHei",sans-serif}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.68 Inter,"Noto Sans SC","Microsoft YaHei",sans-serif}
 a{color:inherit}
 code{font-family:"SFMono-Regular",Consolas,monospace;font-size:.9em}
 .wrap{max-width:920px;margin:0 auto;padding:0 24px}
@@ -164,6 +164,13 @@ footer a{color:var(--blue)}
 }
 @media(max-width:400px){.quote-strip span{width:100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media(min-width:761px){
+  .bar-inner nav a{font-size:13px}
+  .hero p.lead{font-size:16px}
+  .hero-side p,.hero-side li,.notice,.shead p,.verdict .vp p,.verdict .vs p,.premise p,.epolicy p,.era p,.node>div>p,.proof,.tech-body,.limit-item,.method p,.method li{font-size:14px}
+  .shot figcaption,table{font-size:13px}
+  .shot figcaption b,.verdict .vs dt,.verdict .vs dd{font-size:13px}
+}
 @media print{header.bar,.lightbox{display:none!important}section.block{break-inside:avoid}body{background:var(--surface)}}
 </style>
 </head>
