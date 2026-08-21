@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="基于 archive.dht 镜像整理的 7 月与 8 月灰测路由证据链墙">
+<title>灰测路由证据链墙</title>
+<style>
+:root{
+  color-scheme:light;
+  --paper:#f2efe7;--paper-2:#e8e3d8;--ink:#172024;--muted:#59656a;--line:#c8c3b8;
+  --blue:#174f68;--blue-soft:#dce8eb;--rust:#985333;--rust-soft:#eee0d6;--green:#23624e;--green-soft:#dce9e2;
+  --amber:#87651a;--amber-soft:#eee5ca;--red:#863f38;--red-soft:#eddad6;--shadow:0 18px 60px rgba(31,37,38,.18);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.68 Inter,"Noto Sans SC","Microsoft YaHei",sans-serif}
+a{color:inherit}
+button{font:inherit}
+code{font-family:"SFMono-Regular",Consolas,monospace;font-size:.92em}
+.topbar{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(242,239,231,.96);backdrop-filter:blur(10px)}
+.topbar-inner{max-width:1580px;margin:auto;display:flex;align-items:center;gap:26px;padding:0 28px}
+.brand{min-height:52px;display:flex;align-items:center;font:800 13px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.nav{display:flex;gap:2px;overflow:auto;scrollbar-width:none}
+.nav a{min-height:52px;display:flex;align-items:center;padding:0 13px;color:var(--muted);font-size:13px;text-decoration:none;white-space:nowrap}
+.nav a:hover{background:var(--paper-2);color:var(--ink)}
+.nav a.page-link{margin-left:8px;color:var(--blue);font-weight:800}
+.hero{max-width:1580px;margin:auto;padding:72px 28px 54px;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(300px,.7fr);gap:60px;border-bottom:1px solid var(--line)}
+.eyebrow{margin:0 0 20px;color:var(--rust);font:800 12px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.16em;text-transform:uppercase}
+h1{max-width:980px;margin:0;font:800 clamp(46px,7vw,102px)/.94 "Noto Serif SC","Songti SC",serif;letter-spacing:-.065em}
+.hero-copy{max-width:820px;margin:34px 0 0;color:var(--muted);font-size:18px}
+.hero-copy strong{color:var(--blue)}
+.hero-side{align-self:end;border-top:4px solid var(--ink);padding-top:20px}
+.hero-side h2{margin:0 0 12px;font:800 23px/1.25 "Noto Serif SC","Songti SC",serif}
+.hero-side p{margin:0;color:var(--muted)}
+.hero-side ul{list-style:none;margin:22px 0 0;padding:0}
+.hero-side li{padding:12px 0;border-top:1px solid var(--line);font-size:14px}
+.boundary{max-width:1580px;margin:0 auto;padding:0 28px}
+.boundary-inner{margin-top:28px;padding:20px 24px;border:1px solid #d5b49c;background:var(--rust-soft);color:#523a2e}
+.boundary-inner b{color:var(--rust)}
+main{max-width:1580px;margin:auto;padding:0 28px 100px}
+.section{padding:72px 0;border-bottom:1px solid var(--line)}
+.section-head{display:grid;grid-template-columns:170px minmax(0,900px);gap:24px;margin-bottom:38px}
+.section-code{color:var(--rust);font:800 12px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.13em;text-transform:uppercase}
+h2{margin:0 0 12px;font:800 clamp(31px,4vw,58px)/1.05 "Noto Serif SC","Songti SC",serif;letter-spacing:-.04em}
+.section-head p{margin:0;color:var(--muted);font-size:16px}
+.verdict{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(320px,.65fr);border:1px solid var(--line)}
+.verdict-primary{padding:42px;background:#f7f4ec}
+.verdict-primary .label,.verdict-side .label{color:var(--rust);font:800 11px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase}
+.verdict-primary h3{max-width:900px;margin:20px 0 18px;font:800 clamp(32px,4.4vw,64px)/1.05 "Noto Serif SC","Songti SC",serif;letter-spacing:-.045em}
+.verdict-primary h3 strong{color:var(--blue)}
+.verdict-primary p{max-width:780px;margin:0;color:var(--muted);font-size:16px}
+.verdict-side{padding:36px;border-left:1px solid var(--line);background:var(--blue-soft)}
+.verdict-side h3{margin:18px 0 8px;font-size:22px}
+.verdict-side p{margin:0;color:var(--muted)}
+.verdict-side dl{margin:26px 0 0}
+.verdict-side div{display:grid;grid-template-columns:70px 1fr;gap:14px;padding:13px 0;border-top:1px solid rgba(23,79,104,.2)}
+.verdict-side dt{font-weight:800}.verdict-side dd{margin:0;color:var(--muted)}
+.timeline{display:grid;grid-template-columns:1fr 1fr 1.15fr;border:1px solid var(--line)}
+.premises{display:grid;grid-template-columns:1.1fr .9fr .9fr;gap:1px;border:1px solid var(--line);background:var(--line)}
+.premise{padding:25px;background:#f7f4ec}.premise:first-child{background:var(--blue-soft)}
+.premise .num{color:var(--rust);font:800 11px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.12em}
+.premise h3{margin:15px 0 8px;font:800 22px/1.22 "Noto Serif SC","Songti SC",serif}.premise p{margin:0;color:var(--muted);font-size:14px}
+.evidence-policy{margin-top:22px;padding:21px 24px;border:1px solid #d5b49c;background:var(--rust-soft);display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center}
+.evidence-policy p{margin:0;color:#5d4133}.evidence-policy b{color:var(--rust)}
+.evidence-policy a{min-height:44px;padding:0 17px;display:inline-flex;align-items:center;background:var(--rust);color:#f7f4ec;text-decoration:none;font-weight:800;white-space:nowrap}
+.era{min-height:210px;padding:29px;border-right:1px solid var(--line)}
+.era:last-child{border-right:0;background:var(--blue-soft)}
+.era time{color:var(--rust);font:800 12px/1 ui-monospace,SFMono-Regular,Consolas,monospace}
+.era h3{margin:18px 0 8px;font:800 25px/1.2 "Noto Serif SC","Songti SC",serif}
+.era p{margin:0;color:var(--muted)}
+.chain{border-top:1px solid var(--ink)}
+.node{display:grid;grid-template-columns:150px minmax(0,1fr);gap:28px;padding:38px 0;border-bottom:1px solid var(--line)}
+.node-id{font:800 12px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--muted)}
+.level{display:inline-block;margin-bottom:13px;padding:5px 10px;border-radius:99px;font-size:11px;letter-spacing:.04em}
+.level.high{background:var(--green-soft);color:var(--green)}
+.level.mid-high{background:var(--blue-soft);color:var(--blue)}
+.level.mid{background:var(--amber-soft);color:var(--amber)}
+.level.low{background:var(--red-soft);color:var(--red)}
+.node h3{margin:0 0 10px;font:800 clamp(24px,3vw,38px)/1.18 "Noto Serif SC","Songti SC",serif;letter-spacing:-.025em}
+.node>div>p{max-width:920px;margin:0;color:var(--muted)}
+.proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:24px;border:1px solid var(--line);background:var(--line)}
+.proof{padding:18px 20px;background:#f7f4ec;font-size:14px}
+.proof b{display:block;margin-bottom:4px;color:var(--ink)}
+.proof.limit{background:var(--paper)}
+.quote-strip{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.quote-strip span{padding:7px 10px;border:1px solid var(--line);background:var(--paper-2);color:#465258;font:700 12px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace}
+.tech{margin-top:22px;border:1px solid #b9cdd4;background:var(--blue-soft)}
+.tech summary{min-height:48px;padding:14px 52px 14px 18px;position:relative;display:flex;align-items:center;cursor:pointer;color:var(--blue);font-weight:800;list-style:none}
+.tech summary::-webkit-details-marker{display:none}.tech summary:after{content:"＋";position:absolute;right:18px;font-size:23px;font-weight:400}.tech[open] summary:after{content:"−"}
+.tech-body{padding:4px 20px 20px;border-top:1px solid #b9cdd4;color:var(--muted)}
+.tech-body li+li{margin-top:10px}.tech-body strong{color:var(--ink)}
+.wall{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
+.cluster{grid-column:span 12;display:grid;grid-template-columns:230px minmax(0,1fr);gap:26px;padding:26px;border:1px solid var(--line);background:var(--paper-2)}
+.cluster-head .stamp{color:var(--rust);font:800 11px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.11em;text-transform:uppercase}
+.cluster-head h3{margin:14px 0 9px;font:800 25px/1.2 "Noto Serif SC","Songti SC",serif}
+.cluster-head p{margin:0;color:var(--muted);font-size:13px}
+.shots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.shot{margin:0;border:1px solid var(--line);background:var(--paper);overflow:hidden}
+.shot.wide{grid-column:span 2}.shot.full{grid-column:1/-1}.shot.weak{opacity:.78}
+.shot img{display:block;width:100%;height:260px;object-fit:contain;background:#ddd8cc;cursor:zoom-in}
+.shot.tall img{height:390px}.shot.full img{height:auto;max-height:560px}
+.shot figcaption{padding:13px 14px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;line-height:1.55}
+.shot figcaption b{display:block;margin-bottom:4px;color:var(--ink);font-size:13px}
+.matrix{overflow:auto;border-top:1px solid var(--ink)}
+table{width:100%;min-width:940px;border-collapse:collapse;font-size:13px}
+th,td{padding:15px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--muted);font:800 11px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase}
+td:first-child{font-weight:800}
+.limits{counter-reset:item;display:grid;grid-template-columns:1fr 1fr;gap:0 44px;border-top:1px solid var(--ink)}
+.limit-item{position:relative;padding:24px 0 24px 55px;border-bottom:1px solid var(--line);color:var(--muted)}
+.limit-item:before{counter-increment:item;content:counter(item,decimal-leading-zero);position:absolute;left:0;top:27px;color:var(--rust);font:800 12px/1 ui-monospace,SFMono-Regular,Consolas,monospace}
+.limit-item b{color:var(--ink)}
+.method{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+.method h3{margin:0 0 12px;font-size:19px}.method p,.method li{color:var(--muted)}
+footer{max-width:1580px;margin:auto;padding:28px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:20px}
+.lightbox{position:fixed;inset:0;z-index:50;display:none;place-items:center;padding:24px;background:rgba(19,25,27,.94)}
+.lightbox.open{display:grid}.lightbox img{max-width:96vw;max-height:91vh;object-fit:contain;background:var(--paper);box-shadow:var(--shadow)}
+.lightbox button{position:absolute;top:18px;right:18px;width:48px;height:48px;border:1px solid #8a9396;background:#273034;color:#f3f0e8;font-size:26px;cursor:pointer}
+:focus-visible{outline:3px solid var(--rust);outline-offset:3px}
+@media(max-width:1050px){.hero,.verdict{grid-template-columns:1fr}.hero-side{max-width:720px}.verdict-side{border-left:0;border-top:1px solid var(--line)}.cluster{grid-template-columns:1fr}.shots{grid-template-columns:1fr 1fr}.premises{grid-template-columns:1fr}}
+@media(max-width:760px){.topbar-inner{padding:0 18px;gap:14px}.brand{display:none}.hero,main,.boundary{padding-left:18px;padding-right:18px}.hero{padding-top:50px;grid-template-columns:1fr;gap:34px}.section{padding:52px 0}.section-head,.node,.method{grid-template-columns:1fr}.section-head,.node{gap:10px}.timeline{grid-template-columns:1fr}.era{border-right:0;border-bottom:1px solid var(--line)}.shots,.proof-grid,.limits{grid-template-columns:1fr}.shot.wide,.shot.full{grid-column:auto}.shot img,.shot.tall img{height:auto;max-height:480px}.cluster{padding:18px}.verdict-primary,.verdict-side{padding:25px 20px}.evidence-policy{grid-template-columns:1fr}.evidence-policy a{justify-content:center}footer{padding:24px 18px;display:block}}
+@media(max-width:420px){h1{font-size:44px}.hero-copy{font-size:16px}.boundary-inner{padding:16px}.quote-strip span{width:100%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{.topbar,.lightbox{display:none!important}.section{break-inside:avoid}body{background:#f7f4ec}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topbar-inner"><div class="brand">Evidence Wall / 2026</div><nav class="nav" aria-label="页面导航"><a href="#verdict">结论</a><a href="#premises">前提</a><a href="#timeline">分期</a><a href="#chain">证据链</a><a href="#wall">证据墙</a><a href="#matrix">矩阵</a><a href="#limits">边界</a><a class="page-link" href="discussion.html">提交证据 / 评论</a></nav></div></header>
+<section class="hero">
+  <div><p class="eyebrow">archive.dht / static evidence review</p><h1>灰测路由<br>证据链墙</h1><p class="hero-copy">将帖子中的接口字段、统计图、同会话差异、可重复输入规则和原始 session 串成一条可审阅的链。现有材料最支持：<strong>7 月与 8 月不是同一模型路径；8 月强指向 Claude 请求链，Opus 5.0 是大概率候选。</strong></p></div>
+  <aside class="hero-side"><h2>阅读规则</h2><p>页面只保留可公开复核且符合本页范围的材料。图片本身、作者解释和型号归因分别评级。</p><ul><li><b>高置信度：</b>确定性规则、可量化字段、同会话对照</li><li><b>中高置信度：</b>多项独立线索汇合</li><li><b>中及以下：</b>知识、文风、自述、单次行为</li></ul></aside>
+</section>
+<div class="boundary"><div class="boundary-inner"><b>先排除一个常见误区：</b>模型不能接受文件或图片，不是反路由的有力证据。网关可以在模型调用前拦截、清洗或不转发附件；该现象只能证明产品链路未把附件交给模型。</div></div>
+<main>
+<section class="section" id="verdict">
+  <div class="section-head"><div class="section-code">01 / Assessment</div><div><h2>综合判断</h2><p>先给窄结论，再说明证据覆盖不到的部分。</p></div></div>
+  <div class="verdict"><article class="verdict-primary"><span class="label">Primary assessment</span><h3>8 月灰测<br><strong>大概率属于 Opus 5.0</strong></h3><p><code>antml</code> 的过滤、输入 token、固定边界和大小写规则共同指向 Claude 请求链。知识、流式形态与安全行为只承担补充作用。现有材料无法确认具体型号，也不能识别官方 API、中转或其他托管方式。</p></article><aside class="verdict-side"><span class="label">Cross-round finding</span><h3>7 月与 8 月不是同一模型路径</h3><p>缓存处理、基础设施聚类、输入预处理、会话状态和 fallback 行为呈系统性差异。</p><dl><div><dt>7 月</dt><dd>可能属于 Fable 系列，具体版本未定</dd></div><div><dt>8 月</dt><dd>强指向 Claude 请求链，Opus 5.0 为大概率候选</dd></div><div><dt>回退</dt><dd>生物安全触发后落到 0813 V4 Pro 正式版路径</dd></div></dl></aside></div>
+</section>
+<section class="section" id="premises">
+  <div class="section-head"><div class="section-code">02 / Premises</div><div><h2>读懂对照前的必要前提</h2><p>这里定义的是本报告如何识别路径切换，不是靠文风猜模型。</p></div></div>
+  <div class="premises"><article class="premise"><span class="num">P01 / GREY PATH</span><h3>灰测基准：总结式思维链，分段输出</h3><p>稳定灰测 session 的主要可观察特征，是先生成内部推理，再把摘要按较大的文本块分段输出。它与公开版逐 token 流式思维链的时序和 chunk 形态不同。</p></article><article class="premise"><span class="num">P02 / FALLBACK</span><h3>生物安全触发：长 TTFT 后回退流式路径</h3><p>生物甲触发后不是简单空回，而是经历明显更长的 TTFT，随后出现 DS 风格逐 token 流式思维链；该 session 此后失去灰测，符合回退到 0813 V4 Pro 正式版。</p></article><article class="premise"><span class="num">P03 / CONTEXT</span><h3>污染后的公开 DS 不能承担反证</h3><p>当公开 DS 已在上下文中读到上文示例、角色说明或脏 token 时，它可以模仿上文输出；同理，后续没有再次触发某类安全行为，也不能反推先前路由不存在。需要新会话、干净上下文和同提示词对照。</p></article></div>
+  <div class="evidence-policy"><p><b>证据规则：</b>大部分关键实验都有视频或原始会话记录，可按需提供。任何正面或反面主张，至少应附可核对的截图；仅凭口述不进入证据链。更强的材料应包含完整会话、时间线、请求日志或视频。</p><a href="discussion.html">提交正反证据</a></div>
+</section>
+<section class="section" id="timeline">
+  <div class="section-head"><div class="section-code">03 / Timeline</div><div><h2>三段时间，不能混写</h2><p>8 月发布的统计消息可能分析的是 7 月保存的日志。缓存异常和基础设施聚类只属于 7 月。</p></div></div>
+  <div class="timeline"><article class="era"><time>约 07-16 起</time><h3>7 月旧灰测</h3><p>固定 64-token 缓存重算、reasoning token 重计数、TTFT/缓存/速度聚类、logprobs 与 fingerprint 差异。</p></article><article class="era"><time>08-01、08-12 至 16</time><h3>公开版复测</h3><p>反向尝试复现脏 token、自主思考和输出特征。多项不能稳定复现，证明公开版不是原样延续旧灰测。</p></article><article class="era"><time>08-19 至 21</time><h3>8 月新灰测</h3><p>旧缓存异常已修复。核心转为 <code>antml</code> 确定性规则、session 级路由、摘要与逐 token 路径以及生物安全触发后的 fallback。</p></article></div>
+</section>
+<section class="section" id="chain">
+  <div class="section-head"><div class="section-code">04 / Chain</div><div><h2>完整证据链</h2><p>每个节点只写它能直接支持的最窄结论。最终型号判断来自多节点汇合。</p></div></div>
+  <div class="chain">
+    <article class="node"><div class="node-id"><span class="level high">高</span><br>E01 · JULY</div><div><h3>固定 64-token 缓存重算</h3><p>旧灰测中 cache miss 稳定小于 64，cache hit 为 64 的整数倍，并符合 <code>hit=floor(input/64)×64</code>。正常推理服务应返回实际缓存数据，而不是把输入长度机械拆成 64 粒度。</p><div class="proof-grid"><div class="proof"><b>直接支持</b>7 月 usage/cache 字段经过特殊重算，处理链与普通 DS 不同。</div><div class="proof limit"><b>不能支持</b>不能由此命名上游；不能套用到 8 月新灰测。</div></div><div class="quote-strip"><span>“所有非 cache 的 input token 全都小于 64”</span><span>“命中 = 下取整(input/64)×64”</span><span>“8 月明显假的缓存数据修好了”</span></div></div></article>
+    <article class="node"><div class="node-id"><span class="level high">高</span><br>E02 · JULY</div><div><h3>TTFT、缓存合法性、推理速度共同聚类</h3><p>低 TTFT 组约 200 字符每秒且缓存较正常；高 TTFT 组约 80 字符每秒并伴随异常缓存。证据价值来自三个维度同时分组，而不是单看首字延迟。</p><div class="proof-grid"><div class="proof"><b>直接支持</b>7 月至少存在两类处理链或推理基础设施，不只是同一基础设施换权重。</div><div class="proof limit"><b>限定</b>排队可以解释 TTFT，不能解释缓存与速度同步聚类；统计不能直接命名模型。</div></div></div></article>
+    <article class="node"><div class="node-id"><span class="level mid-high">中高</span><br>E03 · JULY</div><div><h3>reasoning token 对可见推理文本重计数</h3><p>返回的 reasoning token 严格等于可见思维链用 DS tokenizer 计数后的长度加 2。结合缓存字段异常，更像把上游可见摘要经 DS tokenizer 重新计量后返回。</p><div class="proof-grid"><div class="proof"><b>直接支持</b>usage 字段存在 DS 侧重计数，符合协议转换层。</div><div class="proof limit"><b>限定</b>计数关系本身不能确认摘要来源，也不能识别具体上游。</div></div></div></article>
+    <article class="node"><div class="node-id"><span class="level mid-high">中高</span><br>E04 · JULY</div><div><h3>API 能力与标识行为不同</h3><p>非灰测路径可返回 logprobs，灰测相应字段为空；system fingerprint 初期与公开 V4 Flash/Pro 不同，后来又被统一为 V4P 标识。流式 delta 也呈整段文本与异常中文边界。</p><div class="proof-grid"><div class="proof"><b>直接支持</b>两条路径的底层 API 能力、流式封装或后端配置不同。</div><div class="proof limit"><b>限定</b>字段可由服务策略或代理层修改，需与缓存和统计证据合看。</div></div></div></article>
+    <article class="node"><div class="node-id"><span class="level high">高</span><br>E05 · AUGUST</div><div><h3><code>antml</code> 形成确定性的请求预处理规则</h3><p>未转义标签被剥离；重复叠加前缀后输入 token 不增加；修改中间一处后从首个不匹配位置开始输出；规则对大小写不敏感。mitu9527 与另一参与者分别复现。</p><div class="proof-grid"><div class="proof"><b>直接支持</b>8 月请求在模型 tokenization 之前或协议层经历 Claude 风格解析，强指向 Claude 请求链。</div><div class="proof limit"><b>限定</b>兼容层可以主动复刻规则；不能仅凭此证明直连官方 API 或确认具体型号。</div></div><details class="tech"><summary>技术展开：为什么纯“蒸馏学到脏 token”解释不成立</summary><div class="tech-body"><ol><li><strong>权重不能改变输入计量。</strong>如果标签作为普通文本进入模型，就应先被 tokenizer 计入输入 token。模型怎样生成都不能反向让已计量字符消失。</li><li><strong>大小写通常改变 token 序列。</strong><code>antml</code>、<code>ANTML</code> 与混合大小写通常对应不同 token ID 或切分。被动蒸馏不会自然获得覆盖任意大小写组合的统一规则。</li><li><strong>首个不匹配位置是程序边界。</strong>“逐段识别、剥离、遇到不匹配停止”更像确定性解析器状态机，不像概率性的 next-token 生成。</li><li><strong>多项观测都发生在生成之前或之外。</strong>输入 token、大小写规范化与固定边界共同定位到预处理或协议解析层。</li></ol><p><strong>仍保留的解释：</strong>第三方兼容层可人工实现同样规则。所以它证明请求链特征，不证明调用渠道。</p></div></details></div></article>
+    <article class="node"><div class="node-id"><span class="level high">高</span><br>E06 · AUGUST</div><div><h3>fork 新会话掉灰测，原 session 继续保留</h3><p>同账户、同一时间，原 session 继续聊天仍保留灰测；fork 出来的新 session 变为公开 DS 路径。</p><div class="proof-grid"><div class="proof"><b>直接支持</b>路由状态绑定会话，而非简单绑定账户或所有新请求。</div><div class="proof limit"><b>限定</b>这能证明 session 级路由，不识别上游身份或路由动机。</div></div><div class="quote-strip"><span>“fork session 会掉灰测”</span><span>“原 session 继续聊还会在”</span><span>“fork 的变成了 DS”</span></div></div></article>
+    <article class="node"><div class="node-id"><span class="level high">高</span><br>E07 · AUGUST</div><div><h3>生物安全请求后 fallback 到 0813 V4 Pro 正式版</h3><p>稳定灰测 session 在生物安全请求后转为逐 token 流式思维链，随后不再回到灰测。另一名测试者复现约 15 秒 TTFT 后切为 DS 流式路径。原始 session 中 provider/model 标签始终相同，差异体现在时序、输出形态和会话状态。</p><div class="proof-grid"><div class="proof"><b>直接支持</b>灰测上游在该类请求处被拒绝或中断，产品随后回退到 0813 V4 Pro 正式版路径。</div><div class="proof limit"><b>限定</b>单一生物题不是模型指纹；T4 噬菌体反例说明处理取决于具体风险与上下文。</div></div><div class="quote-strip"><span>“思维链变成流式了”</span><span>“一问生物甲就没了”</span><span>“首字 15 秒，切了 DS 流式思维链”</span></div></div></article>
+    <article class="node"><div class="node-id"><span class="level mid-high">中高</span><br>E08 · AUGUST</div><div><h3>摘要块式、逐 token 与 tokenizer 特征指向多条输出路径</h3><p>灰测可见摘要块式思维链，公开版逐 token 输出；部分会话的分词或 chunk 边界与公开 DS 不同。该组与 fallback、fork 和 <code>antml</code> 证据相互补强。</p><div class="proof-grid"><div class="proof"><b>直接支持</b>存在不同流式封装、分词或输出处理路径。</div><div class="proof limit"><b>限定</b>截图缺少完整原始 SSE chunk；文风或视觉分块不能单独识别模型。</div></div></div></article>
+    <article class="node"><div class="node-id"><span class="level mid">中</span><br>E09 · CROSS-ROUND</div><div><h3>公开版反测须使用干净上下文</h3><p>干净会话中的公开版并非所有脏 token 都能通过，二十余次未复现正文固定输出；简单问题也没有像旧灰测那样自动不开思考。若 DS 已经在上下文中看过上文示例、角色说明或目标 token，它可以沿用措辞并模仿输出，这种“上下文污染后复现”不能反驳干净会话中的差异。后续未再次出现某类安全行为，同样不能反推先前没有路由。</p><div class="proof-grid"><div class="proof"><b>直接支持</b>干净会话下，7 月灰测与后续公开版的 tokenizer、后训练或服务策略不同。</div><div class="proof limit"><b>反证门槛</b>应在全新 session、同参数、同提示词下复现，并至少提供完整截图；只有口述或污染后的续写不算。</div></div></div></article>
+    <article class="node"><div class="node-id"><span class="level mid">中</span><br>E10 · AUGUST</div><div><h3>知识题仅用于候选排序</h3><p>灰测知道 2025 年 6 月、2025 年 10 月信息，并在秘鲁总统题回答 José Jerí。作者本人同时说明“知识库没法锤”。</p><div class="proof-grid"><div class="proof"><b>直接支持</b>知识表现可用于缩小候选，为 Opus 5.0 判断提供有限旁证。</div><div class="proof limit"><b>限定</b>联网、检索、后训练和提示上下文都会影响答案；不能据此排除 Fable 5 或确认 Opus 5.0。</div></div></div></article>
+    <article class="node"><div class="node-id"><span class="level mid-high">中高</span><br>E11 · SYNTHESIS</div><div><h3>7 月与 8 月不是同一模型，是覆盖全部材料的最简解释</h3><p>7 月以缓存重算、reasoning token 与基础设施聚类为核心；8 月旧缓存异常消失，转为 Claude 风格输入解析、session 级路由与 fallback。两轮在多个相互独立的维度上同时变化。</p><div class="proof-grid"><div class="proof"><b>综合判断</b>7 月可能属于 Fable 系列；8 月大概率属于 Opus 5.0。</div><div class="proof limit"><b>保持边界</b>两轮具体型号均未被直接证明；8 月调用渠道未知。</div></div><div class="quote-strip"><span>“和七月应该不是一个”</span><span>“七月可能是 Fable”</span><span>“知识库没法锤”</span></div></div></article>
+  </div>
+</section>
+<section class="section" id="wall">
+  <div class="section-head"><div class="section-code">05 / Visual wall</div><div><h2>截图证据墙</h2><p>按实验簇排列，尽量在一页呈现全部可公开复核材料。点击图片可放大。</p></div></div>
+  <div class="wall">
+    <article class="cluster"><div class="cluster-head"><span class="stamp">Cluster A / July</span><h3>两套基础设施</h3><p>TTFT 只是入口，联合缓存合法性和推理速度才构成主证据。</p></div><div class="shots"><figure class="shot wide"><img src="assets/july-ttft.png" alt="7 月 TTFT 分布" loading="lazy"><figcaption><b>TTFT 分布</b>偏离普通 DS 分布，用于后续分组。</figcaption></figure><figure class="shot"><img src="assets/july-infra-cluster.png" alt="7 月基础设施聚类表" loading="lazy"><figcaption><b>联合聚类</b>缓存合法性、TTFT 和推理速度共同分组。</figcaption></figure></div></article>
+    <article class="cluster"><div class="cluster-head"><span class="stamp">Cluster B / August</span><h3><code>antml</code> 确定性规则</h3><p>主样本、普通 DS 对照、token 对照、边界测试、大小写和独立复现组成闭环。</p></div><div class="shots"><figure class="shot wide"><img src="assets/antml-primary.png" alt="灰测 antml 主样本" loading="lazy"><figcaption><b>灰测主样本</b>未转义标签没有按普通文本呈现。</figcaption></figure><figure class="shot"><img src="assets/antml-ds-control.png" alt="普通 DS 对照" loading="lazy"><figcaption><b>普通 DS 对照</b>未稳定复现同一规则。</figcaption></figure><figure class="shot"><img src="assets/antml-token-a.png" alt="输入 token 对照一" loading="lazy"><figcaption><b>Token 对照 A</b>与下一图合看。</figcaption></figure><figure class="shot"><img src="assets/antml-token-b.png" alt="输入 token 对照二" loading="lazy"><figcaption><b>Token 对照 B</b>重复前缀没有按普通文本增加输入 token。</figcaption></figure><figure class="shot"><img src="assets/antml-boundary-a.png" alt="首个不匹配位置测试一" loading="lazy"><figcaption><b>边界测试 A</b>从首个不匹配位置开始输出。</figcaption></figure><figure class="shot"><img src="assets/antml-boundary-b.png" alt="首个不匹配位置测试二" loading="lazy"><figcaption><b>边界测试 B</b>规则复现，不是单次随机结果。</figcaption></figure><figure class="shot"><img src="assets/antml-case.png" alt="大小写无关测试" loading="lazy"><figcaption><b>大小写无关</b>支持大小写不敏感的系统解析。</figcaption></figure><figure class="shot"><img src="assets/antml-repro-mitu.png" alt="mitu9527 独立复现" loading="lazy"><figcaption><b>独立复现一</b>另一测试者在稳定灰测 session 复现。</figcaption></figure><figure class="shot"><img src="assets/antml-repro-mitu-2.png" alt="mitu9527 再次复现" loading="lazy"><figcaption><b>独立复现二</b>同一规则再次出现。</figcaption></figure><figure class="shot"><img src="assets/antml-repro-third.png" alt="第三名参与者复现" loading="lazy"><figcaption><b>第三方复现</b>说明较短，权重低于成对 token 图。</figcaption></figure><figure class="shot wide"><img src="assets/antml-claude-control.png" alt="Claude 转义对照" loading="lazy"><figcaption><b>Claude 转义对照</b>Claude 与 DS 都可能在适当输入下输出标签，所以“能输出”没有鉴别力；真正关键是未转义标签被过滤、token 不增加和固定解析规则。</figcaption></figure><figure class="shot weak"><img src="assets/antml-visible-counterexample.png" alt="antml 可见反例" loading="lazy"><figcaption><b>方法论反例</b>有灰测外观的 session 仍能看见标签，因此不能只用“看见/看不见”判断。</figcaption></figure></div></article>
+    <article class="cluster"><div class="cluster-head"><span class="stamp">Cluster C / Session</span><h3>输出路径与 fallback</h3><p>摘要块式、逐 token、分词边界和同会话状态变化共同识别路径。</p></div><div class="shots"><figure class="shot full"><img src="assets/aug-summary-cot.png" alt="8 月灰测摘要式思维链" loading="lazy"><figcaption><b>摘要块式思维链</b>用于识别切换前输出形态；不能只靠文风识别模型。</figcaption></figure><figure class="shot"><img src="assets/aug-token-stream.png" alt="0813 正式版逐 token 输出" loading="lazy"><figcaption><b>0813 正式版路径</b>逐 token 流式输出对照。</figcaption></figure><figure class="shot tall"><img src="assets/aug-tokenizer.png" alt="分词和流式边界对照" loading="lazy"><figcaption><b>Tokenizer / chunk 旁证</b>与公开 DS 的边界表现不同，仍需原始 SSE 才能独立复算。</figcaption></figure><figure class="shot"><img src="assets/bio-fallback.png" alt="生物安全触发 fallback 的会话" loading="lazy"><figcaption><b>生物安全差异化测试</b>稳定灰测 session 后续转为流式并失去灰测；另保留原始 session ZIP。</figcaption></figure><figure class="shot weak"><img src="assets/bio-t4-counterexample.png" alt="T4 噬菌体反例" loading="lazy"><figcaption><b>生物题反例</b>并非所有生物问题都会触发同一路径，说明取决于具体请求风险和上下文。</figcaption></figure></div></article>
+    <article class="cluster"><div class="cluster-head"><span class="stamp">Cluster D / Controls</span><h3>公开版反测与上下文污染</h3><p>干净对照证明后续公开版本没有原样复现 7 月特征；污染对照说明模型在读到上文后可以模仿目标输出，不能把这种续写当成独立反证。</p></div><div class="shots"><figure class="shot"><img src="assets/formal-glitch-fail.png" alt="正式版脏 token 正文复现失败" loading="lazy"><figcaption><b>干净会话：正文复现失败</b>正式版不能稳定通过全部脏 token。</figcaption></figure><figure class="shot"><img src="assets/formal-glitch-thinking.png" alt="脏 token 只在思维链出现" loading="lazy"><figcaption><b>干净会话：只在思维链出现</b>行为与 7 月灰测的稳定正文输出不同。</figcaption></figure><figure class="shot"><img src="assets/formal-thinking-mode.png" alt="正式版思考开关对照" loading="lazy"><figcaption><b>思考策略对照</b>公开版简单问题也持续开启思考。</figcaption></figure><figure class="shot tall"><img src="assets/context-pollution-control.png" alt="上下文污染前的对照" loading="lazy"><figcaption><b>上下文污染对照 A</b>模型已经读到上文给出的目标内容与论证框架。</figcaption></figure><figure class="shot tall"><img src="assets/context-pollution-ds-output.png" alt="上下文污染后 DS 模仿输出" loading="lazy"><figcaption><b>上下文污染对照 B</b>后续公开 DS 可沿用上文并输出目标内容；这说明污染后的模仿不具备独立鉴别力。</figcaption></figure></div></article>
+    <article class="cluster"><div class="cluster-head"><span class="stamp">Cluster E / Knowledge</span><h3>知识只作有限旁证</h3><p>用于候选排序，不承担排除 Fable 5 或确认 Opus 5.0 的任务。</p></div><div class="shots"><figure class="shot"><img src="assets/knowledge-2025-06.png" alt="2025 年 6 月知识测试" loading="lazy"><figcaption><b>2025 年 6 月</b>知识截止晚于部分候选。</figcaption></figure><figure class="shot wide"><img src="assets/knowledge-2025-10.png" alt="2025 年 10 月知识测试" loading="lazy"><figcaption><b>2025 年 10 月</b>可缩小候选，但不能排除联网、检索和后训练。</figcaption></figure><figure class="shot wide"><img src="assets/knowledge-peru.png" alt="秘鲁总统知识测试" loading="lazy"><figcaption><b>秘鲁总统题</b>灰测回答 José Jerí；没有统一模型对照，不能单独识别型号。</figcaption></figure></div></article>
+  </div>
+</section>
+<section class="section" id="matrix">
+  <div class="section-head"><div class="section-code">06 / Matrix</div><div><h2>证据矩阵</h2><p>按“证据能直接证明什么”评级，而不是按结论吸引力评级。</p></div></div>
+  <div class="matrix"><table><thead><tr><th>置信度</th><th>阶段</th><th>证据</th><th>直接支持</th><th>主要边界</th></tr></thead><tbody>
+    <tr><td>高</td><td>7 月</td><td>固定 64-token 缓存重算</td><td>usage/cache 经特殊转换，处理链不同</td><td>只属于 7 月，不能识别上游</td></tr>
+    <tr><td>高</td><td>7 月</td><td>TTFT、缓存、推理速度共同聚类</td><td>至少两套处理链或推理基础设施</td><td>不能命名两组模型</td></tr>
+    <tr><td>中高</td><td>7 月</td><td>reasoning token 重计数</td><td>可见推理文本经 DS tokenizer 重算</td><td>不能确认摘要来源</td></tr>
+    <tr><td>中高</td><td>7 月</td><td>logprobs、fingerprint、delta 差异</td><td>API 能力、配置或封装不同</td><td>代理层和策略也可改变</td></tr>
+    <tr><td>高</td><td>8 月</td><td><code>antml</code> 过滤、token、边界、大小写</td><td>Claude 请求链特征，且有独立复现</td><td>不能确认官方 API 或具体型号</td></tr>
+    <tr><td>高</td><td>8 月</td><td>fork 后掉灰测，原 session 保留</td><td>会话级路由状态</td><td>不识别路由动机</td></tr>
+    <tr><td>高</td><td>8 月</td><td>生物安全触发后转流式并失去灰测</td><td>fallback 到 0813 V4 Pro 正式版</td><td>生物题不是统一模型指纹</td></tr>
+    <tr><td>中高</td><td>8 月</td><td>摘要块式、逐 token 与分词边界</td><td>不同输出处理路径</td><td>缺完整原始 SSE</td></tr>
+    <tr><td>中</td><td>正式版对照</td><td>干净会话下脏 token、自主思考不能稳定复现</td><td>公开版不是旧灰测的原样延续</td><td>上下文污染后的模仿不能作为反证</td></tr>
+    <tr><td>中</td><td>8 月</td><td>2025 知识与秘鲁总统题</td><td>型号候选排序的有限旁证</td><td>联网、检索、后训练影响大</td></tr>
+    <tr><td>中高</td><td>跨轮</td><td>多个独立维度系统性变化</td><td>7 月与 8 月不是同一模型路径</td><td>具体型号均未直接证明</td></tr>
+    <tr><td>中低</td><td>各阶段</td><td>自述、文风、符号、猜数字</td><td>相似性背景</td><td>不进入核心证明链</td></tr>
+  </tbody></table></div>
+</section>
+<section class="section" id="limits">
+  <div class="section-head"><div class="section-code">07 / Boundaries</div><div><h2>必须保留的边界</h2><p>边界不是削弱证据，而是防止窄事实被升级成过度归因。</p></div></div>
+  <div class="limits"><div class="limit-item"><b>64-token 缓存只属于 7 月。</b>8 月的新灰测明确记录旧的异常缓存数据已经修复。</div><div class="limit-item"><b><code>antml</code> 强指向 Claude 请求链，不等于直连官方 API。</b>中转或兼容层可主动复刻规则。</div><div class="limit-item"><b>大小写无关排除的是纯蒸馏解释。</b>它不能排除有人写了大小写不敏感的解析器。</div><div class="limit-item"><b>“能输出标签”没有鉴别力。</b>Claude 与 DS 都可在适当转义或普通文本形式下输出；关键是未转义输入的确定处理。</div><div class="limit-item"><b>知识题不能确认 Opus 5.0，也不能排除 Fable 5。</b>型号判断必须合并请求链和系统行为。</div><div class="limit-item"><b>TTFT 不是单项模型指纹。</b>它只有与缓存合法性和推理速度共同聚类时才有较高价值。</div><div class="limit-item"><b>模型自述和文风只作背景。</b>系统提示、角色注入、蒸馏和后训练均可改变表面输出。</div><div class="limit-item"><b>文件能力不构成强反证。</b>附件可能在网关处被拦截、清洗或不转发。</div><div class="limit-item"><b>8 月生物安全请求不是直接空回。</b>观测到的是长 TTFT 后转为 DS 风格流式输出，并导致 session 失去灰测。</div><div class="limit-item"><b>上下文污染后的模仿不能作为反证。</b>公开 DS 已读到上文内容后可沿用目标 token、角色或论证框架；缺少新会话同提示词对照时，没有独立鉴别力。</div><div class="limit-item"><b>后续未再触发某类安全行为不否定先前路由。</b>需要控制上下文、会话状态和具体提示词，不能仅凭一次续聊推翻前序记录。</div><div class="limit-item"><b>调用渠道、托管方式与动机未知。</b>技术材料不证明商业关系、数据用途或部署方式。</div></div>
+</section>
+<section class="section">
+  <div class="section-head"><div class="section-code">08 / Method</div><div><h2>样本与收录规则</h2></div></div>
+  <div class="method"><div><h3>样本范围</h3><p>基于本地 <code>archive.dht</code> 镜像。完整审阅 N一串 211 条、楼主 237 条消息，并补入 mitu9527 的独立 <code>antml</code> 复现、生物安全 fallback 记录与原始 session。</p><p>本页仅收录当前证据链所需材料，外部消息跳转已全部移除。多数关键实验另有视频或原始会话记录，可按需提供。</p></div><div><h3>收录原则</h3><ul><li>截图与可量化字段优先于口述。</li><li>任何支持或反对主张至少附一张可核对截图；仅凭口述不进入证据链。</li><li>同一实验的连续图片按证据簇排列。</li><li>重复转发、梗图、动机争论不计入。</li><li>反例必须控制会话、上下文和提示词；污染后的模仿不承担独立反证。</li><li>置信度评价材料对窄结论的支持强度，不评价发言者。</li></ul><p><a href="assets/bio-fallback-session.zip" download>下载生物安全 fallback 原始 session ZIP</a> · <a href="discussion.html">提交证据或评论</a></p></div></div>
+</section>
+</main>
+<footer><span>archive.dht evidence wall</span><span>单页静态证据链</span></footer>
+<div class="lightbox" role="dialog" aria-modal="true" aria-label="图片预览"><button type="button" aria-label="关闭">×</button><img alt="放大预览"></div>
+<script>
+const box=document.querySelector('.lightbox'),view=box.querySelector('img');
+document.querySelectorAll('.shot img').forEach(img=>img.addEventListener('click',()=>{view.src=img.src;view.alt=img.alt;box.classList.add('open');document.body.style.overflow='hidden'}));
+function closeBox(){box.classList.remove('open');view.removeAttribute('src');document.body.style.overflow=''}
+box.querySelector('button').addEventListener('click',closeBox);box.addEventListener('click',e=>{if(e.target===box)closeBox()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeBox()});
+</script>
+</body>
+</html>
