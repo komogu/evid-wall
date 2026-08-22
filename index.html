@@ -131,7 +131,8 @@ section.block{padding:40px 0;border-bottom:1px solid var(--line)}
 .tech-body li+li{margin-top:8px}
 .tech-body strong{color:var(--ink)}
 .node-actions{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
-.node-actions a{min-height:38px;padding:0 14px;display:inline-flex;align-items:center;border:1px solid var(--blue);background:var(--blue);color:#f4f0e7;text-decoration:none;font-size:13px;font-weight:800}
+.node-actions a,.node-actions button{min-height:38px;padding:0 14px;display:inline-flex;align-items:center;border:1px solid var(--blue);background:var(--blue);color:#f4f0e7;text-decoration:none;font:800 13px/1.35 Inter,"Noto Sans SC",sans-serif;cursor:pointer}
+.node-actions .antml-refute-open{border-color:var(--ink);background:#f0d487;color:var(--ink);font-weight:900}
 .node-alert{margin-top:14px;padding:13px 15px;border-left:4px solid var(--amber);background:var(--amber-soft);color:#665019;font-size:14px}
 .node-alert b{color:#59440e}
 /* ANTML preprocessing diagram */
@@ -304,6 +305,30 @@ section.block{padding:40px 0;border-bottom:1px solid var(--line)}
 .recording-card figcaption b{display:block;margin-bottom:4px;font-size:16px}
 .recording-card.grey figcaption b{color:var(--blue)}
 .recording-card.formal figcaption b{color:var(--accent)}
+.antml-refute-modal .recording-dialog{width:min(880px,96vw)}
+.antml-refute-modal .recording-dialog-head{background:#f3e5b7}
+.antml-refute-modal .recording-dialog-head small{color:var(--accent)}
+.antml-refute-body{padding:18px;background:#20282b}
+.antml-refute-intro{padding:14px 16px;border:1px solid #778184;border-bottom:0;background:var(--surface);color:var(--ink)}
+.antml-refute-intro b{display:block;margin-bottom:5px;font-size:17px}
+.antml-refute-intro span{font-size:13.5px;line-height:1.55;font-weight:750}
+.antml-refute-flow{display:grid;grid-template-columns:1fr 48px 1fr;align-items:stretch}
+.antml-refute-code{min-width:0;border:1px solid #778184;background:var(--surface)}
+.antml-refute-code small{display:block;padding:9px 12px;border-bottom:1px solid var(--ink);color:var(--accent);font:900 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase}
+.antml-refute-code pre{margin:0;padding:15px;overflow:auto;background:#11191c;color:#edf0e8;font:800 14px/1.65 "SFMono-Regular",Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere}
+.antml-refute-arrow{display:grid;place-items:center;color:#ffcf70;font-size:25px;font-weight:900}
+.antml-refute-success{padding:14px 16px;border:1px solid #778184;border-top:0;background:var(--blue-soft);color:var(--ink)}
+.antml-refute-success b{display:block;font-size:16px;line-height:1.5}
+.antml-refute-success span{display:block;margin-top:4px;font-size:13px;line-height:1.5;font-weight:750}
+.antml-refute-qa{margin-top:14px;border:1px solid #778184;background:var(--surface)}
+.antml-refute-qa h5{margin:0;padding:10px 14px;border-bottom:1px solid var(--ink);background:var(--red-soft);color:var(--red);font:900 11px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase}
+.antml-refute-qa dl{margin:0}
+.antml-refute-qa dl>div{display:grid;grid-template-columns:46px 1fr;border-bottom:1px solid var(--line)}
+.antml-refute-qa dl>div:last-child{border-bottom:0}
+.antml-refute-qa dt{padding:14px 10px;background:var(--ink);color:#ffcf70;font:900 17px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;text-align:center}
+.antml-refute-qa dd{margin:0;padding:14px;color:var(--ink);font-size:14px;line-height:1.65;font-weight:750}
+.antml-refute-qa dd code{font-weight:900}
+.antml-refute-qa dd strong{font-weight:900}
 @keyframes cursor-blink{50%{opacity:0}}
 /* wall */
 .wall{display:grid;gap:20px}
@@ -369,6 +394,7 @@ footer a{color:var(--blue)}
   .reasoning-facts,.dilemma-paths{grid-template-columns:1fr}.dilemma-paths:after{content:"OR";left:auto;right:16px;top:calc(50% - 17px);transform:none}.dilemma-path:nth-child(2){border-top:1px solid var(--ink)}
   .stream-lab-head{display:grid;grid-template-columns:1fr;align-items:start}.stream-replay{width:100%}.stream-panels{grid-template-columns:1fr}.stream-panel.formal{border-top:1px solid var(--ink)}.stream-window{height:320px}.stream-panel-head{min-height:0;display:grid;grid-template-columns:1fr}.stream-state{justify-self:start}
   .recording-proof{display:grid}.recording-open{width:100%}.recording-modal{padding:10px}.recording-dialog{width:100%;max-height:calc(100vh - 20px)}.recording-dialog-head{padding:14px 58px 13px 14px}.recording-dialog-head h4{font-size:19px}.recording-grid{grid-template-columns:1fr;padding:10px}.recording-card img{height:auto;aspect-ratio:auto}
+  .antml-refute-body{padding:10px}.antml-refute-flow{grid-template-columns:1fr}.antml-refute-arrow{min-height:42px}.antml-refute-arrow{font-size:0}.antml-refute-arrow:after{content:"↓";font-size:24px}.antml-refute-qa dl>div{grid-template-columns:38px 1fr}.antml-refute-qa dd{padding:12px}
   .shots,.proof-grid,.limits,.method{grid-template-columns:1fr}
   .shot.wide,.shot.full{grid-column:auto}
   .shot img,.shot.tall img{height:auto;max-height:360px}
@@ -440,7 +466,7 @@ footer a{color:var(--blue)}
 <section class="block" id="chain">
 <div class="shead"><div class="num">04 / Chain</div><div><h2>完整证据链</h2><p>每个节点仅承载其能直接证明的狭义结论，最终的型号推论建立在多节点的交叉印证之上。</p></div></div>
 <div class="chain">
-<article class="node"><div class="node-id"><span class="level high">高</span><br>E01 · AUGUST</div><div><h3><code>antml</code> 复现官方 Anthropic API 的确定性输入预处理</h3><p>这里的“系统”不是模型权重，而是<mark class="body-mark">官方 Anthropic API 在模型分词前执行的标签预处理</mark>。灰测请求逐项复现了它最不自然的边界：只循环剥离开头的 <code>antml:</code>，遇到第一个不匹配前缀立即停手，后面的 <code>antml:</code> 不再处理；并且大小写不敏感。</p><section class="antml-demo" aria-labelledby="antml-demo-title"><div class="antml-demo-head"><small>Deterministic parser / one glance</small><h4 id="antml-demo-title">不是“模型不想输出”——输入在到达模型前已经被改写</h4><p>看这一条输入如何穿过官方 Anthropic API 的预处理规则：</p></div><div class="antml-input"><span class="antml-stage-label">用户发送</span><div class="antml-tape" aria-label="ANTML 测试输入"><span class="antml-token strip">antml:</span><span class="antml-token strip">antml:</span><span class="antml-token stop">xxxxx:</span><span class="antml-token keep">antml:</span><span class="antml-token keep">payload</span></div></div><div class="antml-machine"><div class="antml-step ok"><b>① antml:</b><span>匹配开头<br>剥离</span></div><div class="antml-next" aria-hidden="true">→</div><div class="antml-step ok"><b>② antml:</b><span>继续匹配<br>再次剥离</span></div><div class="antml-next" aria-hidden="true">→</div><div class="antml-step halt"><b>③ xxxxx:</b><span>第一个不匹配<br>立即停止全部清洗</span></div></div><div class="antml-output"><div><small>模型最终看到</small><b>&lt;xxxxx:<strong>antml:</strong>payload&gt;</b></div><div><small>关键边界</small><b>停止以后，后面的 <strong>antml:</strong> 原样保留</b></div></div><div class="antml-impact">同一规则覆盖 <mark>32 种 ANTML 大小写组合</mark>，并由多名测试者独立复现。</div></section><details class="tech antml-tech"><summary>技术展开 1：为什么“纯模型蒸馏学到了异常 Token”不成立？</summary><div class="tech-body"><ol><li><strong>32 种大小写组合全部触发：</strong><code>antml</code> 五个字母共有 2⁵ = 32 种大小写排列，在常规 Tokenizer 中会对应不同的 Token 组合，却稳定触发同一种大小写无关规则。要用蒸馏解释，就必须额外假设训练数据定向覆盖了这套隐藏行为。</li><li><strong>首个不匹配位置形成精确边界：</strong>系统只循环剥离开头连续的 <code>antml:</code>，遇到第一个非匹配前缀立即停止，停止后再出现的 <code>antml:</code> 原样保留。这是确定性词法状态机的边界，而不是概率生成中偶然漏掉字符串。</li></ol></div></details><details class="tech antml-tech"><summary>技术展开 2：为什么不是 Glitch Token？</summary><div class="tech-body"><p class="token-invariant">无论在输入中叠加多少个 <code>antml:</code>，<br><strong>Anthropic 官方 API 返回的 input Token 数都一致。</strong></p><span class="therefore">如果它们作为普通或 Glitch Token 进入分词器，重复次数增加就应增加输入计数。计数完全不变，只能说明这些前缀在计量前已被剥离——<strong>问题发生在 API 预处理层，不是模型 Token 异常。</strong></span></div></details><div class="proof-grid"><div class="proof"><b>直接证明</b>灰测输入在模型推理前经历了<mark class="key-mark">与官方 Anthropic API 同边界的 ANTML 预处理</mark>，强指向 Claude 请求链。</div><div class="proof limit"><b>边界限定</b>第三方理论上可以专门复刻这套规则；因此它证明请求链特征，不单独证明官方直连，也不能单独锁定具体型号。</div></div><aside class="summary-note" aria-label="ANTML 证据总结"><b class="summary-note-title">Summary Note<span>总结笔记</span></b><ul><li>ANTML 前缀会在模型分词前被 API 剥离</li><li>ANTML 预处理遇到首个非匹配前缀便停止，后续内容保留</li><li>32 种 ANTML 大小写组合均触发同一规则</li></ul></aside><div class="node-actions"><a href="antml-analysis.html">阅读完整 ANTML 技术分析</a></div></div></article>
+<article class="node"><div class="node-id"><span class="level high">高</span><br>E01 · AUGUST</div><div><h3><code>antml</code> 复现官方 Anthropic API 的确定性输入预处理</h3><p>这里的“系统”不是模型权重，而是<mark class="body-mark">官方 Anthropic API 在模型分词前执行的标签预处理</mark>。灰测请求逐项复现了它最不自然的边界：只循环剥离开头的 <code>antml:</code>，遇到第一个不匹配前缀立即停手，后面的 <code>antml:</code> 不再处理；并且大小写不敏感。</p><section class="antml-demo" aria-labelledby="antml-demo-title"><div class="antml-demo-head"><small>Deterministic parser / one glance</small><h4 id="antml-demo-title">不是“模型不想输出”——输入在到达模型前已经被改写</h4><p>看这一条输入如何穿过官方 Anthropic API 的预处理规则：</p></div><div class="antml-input"><span class="antml-stage-label">用户发送</span><div class="antml-tape" aria-label="ANTML 测试输入"><span class="antml-token strip">antml:</span><span class="antml-token strip">antml:</span><span class="antml-token stop">xxxxx:</span><span class="antml-token keep">antml:</span><span class="antml-token keep">payload</span></div></div><div class="antml-machine"><div class="antml-step ok"><b>① antml:</b><span>匹配开头<br>剥离</span></div><div class="antml-next" aria-hidden="true">→</div><div class="antml-step ok"><b>② antml:</b><span>继续匹配<br>再次剥离</span></div><div class="antml-next" aria-hidden="true">→</div><div class="antml-step halt"><b>③ xxxxx:</b><span>第一个不匹配<br>立即停止全部清洗</span></div></div><div class="antml-output"><div><small>模型最终看到</small><b>&lt;xxxxx:<strong>antml:</strong>payload&gt;</b></div><div><small>关键边界</small><b>停止以后，后面的 <strong>antml:</strong> 原样保留</b></div></div><div class="antml-impact">同一规则覆盖 <mark>32 种 ANTML 大小写组合</mark>，并由多名测试者独立复现。</div></section><details class="tech antml-tech"><summary>技术展开 1：为什么“纯模型蒸馏学到了异常 Token”不成立？</summary><div class="tech-body"><ol><li><strong>32 种大小写组合全部触发：</strong><code>antml</code> 五个字母共有 2⁵ = 32 种大小写排列，在常规 Tokenizer 中会对应不同的 Token 组合，却稳定触发同一种大小写无关规则。要用蒸馏解释，就必须额外假设训练数据定向覆盖了这套隐藏行为。</li><li><strong>首个不匹配位置形成精确边界：</strong>系统只循环剥离开头连续的 <code>antml:</code>，遇到第一个非匹配前缀立即停止，停止后再出现的 <code>antml:</code> 原样保留。这是确定性词法状态机的边界，而不是概率生成中偶然漏掉字符串。</li></ol></div></details><details class="tech antml-tech"><summary>技术展开 2：为什么不是 Glitch Token？</summary><div class="tech-body"><p class="token-invariant">无论在输入中叠加多少个 <code>antml:</code>，<br><strong>Anthropic 官方 API 返回的 input Token 数都一致。</strong></p><span class="therefore">如果它们作为普通或 Glitch Token 进入分词器，重复次数增加就应增加输入计数。计数完全不变，只能说明这些前缀在计量前已被剥离——<strong>问题发生在 API 预处理层，不是模型 Token 异常。</strong></span></div></details><div class="proof-grid"><div class="proof"><b>直接证明</b>灰测输入在模型推理前经历了<mark class="key-mark">与官方 Anthropic API 同边界的 ANTML 预处理</mark>，强指向 Claude 请求链。</div><div class="proof limit"><b>边界限定</b>第三方理论上可以专门复刻这套规则；因此它证明请求链特征，不单独证明官方直连，也不能单独锁定具体型号。</div></div><aside class="summary-note" aria-label="ANTML 证据总结"><b class="summary-note-title">Summary Note<span>总结笔记</span></b><ul><li>ANTML 前缀会在模型分词前被 API 剥离</li><li>ANTML 预处理遇到首个非匹配前缀便停止，后续内容保留</li><li>32 种 ANTML 大小写组合均触发同一规则</li></ul></aside><div class="node-actions"><a href="antml-analysis.html">阅读完整 ANTML 技术分析</a><button class="antml-refute-open" type="button" aria-haspopup="dialog" aria-controls="antml-refute-modal">试图通过 DeepSeek 正式版重现这一现象来反驳？</button></div></div></article>
 <article class="node"><div class="node-id"><span class="level high">高</span><br>E02 · JULY</div><div><h3>固定 64-Token 缓存截断重算机制</h3><p><strong>64 Token 一块，是 DeepSeek 的正常机制。</strong>异常只看一件事：<mark class="body-mark">上下文刚加入数万 Token 的全新内容，未命中却仍然小于 64</mark>。下面直接看一个真实回合。</p>
 <section class="cache-case" aria-labelledby="cache-case-title">
 <div class="cache-case-head"><div><span class="case-label">Raw session / VWXNvxEm / message 06</span><h4 id="cache-case-title">42 Token，装得下一整份 2,028 行程序？</h4><p>上一回合刚生成一份完整的 <code>game.js</code>。到下一次请求，它第一次作为历史消息进入上下文；usage 却声称未命中只有 42 Token。</p></div><a class="cache-source" href="https://opncd.ai/share/VWXNvxEm" target="_blank" rel="noopener noreferrer">打开原始会话 ↗</a></div>
@@ -575,6 +601,9 @@ footer a{color:var(--blue)}
 <footer><span>archive.dht evidence wall</span><span><a href="https://github.com/justhil/evid-wall" target="_blank" rel="noopener noreferrer">GitHub 源码与版本记录</a> · <a href="antml-analysis.html">ANTML 动机与蒸馏分析</a></span></footer>
 <div class="lightbox" role="dialog" aria-modal="true" aria-label="图片预览"><button type="button" aria-label="关闭">×</button><img alt="放大预览"></div>
 <div class="recording-modal" id="recording-modal" role="dialog" aria-modal="true" aria-labelledby="recording-modal-title" hidden><div class="recording-dialog"><header class="recording-dialog-head"><small>Raw output recordings / same prompt</small><h4 id="recording-modal-title">灰测与 DeepSeek 正式版：思维链输出实测</h4><p>两段 GIF 使用同一条“大熊猫骑自行车”任务；请直接观察文字增长方式和停顿位置。</p><button class="recording-close" type="button" aria-label="关闭实测录屏">×</button></header><div class="recording-grid"><figure class="recording-card grey"><img data-src="assets/grey.gif" alt="灰测思维链高速突发并多次停顿的实测录屏"><figcaption><b>灰测思维链</b>文本高速成块出现，中间可见明显的长停顿。</figcaption></figure><figure class="recording-card formal"><img data-src="assets/ds.gif" alt="DeepSeek 正式版思维链持续流式输出的实测录屏"><figcaption><b>DeepSeek 正式版</b>文本持续、均匀增长，没有灰测路径的成块停顿。</figcaption></figure></div></div></div>
+<div class="recording-modal antml-refute-modal" id="antml-refute-modal" role="dialog" aria-modal="true" aria-labelledby="antml-refute-modal-title" hidden><div class="recording-dialog"><header class="recording-dialog-head"><small>Controlled falsification / minimum bar</small><h4 id="antml-refute-modal-title">在正式版上“复现”什么，才算有效反驳？</h4><p>要复现的不是“某个标签让模型表现异常”，而是完整、精确、可重复的词法状态机。</p><button class="recording-close" type="button" aria-label="关闭有效复现说明">×</button></header><div class="antml-refute-body"><div class="antml-refute-intro"><b>您至少应当完整复现词法状态机行为</b><span>使用明确要求原样复述的对照，避免把模型对含糊输入的自由理解误当成 API 解析行为。例如：</span></div><div class="antml-refute-flow"><div class="antml-refute-code"><small>Prompt / 原样发送</small><pre>原样复述：
+
+&lt;antml:antml:antml:ggtml:antml:antml:hello&gt;</pre></div><div class="antml-refute-arrow" aria-hidden="true">→</div><div class="antml-refute-code"><small>Required exact output</small><pre>&lt;ggtml:antml:antml:hello&gt;</pre></div></div><div class="antml-refute-success"><b>模型只有输出精确的 <code>&lt;ggtml:antml:antml:hello&gt;</code>，才算复现成功。</b><span>多剥离一个、少剥离一个、改变顺序，或只出现笼统的“异常回复”，都没有复现同一词法状态机。</span></div><section class="antml-refute-qa" aria-labelledby="antml-refute-qa-title"><h5 id="antml-refute-qa-title">Common objection / 常见反驳</h5><dl><div><dt>Q</dt><dd>为什么不能只发一个 <code>&lt;antml:thinking&gt;</code> 给模型，如果模型乱回，不就说明正式版也会这样？</dd></div><div><dt>A</dt><dd><strong>第一，输入没有明确的“原样复述”意图。</strong>模型可能把它理解为标签、指令片段或不完整语义；拒绝、忽略、补全或乱回都可能只是正常的概率生成，无法证明输入在分词前被改写。<br><br><strong>第二，表面异常不等于复现了解析规则。</strong>本证据的鉴别点是“连续剥离开头匹配项 → 遇到首个不匹配立即停止 → 后续 <code>antml:</code> 原样保留”的精确边界。若 DeepSeek 正式版无法稳定复现上面的完整样例，就不能据此说明该证据不具备区分性。</dd></div></dl></section></div></div></div>
 <script>
 const box=document.querySelector('.lightbox'),view=box.querySelector('img');
 document.querySelectorAll('.shot img').forEach(img=>img.addEventListener('click',()=>{view.src=img.src;view.alt=img.alt;box.classList.add('open');document.body.style.overflow='hidden'}));
@@ -598,6 +627,26 @@ if(recordingModal&&recordingOpen){
     if(e.key==='Escape'){e.preventDefault();closeRecordings();return}
     if(e.key==='Tab'){
       const focusable=[...recordingModal.querySelectorAll('button,[href],[tabindex]:not([tabindex="-1"])')];
+      if(!focusable.length)return;const first=focusable[0],last=focusable[focusable.length-1];
+      if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
+    }
+  });
+}
+
+const antmlRefuteModal=document.getElementById('antml-refute-modal'),antmlRefuteOpen=document.querySelector('.antml-refute-open');
+if(antmlRefuteModal&&antmlRefuteOpen){
+  const antmlRefuteClose=antmlRefuteModal.querySelector('.recording-close');
+  function openAntmlRefute(){antmlRefuteModal.hidden=false;document.body.style.overflow='hidden';antmlRefuteClose.focus()}
+  function closeAntmlRefute(){
+    if(antmlRefuteModal.hidden)return;
+    antmlRefuteModal.hidden=true;document.body.style.overflow='';antmlRefuteOpen.focus();
+  }
+  antmlRefuteOpen.addEventListener('click',openAntmlRefute);antmlRefuteClose.addEventListener('click',closeAntmlRefute);
+  antmlRefuteModal.addEventListener('click',e=>{if(e.target===antmlRefuteModal)closeAntmlRefute()});
+  antmlRefuteModal.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){e.preventDefault();closeAntmlRefute();return}
+    if(e.key==='Tab'){
+      const focusable=[...antmlRefuteModal.querySelectorAll('button,[href],[tabindex]:not([tabindex="-1"])')];
       if(!focusable.length)return;const first=focusable[0],last=focusable[focusable.length-1];
       if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
     }
