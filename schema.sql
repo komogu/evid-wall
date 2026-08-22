@@ -38,3 +38,15 @@ CREATE TABLE IF NOT EXISTS rebuttal (
   FOREIGN KEY (evidence_id) REFERENCES evidence(id) ON DELETE CASCADE
 );
 CREATE INDEX IF NOT EXISTS rebuttal_entry_idx ON rebuttal(evidence_id, created_at ASC);
+
+CREATE TABLE IF NOT EXISTS rebuttal_file (
+  id TEXT PRIMARY KEY,
+  rebuttal_id TEXT NOT NULL,
+  object_key TEXT NOT NULL UNIQUE,
+  original_name TEXT NOT NULL CHECK (length(original_name) BETWEEN 1 AND 180),
+  content_type TEXT NOT NULL CHECK (length(content_type) BETWEEN 1 AND 120),
+  size INTEGER NOT NULL CHECK (size BETWEEN 1 AND 20971520),
+  created_at INTEGER NOT NULL,
+  FOREIGN KEY (rebuttal_id) REFERENCES rebuttal(id) ON DELETE CASCADE
+);
+CREATE INDEX IF NOT EXISTS rebuttal_file_entry_idx ON rebuttal_file(rebuttal_id);

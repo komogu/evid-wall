@@ -121,7 +121,18 @@ async function getFile(env, fileId) {
     SELECT f.object_key, f.original_name, f.content_type, e.status
     FROM evidence_file f JOIN evidence e ON e.id = f.evidence_id
     WHERE f.id = ?`).bind(fileId).first();
-  if (!file || file.status !== "published") return json({ error: "文件不存在。" }, 404);
+  if (!file || file.status !== "published") {
+    const rfile = await env.DB.prepare(`
+      SELECT rf.object_key, rf.original_name, rf.content_type, r.status
+      FROM rebuttal_file rf JOIN rebuttal r ON r.id = rf.rebuttal_id
+      WHERE rf.id = ?`).bind(fileId).first();
+    if (!rfile || rfile.status !== "published") return json({ error: "文件不存在。" }, 404);
+    return serveFile(env, rfile);
+  }
+  return serveFile(env, file);
+}
+
+async function serveFile(env, file) {
   const object = await env.FILES.get(file.object_key);
   if (!object) return json({ error: "文件不存在。" }, 404);
   const headers = new Headers();
@@ -142,32 +153,74 @@ function safeInlineType(type) {
 async function listRebuttals(env, evidenceId) {
   if (!/^[0-9a-f-]{36}$/.test(evidenceId)) return json({ error: "证据不存在。" }, 404);
   const { results } = await env.DB.prepare(`
-    SELECT id, side, author, content, created_at
-    FROM rebuttal
-    WHERE evidence_id = ? AND status = 'published'
-    ORDER BY created_at ASC`).bind(evidenceId).all();
-  return json({ rebuttals: results.map(r => ({ id: r.id, side: r.side, author: r.author, content: r.content, createdAt: r.created_at })) });
+    SELECT r.id, r.side, r.author, r.content, r.created_at,
+           f.id file_id, f.original_name, f.content_type, f.size
+    FROM rebuttal r
+    LEFT JOIN rebuttal_file f ON f.rebuttal_id = r.id
+    WHERE r.evidence_id = ? AND r.status = 'published'
+    ORDER BY r.created_at ASC, f.created_at ASC`).bind(evidenceId).all();
+  const rebuttals = [];
+  const byId = new Map();
+  for (const row of results) {
+    let entry = byId.get(row.id);
+    if (!entry) {
+      entry = { id: row.id, side: row.side, author: row.author, content: row.content, createdAt: row.created_at, files: [] };
+      byId.set(row.id, entry);
+      rebuttals.push(entry);
+    }
+    if (row.file_id) entry.files.push({ id: row.file_id, name: row.original_name, type: row.content_type, size: row.size, url: `/api/files/${row.file_id}` });
+  }
+  return json({ rebuttals });
 }
 
 async function createRebuttal(request, env, ip, evidenceId) {
   if (!/^[0-9a-f-]{36}$/.test(evidenceId)) return json({ error: "证据不存在。" }, 404);
   const evidence = await env.DB.prepare(`SELECT id, status FROM evidence WHERE id = ?`).bind(evidenceId).first();
   if (!evidence || evidence.status !== "published") return json({ error: "证据不存在。" }, 404);
-  const body = await request.json();
-  const side = clean(body.side, 3);
-  const author = clean(body.author, 40);
-  const content = clean(body.content, 2000);
+  const contentType = request.headers.get("content-type") || "";
+  if (!contentType.startsWith("multipart/form-data")) return json({ error: "必须使用 multipart/form-data。" }, 415);
+  const maxFileBytes = Number(env.MAX_FILE_BYTES);
+  const maxFiles = Number(env.MAX_FILES_PER_ENTRY);
+  const form = await request.formData();
+  const side = clean(form.get("side"), 3);
+  const author = clean(form.get("author"), 40);
+  const content = clean(form.get("content"), 2000);
   if (!['pro', 'con'].includes(side) || !author || !content) return json({ error: "请完整填写反驳信息。" }, 400);
+  const files = form.getAll("files").filter(value => value instanceof File && value.size > 0);
+  if (files.length > maxFiles) return json({ error: `最多上传 ${maxFiles} 个文件。` }, 400);
+  let totalBytes = 0;
+  for (const file of files) {
+    if (file.size > maxFileBytes) return json({ error: `${file.name} 超过 20 MB。` }, 413);
+    if (file.name.length > 180) return json({ error: "文件名过长。" }, 400);
+    totalBytes += file.size;
+  }
   const ipHash = await hash(`${env.IP_SALT}:${ip}`);
   const dayStart = Math.floor(Date.now() / 86400000) * 86400000;
   const quota = await env.DB.prepare(`
     SELECT COUNT(*) cnt FROM rebuttal
     WHERE ip_hash = ? AND created_at >= ?`).bind(ipHash, dayStart).first();
   if ((quota?.cnt || 0) >= Number(env.MAX_DAILY_SUBMISSIONS)) return json({ error: "今日反驳次数已达上限。" }, 429);
+  const now = Date.now();
   const id = crypto.randomUUID();
-  await env.DB.prepare(`INSERT INTO rebuttal (id, evidence_id, side, author, content, ip_hash, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)`)
-    .bind(id, evidenceId, side, author, content, ipHash, Date.now()).run();
-  return json({ id }, 201);
+  const saved = [];
+  try {
+    await env.DB.prepare(`INSERT INTO rebuttal (id, evidence_id, side, author, content, ip_hash, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)`)
+      .bind(id, evidenceId, side, author, content, ipHash, now).run();
+    for (const file of files) {
+      const fileId = crypto.randomUUID();
+      const objectKey = `rebuttal/${id}/${fileId}`;
+      const type = clean(file.type || "application/octet-stream", 120) || "application/octet-stream";
+      await env.FILES.put(objectKey, file.stream(), { httpMetadata: { contentType: type }, customMetadata: { originalName: encodeURIComponent(file.name), rebuttalId: id } });
+      saved.push(objectKey);
+      await env.DB.prepare(`INSERT INTO rebuttal_file (id, rebuttal_id, object_key, original_name, content_type, size, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)`)
+        .bind(fileId, id, objectKey, file.name, type, file.size, now).run();
+    }
+    return json({ id }, 201);
+  } catch (error) {
+    await Promise.all(saved.map(key => env.FILES.delete(key)));
+    await env.DB.prepare("DELETE FROM rebuttal WHERE id = ?").bind(id).run();
+    throw error;
+  }
 }
 
 function clean(value, max) {
