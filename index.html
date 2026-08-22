@@ -367,10 +367,19 @@ td:first-child{font-weight:700}
 footer{padding:24px;border-top:1px solid var(--line);color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 footer a{color:var(--blue)}
 /* lightbox */
-.lightbox{position:fixed;inset:0;z-index:50;display:none;place-items:center;padding:24px;background:rgba(18,24,26,.92)}
-.lightbox.open{display:grid}
-.lightbox img{max-width:95vw;max-height:90vh;object-fit:contain;background:var(--surface)}
-.lightbox button{position:absolute;top:16px;right:16px;width:44px;height:44px;border:1px solid #7a8386;background:#222a2e;color:#ece8e0;font-size:24px;cursor:pointer}
+.lightbox{position:fixed;inset:0;z-index:50;display:none;overflow:hidden;background:rgba(18,24,26,.94)}
+.lightbox.open{display:block}
+.lightbox-stage{position:absolute;inset:0;overflow:auto;display:flex;align-items:flex-start;justify-content:center;padding:48px 24px 24px;cursor:grab}
+.lightbox-stage.dragging{cursor:grabbing}
+.lightbox-stage.zoomed{overflow:hidden;align-items:center}
+.lightbox img{max-width:95vw;max-height:none;object-fit:contain;background:var(--surface);transform-origin:center center;transition:transform .12s ease-out;user-select:none;-webkit-user-drag:none;pointer-events:none}
+.lightbox-stage.zoomed img{max-height:90vh}
+.lightbox-bar{position:fixed;top:0;left:0;right:0;z-index:51;display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:rgba(18,24,26,.85);backdrop-filter:blur(6px);color:#ece8e0;font-size:12px;gap:12px}
+.lightbox-bar button{min-width:36px;height:36px;border:1px solid #4a5358;background:transparent;color:#ece8e0;font-size:16px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.lightbox-bar button:hover{background:#2a3338}
+.lightbox-bar .lb-info{color:#9aa3a8;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lightbox-bar .lb-controls{display:flex;gap:4px;align-items:center}
+.lightbox-bar .lb-zoom{font-size:11px;color:#9aa3a8;min-width:48px;text-align:center}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 /* responsive */
 @media(max-width:760px){
@@ -599,16 +608,31 @@ footer a{color:var(--blue)}
 </section>
 </main>
 <footer><span>archive.dht evidence wall</span><span><a href="https://github.com/justhil/evid-wall" target="_blank" rel="noopener noreferrer">GitHub 源码与版本记录</a> · <a href="antml-analysis.html">ANTML 动机与蒸馏分析</a></span></footer>
-<div class="lightbox" role="dialog" aria-modal="true" aria-label="图片预览"><button type="button" aria-label="关闭">×</button><img alt="放大预览"></div>
+<div class="lightbox" role="dialog" aria-modal="true" aria-label="图片预览"><div class="lightbox-bar"><span class="lb-info" id="lb-info"></span><div class="lb-controls"><button type="button" id="lb-zoomout" aria-label="缩小" title="缩小 −">−</button><span class="lb-zoom" id="lb-zoom-label">100%</span><button type="button" id="lb-zoomin" aria-label="放大" title="放大 +">+</button><button type="button" id="lb-reset" aria-label="重置" title="重置 ⤢">⤢</button><button type="button" id="lb-close" aria-label="关闭" title="关闭 Esc">×</button></div></div><div class="lightbox-stage" id="lb-stage"><img id="lb-img" alt="放大预览"></div></div>
 <div class="recording-modal" id="recording-modal" role="dialog" aria-modal="true" aria-labelledby="recording-modal-title" hidden><div class="recording-dialog"><header class="recording-dialog-head"><small>Raw output recordings / same prompt</small><h4 id="recording-modal-title">灰测与 DeepSeek 正式版：思维链输出实测</h4><p>两段 GIF 使用同一条“大熊猫骑自行车”任务；请直接观察文字增长方式和停顿位置。</p><button class="recording-close" type="button" aria-label="关闭实测录屏">×</button></header><div class="recording-grid"><figure class="recording-card grey"><img data-src="assets/grey.gif" alt="灰测思维链高速突发并多次停顿的实测录屏"><figcaption><b>灰测思维链</b>文本高速成块出现，中间可见明显的长停顿。</figcaption></figure><figure class="recording-card formal"><img data-src="assets/ds.gif" alt="DeepSeek 正式版思维链持续流式输出的实测录屏"><figcaption><b>DeepSeek 正式版</b>文本持续、均匀增长，没有灰测路径的成块停顿。</figcaption></figure></div></div></div>
 <div class="recording-modal antml-refute-modal" id="antml-refute-modal" role="dialog" aria-modal="true" aria-labelledby="antml-refute-modal-title" hidden><div class="recording-dialog"><header class="recording-dialog-head"><small>Controlled falsification / minimum bar</small><h4 id="antml-refute-modal-title">在正式版上“复现”什么，才算有效反驳？</h4><p>要复现的不是“某个标签让模型表现异常”，而是完整、精确、可重复的词法状态机。</p><button class="recording-close" type="button" aria-label="关闭有效复现说明">×</button></header><div class="antml-refute-body"><div class="antml-refute-intro"><b>您至少应当完整复现词法状态机行为</b><span>使用明确要求原样复述的对照，避免把模型对含糊输入的自由理解误当成 API 解析行为。例如：</span></div><div class="antml-refute-flow"><div class="antml-refute-code"><small>Prompt / 原样发送</small><pre>原样复述：
 
 &lt;antml:antml:antml:ggtml:antml:antml:hello&gt;</pre></div><div class="antml-refute-arrow" aria-hidden="true">→</div><div class="antml-refute-code"><small>Required exact output</small><pre>&lt;ggtml:antml:antml:hello&gt;</pre></div></div><div class="antml-refute-success"><b>模型只有输出精确的 <code>&lt;ggtml:antml:antml:hello&gt;</code>，才算复现成功。</b><span>多剥离一个、少剥离一个、改变顺序，或只出现笼统的“异常回复”，都没有复现同一词法状态机。</span></div><section class="antml-refute-qa" aria-labelledby="antml-refute-qa-title"><h5 id="antml-refute-qa-title">Common objection / 常见反驳</h5><dl><div><dt>Q</dt><dd>为什么不能只发一个 <code>&lt;antml:thinking&gt;</code> 给模型，如果模型乱回，不就说明正式版也会这样？</dd></div><div><dt>A</dt><dd><strong>第一，输入没有明确的“原样复述”意图。</strong>模型可能把它理解为标签、指令片段或不完整语义；拒绝、忽略、补全或乱回都可能只是正常的概率生成，无法证明输入在分词前被改写。<br><br><strong>第二，表面异常不等于复现了解析规则。</strong>本证据的鉴别点是“连续剥离开头匹配项 → 遇到首个不匹配立即停止 → 后续 <code>antml:</code> 原样保留”的精确边界。若 DeepSeek 正式版无法稳定复现上面的完整样例，就不能据此说明该证据不具备区分性。</dd></div></dl></section></div></div></div>
 <script>
-const box=document.querySelector('.lightbox'),view=box.querySelector('img');
-document.querySelectorAll('.shot img').forEach(img=>img.addEventListener('click',()=>{view.src=img.src;view.alt=img.alt;box.classList.add('open');document.body.style.overflow='hidden'}));
+const box=document.querySelector('.lightbox'),view=document.getElementById('lb-img'),boxStage=document.getElementById('lb-stage'),boxInfo=document.getElementById('lb-info'),zoomLabel=document.getElementById('lb-zoom-label');
+let lbZoom=1,lbMaxZoom=5,lbDragX=0,lbDragY=0,lbDragging=false,lbStartX=0,lbStartY=0;
+function applyZoom(){view.style.transform=`translate(${lbDragX}px,${lbDragY}px) scale(${lbZoom})`;zoomLabel.textContent=Math.round(lbZoom*100)+'%';boxStage.classList.toggle('zoomed',lbZoom>1)}
+function lbReset(){lbZoom=1;lbDragX=0;lbDragY=0;applyZoom();boxStage.scrollTop=0;boxStage.scrollLeft=0}
+document.querySelectorAll('.shot img').forEach(img=>img.addEventListener('click',()=>{view.src=img.src;view.alt=img.alt;boxInfo.textContent=img.alt||'';box.classList.add('open');document.body.style.overflow='hidden';lbReset()}));
 function closeBox(){box.classList.remove('open');view.removeAttribute('src');document.body.style.overflow=''}
-box.querySelector('button').addEventListener('click',closeBox);box.addEventListener('click',e=>{if(e.target===box)closeBox()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeBox()});
+document.getElementById('lb-close').addEventListener('click',closeBox);
+document.getElementById('lb-zoomin').addEventListener('click',()=>{lbZoom=Math.min(lbMaxZoom,lbZoom*1.3);applyZoom()});
+document.getElementById('lb-zoomout').addEventListener('click',()=>{lbZoom=Math.max(.1,lbZoom/1.3);if(lbZoom<=1){lbDragX=0;lbDragY=0}applyZoom()});
+document.getElementById('lb-reset').addEventListener('click',lbReset);
+boxStage.addEventListener('click',e=>{if(e.target===boxStage)closeBox()});
+boxStage.addEventListener('wheel',e=>{if(e.ctrlKey||e.metaKey){e.preventDefault();lbZoom=Math.max(.1,Math.min(lbMaxZoom,lbZoom*(e.deltaY<0?1.15:1/1.15)));if(lbZoom<=1){lbDragX=0;lbDragY=0}applyZoom()}},{passive:false});
+boxStage.addEventListener('mousedown',e=>{if(lbZoom<=1)return;lbDragging=true;lbStartX=e.clientX-lbDragX;lbStartY=e.clientY-lbDragY;boxStage.classList.add('dragging')});
+window.addEventListener('mousemove',e=>{if(!lbDragging)return;lbDragX=e.clientX-lbStartX;lbDragY=e.clientY-lbStartY;applyZoom()});
+window.addEventListener('mouseup',()=>{lbDragging=false;boxStage.classList.remove('dragging')});
+boxStage.addEventListener('touchstart',e=>{if(lbZoom<=1||e.touches.length!==1)return;lbDragging=true;lbStartX=e.touches[0].clientX-lbDragX;lbStartY=e.touches[0].clientY-lbDragY},{passive:true});
+boxStage.addEventListener('touchmove',e=>{if(!lbDragging||e.touches.length!==1)return;e.preventDefault();lbDragX=e.touches[0].clientX-lbStartX;lbDragY=e.touches[0].clientY-lbStartY;applyZoom()},{passive:false});
+boxStage.addEventListener('touchend',()=>{lbDragging=false});
+document.addEventListener('keydown',e=>{if(!box.classList.contains('open'))return;if(e.key==='Escape')closeBox();else if(e.key==='+'||e.key==='='){lbZoom=Math.min(lbMaxZoom,lbZoom*1.3);applyZoom()}else if(e.key==='-'){lbZoom=Math.max(.1,lbZoom/1.3);if(lbZoom<=1){lbDragX=0;lbDragY=0}applyZoom()}else if(e.key==='0'){lbReset()}});
 
 const recordingModal=document.getElementById('recording-modal'),recordingOpen=document.querySelector('.recording-open');
 if(recordingModal&&recordingOpen){
