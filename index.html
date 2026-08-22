@@ -468,7 +468,7 @@ footer a{color:var(--blue)}
 <div class="shead"><div class="num">01 / Assessment</div><div><h2>综合研判</h2><p>先明确核心确定性结论，再划定证据尚未覆盖的边界。</p></div></div>
 <div class="verdict">
 <article class="vp"><span class="label">Primary assessment</span><h3>8 月灰测<strong>大概率指向 Opus 5</strong></h3><p>围绕 <code>antml</code> 标签的过滤机制、输入 Token 计量异常、截断边界及大小写无关性，<mark class="key-mark">多项物理规则共同锁定 Claude 风格请求处理链</mark>。至于时事知识、流式传输形态和安全拒答行为仅作为辅助证据。需要说明的是，现有公开材料尚无法百分之百锁定特定版本号，亦无法分辨其究竟是官方直连 API、第三方中转还是其他托管服务。</p></article>
-<aside class="vs"><span class="label">Cross-round finding</span><h3>7 月与 8 月不是同一模型路径</h3><p>存在争议，但普遍认为 8 月灰测模型前端水平强于 7 月灰测；7 月的生物回退为空回复，8 月灰测的生物回退为回退到 DSV4 Pro。固定 64-Token 缓存截断重算机制被修复，部分政治问题会被检测截断。</p><dl><div><dt>7 月</dt><dd>推测属于 Fable 系列，具体版本未定</dd></div><div><dt>8 月</dt><dd>强指向 Claude 请求链，Opus 5 为大概率候选</dd></div><div><dt>回退</dt><dd>触发高危安全拦截后，降级回退至 0813 V4 Pro 正式版链路</dd></div></dl></aside>
+<aside class="vs"><span class="label">Cross-round finding</span><h3>7 月与 8 月不是同一模型路径</h3><p>存在争议，但普遍认为 8 月灰测模型前端水平强于 7 月灰测；7 月的生物回退为空回复，8 月灰测的生物回退为回退到 DSV4 Pro。固定 64-Token 缓存截断重算机制被修复，部分政治问题会被检测截断。</p><dl><div><dt>7 月</dt><dd>推测属于 Claude 模型，具体型号未定</dd></div><div><dt>8 月</dt><dd>强指向 Claude 请求链，Opus 5 为大概率候选</dd></div><div><dt>回退</dt><dd>触发高危安全拦截后，降级回退至 0813 V4 Pro 正式版链路</dd></div></dl></aside>
 </div>
 </section>
 <section class="block" id="premises">
