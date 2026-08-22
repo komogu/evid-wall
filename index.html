@@ -86,7 +86,8 @@ section.block{padding:40px 0;border-bottom:1px solid var(--line)}
 .era p{margin:0;color:var(--muted);font-size:12.5px}
 /* chain */
 .chain{border-top:1px solid var(--ink)}
-.node{display:grid;grid-template-columns:100px 1fr;gap:20px;padding:24px 0;border-bottom:1px solid var(--line)}
+.node{display:grid;grid-template-columns:100px minmax(0,1fr);gap:20px;padding:24px 0;border-bottom:1px solid var(--line)}
+.node>div{min-width:0}
 .node-id{font:700 10px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--muted)}
 .level{display:inline-block;margin-bottom:8px;padding:3px 8px;border-radius:99px;font-size:10px;letter-spacing:.03em}
 .level.high{background:var(--green-soft);color:var(--green)}
@@ -113,6 +114,54 @@ section.block{padding:40px 0;border-bottom:1px solid var(--line)}
 .node-actions a{min-height:38px;padding:0 14px;display:inline-flex;align-items:center;border:1px solid var(--blue);background:var(--blue);color:#f4f0e7;text-decoration:none;font-size:13px;font-weight:800}
 .node-alert{margin-top:14px;padding:13px 15px;border-left:4px solid var(--amber);background:var(--amber-soft);color:#665019;font-size:14px}
 .node-alert b{color:#59440e}
+/* 64-token cache case */
+.cache-case{margin-top:18px;border:1px solid var(--ink);background:var(--surface)}
+.cache-case-head{padding:15px 18px;border-bottom:1px solid var(--ink);display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
+.cache-case-head .case-label{display:block;margin-bottom:6px;color:var(--accent);font:700 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase}
+.cache-case-head h4{margin:0;font:700 18px/1.35 "Noto Serif SC","Songti SC",serif}
+.cache-case-head p{max-width:410px;margin:3px 0 0;color:var(--muted);font-size:12px}
+.cache-source{flex:none;min-height:36px;padding:0 11px;display:inline-flex;align-items:center;border:1px solid var(--blue);color:var(--blue);text-decoration:none;font-size:11px;font-weight:800;white-space:nowrap}
+.cache-punch{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--ink)}
+.cache-stat{min-width:0;padding:18px;border-right:1px solid var(--line)}
+.cache-stat:last-child{border-right:0}
+.cache-stat b{display:block;font:800 34px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:-.06em}
+.cache-stat small{display:block;margin-top:8px;color:var(--muted);font-size:11px;line-height:1.45}
+.cache-stat.danger{background:var(--red-soft)}
+.cache-stat.danger b{color:var(--red)}
+.cache-stat.long b{color:var(--blue)}
+.cache-stat.returned b{color:var(--ink)}
+.cache-compare{display:grid;grid-template-columns:minmax(250px,.85fr) 50px minmax(0,1.15fr);align-items:stretch;border-bottom:1px solid var(--ink)}
+.usage-panel,.payload-panel{min-width:0;padding:16px}
+.panel-label{margin-bottom:9px;color:var(--muted);font:700 9px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.09em;text-transform:uppercase}
+.usage-code{margin:0;padding:13px 14px;overflow:auto;background:#20282b;color:#e9e7df;font:12px/1.65 "SFMono-Regular",Consolas,monospace;white-space:pre}
+.usage-code .miss-line{display:block;margin:0 -14px;padding:1px 14px;background:#853d36;color:#fff;font-weight:800;box-shadow:inset 4px 0 #ffcf70}
+.usage-code .hit-line{color:#8fc5d8}
+.usage-note{margin:9px 0 0;color:var(--red);font-size:11px;font-weight:800}
+.cache-arrow{position:relative;display:flex;align-items:center;justify-content:center;border-left:1px solid var(--line);border-right:1px solid var(--line);background:var(--accent-soft);color:var(--red);font:900 22px/1 ui-monospace,SFMono-Regular,Consolas,monospace}
+.cache-arrow:before{content:"指向";position:absolute;top:13px;color:var(--accent);font:700 8px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em}
+.payload-panel{background:#e7e2d7}
+.payload-meta{margin-bottom:9px;display:flex;justify-content:space-between;gap:10px;color:var(--muted);font:700 9px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;text-transform:uppercase}
+.payload-meta>*{min-width:0;overflow-wrap:anywhere}
+.payload-meta strong{color:var(--blue)}
+.code-river{position:relative;height:260px;margin:0;overflow:hidden;padding:13px 14px 13px 38px;background:#20282b;color:#dfe5de;font:10px/1.55 "SFMono-Regular",Consolas,monospace;white-space:pre;tab-size:2}
+.code-river:after{content:"中间省略 2,000+ 行";position:absolute;left:0;right:0;top:50%;padding:9px 12px;transform:translateY(-50%);border-top:1px solid #7d6c48;border-bottom:1px solid #7d6c48;background:#3c382c;color:#f5d995;text-align:center;font:800 10px/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.04em}
+.code-river .ln{position:absolute;left:8px;color:#7d8a8e;user-select:none}
+.code-river .l1{top:14px}.code-river .l2{top:30px}.code-river .l3{top:46px}.code-river .l4{bottom:62px}.code-river .l5{bottom:46px}.code-river .l6{bottom:30px}.code-river .l7{bottom:14px}
+.payload-caption{margin:9px 0 0;color:#47545a;font-size:11px;line-height:1.55}
+.payload-caption b{color:var(--ink)}
+.cache-math{padding:17px 18px;border-bottom:1px solid var(--ink);background:var(--blue-soft)}
+.cache-math h5{margin:0 0 11px;font:700 14px/1.3 "Noto Serif SC","Songti SC",serif}
+.equations{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.equation{min-width:0;padding:10px 12px;border:1px solid #aac3ce;background:#eef3f2;color:#345461;font:700 11px/1.6 "SFMono-Regular",Consolas,monospace;overflow-wrap:anywhere}
+.equation strong{color:var(--red)}
+.equation.full{grid-column:1/-1;background:#20282b;border-color:#20282b;color:#e8e5dc;font-size:12px}
+.equation.full strong{color:#ffcf70}
+.cache-conclusion{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.cache-conclusion>div{padding:16px 18px}
+.cache-conclusion>div+div{border-left:1px solid var(--line);background:var(--bg)}
+.cache-conclusion b{display:block;margin-bottom:5px;font:700 13px/1.3 "Noto Serif SC","Songti SC",serif}
+.cache-conclusion p{margin:0;color:var(--muted);font-size:11.5px}
+.cache-conclusion .why b{color:var(--red)}
 /* wall */
 .wall{display:grid;gap:20px}
 .cluster{padding:20px;border:1px solid var(--line);background:var(--surface)}
@@ -166,6 +215,11 @@ footer a{color:var(--blue)}
   .wrap{padding:0 16px}
   .hero{padding-top:36px}
   .node{grid-template-columns:1fr;gap:8px}
+  .cache-case-head{display:block}.cache-source{margin-top:12px}
+  .cache-punch{grid-template-columns:1fr}.cache-stat{border-right:0;border-bottom:1px solid var(--line)}.cache-stat:last-child{border-bottom:0}
+  .cache-compare{grid-template-columns:1fr}.cache-arrow{min-height:48px;border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);transform:none}.cache-arrow:before{left:16px;top:19px}.cache-arrow:after{content:"↓"}
+  .cache-arrow{font-size:0}.cache-arrow:after{font-size:24px}
+  .equations,.cache-conclusion{grid-template-columns:1fr}.equation.full{grid-column:auto}.cache-conclusion>div+div{border-left:0;border-top:1px solid var(--line)}
   .shots,.proof-grid,.limits,.method{grid-template-columns:1fr}
   .shot.wide,.shot.full{grid-column:auto}
   .shot img,.shot.tall img{height:auto;max-height:360px}
@@ -237,7 +291,42 @@ footer a{color:var(--blue)}
 <section class="block" id="chain">
 <div class="shead"><div class="num">04 / Chain</div><div><h2>完整证据链</h2><p>每个节点仅承载其能直接证明的狭义结论，最终的型号推论建立在多节点的交叉印证之上。</p></div></div>
 <div class="chain">
-<article class="node"><div class="node-id"><span class="level high">高</span><br>E01 · JULY</div><div><h3>固定 64-Token 缓存截断重算机制</h3><p>旧灰测中，未命中缓存（cache_miss）的输入长度严格小于 64，命中缓存（cache_hit）则恒为 64 的整数倍，完全契合公式 <code>hit = floor(input / 64) * 64</code>。真实的大模型推理服务会返回实际物理命中量，绝不会机械地按 64 粒度强行切分。</p><div class="proof-grid"><div class="proof"><b>直接证明</b>7 月的 usage/cache 字段经过了人为或网关层的特殊重算，其处理链路与常规 DeepSeek 不同。</div><div class="proof limit"><b>边界限定</b>无法由此直接推导上游模型身份；该规律已被修复，不适用于 8 月新灰测。</div></div><div class="quote-strip"><span>"所有非 cache 的 input token 全都小于 64"</span><span>"命中 = 下取整(input/64)×64"</span><span>"8 月明显假的缓存数据修好了"</span></div><div class="node-action"><a href="https://github.com/YunhaoFu/dsv4ga-news-gather#-%E5%85%B1%E4%BA%AB%E5%AF%B9%E8%AF%9D%E9%93%BE%E6%8E%A5" target="_blank" rel="noopener noreferrer">查看 7 月灰测原始对话分析样本 ↗</a></div></div></article>
+<article class="node"><div class="node-id"><span class="level high">高</span><br>E01 · JULY</div><div><h3>固定 64-Token 缓存截断重算机制</h3><p>旧灰测中，未命中缓存（cache_miss）的输入长度严格小于 64，命中缓存（cache_hit）则恒为 64 的整数倍，完全契合 <code>hit = floor(prompt_tokens / 64) × 64</code>。下面不看抽象统计，直接拆开一个原始会话里的真实回合。</p>
+<section class="cache-case" aria-labelledby="cache-case-title">
+<div class="cache-case-head"><div><span class="case-label">Raw session / VWXNvxEm / message 06</span><h4 id="cache-case-title">42 Token，装得下一整份 2,028 行程序？</h4><p>上一回合刚生成一份完整的 <code>game.js</code>。到下一次请求，它第一次作为历史消息进入上下文；usage 却声称未命中只有 42 Token。</p></div><a class="cache-source" href="https://opncd.ai/share/VWXNvxEm" target="_blank" rel="noopener noreferrer">打开原始会话 ↗</a></div>
+<div class="cache-punch" aria-label="样本关键数字"><div class="cache-stat returned"><b>41,827</b><small>上轮返回的 output Token<br>其中含完整程序工具调用</small></div><div class="cache-stat long"><b>86,699</b><small>新进入上下文的文件内容字符数<br>共 2,028 行 JavaScript</small></div><div class="cache-stat danger"><b>42</b><small>本轮 usage 声称的<br><strong>缓存未命中 Token</strong></small></div></div>
+<div class="cache-compare">
+<div class="usage-panel"><div class="panel-label">本轮返回的 usage JSON · 原样字段</div><pre class="usage-code" aria-label="本轮 usage JSON"><code>{
+  "total": 96861,
+<span class="miss-line">  "input": 42,</span>
+  "output": 74,
+  "reasoning": 1897,
+  "cache": {
+    "write": 0,
+<span class="hit-line">    "read": 94848</span>
+  }
+}</code></pre><p class="usage-note">▲ 页面所称“未命中”就是这里的 input: 42</p></div>
+<div class="cache-arrow" aria-hidden="true">→</div>
+<div class="payload-panel"><div class="payload-meta"><span>本轮新增的历史输入</span><strong>game.js · 86,699 chars</strong></div><pre class="code-river" aria-label="新输入中的长程序节选"><code><span class="ln l1">1</span>'use strict';
+<span class="ln l2">2</span>/* ==================================
+<span class="ln l3">3</span>   逆转法庭 ～午夜的钟声～
+   NDS 风格网页游戏 · 原创剧本
+   全部图形为程序化像素绘制
+   ...
+   function renderTop() { ... }
+   function renderBtm() { ... }
+   const Script = [ ... ];
+   const CrossExams = { ... };
+   ...
+<span class="ln l4">2025</span>document.addEventListener('keydown',
+<span class="ln l5">2026</span>  tryTitleMusic, { once: false });
+<span class="ln l6">2027</span>
+<span class="ln l7">2028</span>loop();</code></pre><p class="payload-caption"><b>这不是用户只发了一个“继续”。</b>这是上轮模型刚返回的完整 assistant message：仅工具参数中的代码就有 86,699 个字符，此外还有 3,002 个 reasoning Token。下一轮请求必须携带它，才能延续会话。</p></div>
+</div>
+<div class="cache-math"><h5>64 粒度如何严丝合缝地“吃掉”这段新输入</h5><div class="equations"><div class="equation">上轮 output<br>41,827 = <strong>653 × 64</strong> + 35</div><div class="equation">cache.read 增量<br>94,848 − 53,056 = <strong>41,792 = 653 × 64</strong></div><div class="equation full">本轮 Prompt = cache.read + input = 94,848 + 42 = 94,890<br><strong>94,890 = 1,482 × 64 + 42</strong></div></div></div>
+<div class="cache-conclusion"><div class="why"><b>为什么 42 不可能是字面意义上的物理未命中？</b><p>这 41,827 个 output Token 是上轮才生成的不可预知内容；在生成完成前，不可能已有一份相同前缀供本轮“读取命中”。两轮 usage 还都报告 <code>cache.write: 0</code>。42 恰好只是总 Prompt 除以 64 后的余数。</p></div><div><b>这个样本直接证明什么</b><p>字段表现为确定性的分桶记账：整块一律划入 <code>cache.read</code>，只把不足 64 的尾数留给 <code>input</code>。它证明 usage/cache 经过网关层重算；单凭这一条仍不能命名真实上游模型。</p></div></div>
+</section>
+<div class="proof-grid"><div class="proof"><b>直接证明</b>7 月的 usage/cache 字段经过了人为或网关层的特殊重算，其处理链路与常规 DeepSeek 不同。</div><div class="proof limit"><b>边界限定</b>单个样本用于直观展示；“所有回合均小于 64”的总体规律仍依赖批量会话统计。该规律已被修复，不适用于 8 月新灰测。</div></div><div class="quote-strip"><span>"未命中永远是 0–63 的余数"</span><span>"命中 = 下取整(Prompt/64)×64"</span><span>"8 月缓存字段已修复"</span></div><div class="node-actions"><a href="https://opncd.ai/share/VWXNvxEm" target="_blank" rel="noopener noreferrer">复核该原始会话 ↗</a><a href="https://github.com/YunhaoFu/dsv4ga-news-gather#-%E5%85%B1%E4%BA%AB%E5%AF%B9%E8%AF%9D%E9%93%BE%E6%8E%A5" target="_blank" rel="noopener noreferrer">查看更多 7 月样本 ↗</a></div></div></article>
 <article class="node"><div class="node-id"><span class="level high">高</span><br>E02 · JULY</div><div><h3>TTFT、缓存合法性与生成速率三维联合聚类</h3><p>数据呈现明显的双峰分布：低延迟组生成速率约 200 字/秒且缓存数据正常；高延迟组生成速率约 80 字/秒且伴随假缓存。该证据的决定性在于三个独立维度的强关联共振，排除了单纯的"服务器排队"假象。</p><div class="proof-grid"><div class="proof"><b>直接证明</b>7 月系统底层至少存在两套物理处理链路或推理基础设施，并非同一集群在不同负载下的表现。</div><div class="proof limit"><b>边界限定</b>排队只能解释延迟，无法解释缓存逻辑与速率的同步聚类；但聚类本身仍无法直接为模型命名。</div></div></div></article>
 <article class="node"><div class="node-id"><span class="level mid-high">中高</span><br>E03 · JULY</div><div><h3>推理 Token 对可见思维链文本二次计数</h3><p>接口返回的推理 Token 数量，严格等于将前端可见思维链文本代入 DeepSeek Tokenizer 计算后的长度 + 2。结合伪造缓存的现象，高度指向网关层在拿到上游生成的思维链摘要后，使用自身分词器重新包装了 usage 字段。</p><div class="proof-grid"><div class="proof"><b>直接证明</b>usage 字段存在由 DeepSeek 端发起的重新计量行为，符合协议转换层的特征。</div><div class="proof limit"><b>边界限定</b>重新计数的现象本身无法反推思维链摘要的真实生成源头。</div></div></div></article>
 <article class="node"><div class="node-id"><span class="level mid-high">中高</span><br>E04 · JULY</div><div><h3>API 能力与底层特征标识差异</h3><p>常规请求可正常返回 logprobs 概率，而灰测请求该字段始终为空；system_fingerprint 初期与公开版有明显差异，后被人工统一为 V4P；流式传输时的分包与中文断句边界也展现出完全不同的封装特征。</p><div class="proof-grid"><div class="proof"><b>直接证明</b>两条路径在底层 API 能力、流式封装机制或后端环境配置上存在明确差异。</div><div class="proof limit"><b>边界限定</b>相关字段可由代理网关伪造或修改，须与缓存及统计学证据结合研判。</div></div></div></article>
