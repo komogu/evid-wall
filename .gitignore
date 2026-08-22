@@ -5,3 +5,4 @@ public/
 .wrangler/
 wrangler.toml
 DEPLOYMENT.md
+ev_tmp.json
