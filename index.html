@@ -283,6 +283,27 @@ section.block{padding:40px 0;border-bottom:1px solid var(--line)}
 .stream-panel-foot{min-height:64px;padding:11px 14px;display:block;justify-content:initial;flex-wrap:nowrap;background:var(--bg);color:var(--ink);font-size:12.5px;line-height:1.45;font-weight:750}
 .stream-panel-foot b{display:block;margin-bottom:3px;color:var(--blue);font-size:14px}
 .stream-panel.formal .stream-panel-foot b{color:var(--accent)}
+.recording-proof{padding:14px 16px;border-top:1px solid var(--ink);display:flex;align-items:center;justify-content:space-between;gap:18px;background:#f3e5b7}
+.recording-proof-copy small{display:block;margin-bottom:4px;color:var(--accent);font:850 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase}
+.recording-proof-copy b{display:block;color:var(--ink);font-size:16px;line-height:1.35}
+.recording-proof-copy span{display:block;margin-top:3px;color:var(--ink);font-size:12.5px;line-height:1.45;font-weight:700}
+.recording-open{flex:none;min-height:42px;padding:0 15px;border:1px solid var(--ink);background:var(--ink);color:#fff;font:900 13px/1.3 Inter,"Noto Sans SC",sans-serif;cursor:pointer}
+.recording-open:hover{background:var(--accent);border-color:var(--accent)}
+.recording-modal[hidden]{display:none}
+.recording-modal{position:fixed;inset:0;z-index:70;padding:24px;display:grid;place-items:center;background:rgba(18,24,26,.88)}
+.recording-dialog{width:min(1100px,96vw);max-height:calc(100vh - 48px);overflow:auto;border:1px solid #778184;background:var(--surface);box-shadow:0 22px 70px rgba(0,0,0,.45)}
+.recording-dialog-head{position:sticky;top:0;z-index:2;padding:15px 64px 14px 18px;border-bottom:1px solid var(--ink);background:var(--blue-soft)}
+.recording-dialog-head small{display:block;margin-bottom:5px;color:var(--blue);font:850 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase}
+.recording-dialog-head h4{margin:0;color:var(--ink);font:700 22px/1.25 "Noto Serif SC","Songti SC",serif}
+.recording-dialog-head p{margin:6px 0 0;color:var(--ink);font-size:13px;line-height:1.5;font-weight:700}
+.recording-close{position:absolute;right:14px;top:14px;width:40px;height:40px;border:1px solid var(--ink);background:var(--ink);color:#fff;font-size:24px;line-height:1;cursor:pointer}
+.recording-grid{padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px;background:#20282b}
+.recording-card{min-width:0;margin:0;border:1px solid #778184;background:var(--surface)}
+.recording-card img{display:block;width:100%;aspect-ratio:1.24/1;object-fit:contain;background:#fff}
+.recording-card figcaption{padding:12px 13px;border-top:1px solid var(--ink);color:var(--ink);font-size:13px;line-height:1.45;font-weight:750}
+.recording-card figcaption b{display:block;margin-bottom:4px;font-size:16px}
+.recording-card.grey figcaption b{color:var(--blue)}
+.recording-card.formal figcaption b{color:var(--accent)}
 @keyframes cursor-blink{50%{opacity:0}}
 /* wall */
 .wall{display:grid;gap:20px}
@@ -347,6 +368,7 @@ footer a{color:var(--blue)}
   .cache-verdict{grid-template-columns:1fr}.cache-verdict-vs{min-height:48px;border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);writing-mode:horizontal-tb;letter-spacing:.05em}
   .reasoning-facts,.dilemma-paths{grid-template-columns:1fr}.dilemma-paths:after{content:"OR";left:auto;right:16px;top:calc(50% - 17px);transform:none}.dilemma-path:nth-child(2){border-top:1px solid var(--ink)}
   .stream-lab-head{display:grid;grid-template-columns:1fr;align-items:start}.stream-replay{width:100%}.stream-panels{grid-template-columns:1fr}.stream-panel.formal{border-top:1px solid var(--ink)}.stream-window{height:320px}.stream-panel-head{min-height:0;display:grid;grid-template-columns:1fr}.stream-state{justify-self:start}
+  .recording-proof{display:grid}.recording-open{width:100%}.recording-modal{padding:10px}.recording-dialog{width:100%;max-height:calc(100vh - 20px)}.recording-dialog-head{padding:14px 58px 13px 14px}.recording-dialog-head h4{font-size:19px}.recording-grid{grid-template-columns:1fr;padding:10px}.recording-card img{height:auto;aspect-ratio:auto}
   .shots,.proof-grid,.limits,.method{grid-template-columns:1fr}
   .shot.wide,.shot.full{grid-column:auto}
   .shot img,.shot.tall img{height:auto;max-height:360px}
@@ -364,7 +386,7 @@ footer a{color:var(--blue)}
   .shot figcaption,table{font-size:13px}
   .shot figcaption b,.verdict .vs dt,.verdict .vs dd{font-size:15px}
 }
-@media print{header.bar,.lightbox{display:none!important}section.block{break-inside:avoid}body{background:var(--surface)}}
+@media print{header.bar,.lightbox,.recording-modal,.recording-proof{display:none!important}section.block{break-inside:avoid}body{background:var(--surface)}}
 </style>
 </head>
 <body>
@@ -455,7 +477,7 @@ footer a{color:var(--blue)}
 <div class="cache-verdict" aria-label="正常缓存粒度与异常结果对照"><div class="cache-verdict-side"><small>正常机制</small><b>DeepSeek 缓存<br>每 64 Token 一块</b><em>这很正常</em></div><div class="cache-verdict-vs">但是</div><div class="cache-verdict-side alarm"><small>本轮实际结果</small><b>新增 41,827 Token<br>未命中却只有 42</b><em>异常在这里</em></div></div>
 </section>
 <div class="proof-grid"><div class="proof"><b>直接证明</b>usage 没按实际缓存命中量统计，而是<mark class="key-mark">把总 Prompt 套入 64-Token 公式后重算</mark>。</div><div class="proof limit"><b>边界限定</b>单个样本用于直观展示；总体规律仍依赖批量会话统计。该问题已修复，不适用于 8 月新灰测。</div></div><aside class="summary-note" aria-label="64 Token 缓存证据总结"><b class="summary-note-title">Summary Note<span>总结笔记</span></b><ul><li>64-Token 分块是 DeepSeek 缓存的正常机制</li><li>新增数万 Token 后，缓存 miss 仍小于 64 才是异常</li><li>返回命中量始终等于下取整(Prompt/64)×64</li></ul></aside><div class="node-actions"><a href="https://opncd.ai/share/VWXNvxEm" target="_blank" rel="noopener noreferrer">复核该原始会话 ↗</a><a href="https://github.com/YunhaoFu/dsv4ga-news-gather#-%E5%85%B1%E4%BA%AB%E5%AF%B9%E8%AF%9D%E9%93%BE%E6%8E%A5" target="_blank" rel="noopener noreferrer">查看更多 7 月样本 ↗</a></div></div></article>
-<article class="node"><div class="node-id"><span class="level mid-high">中高</span><br>E03 · AUGUST</div><div><h3>现场演示：两条思维链输出路径不是同一种节奏</h3><p>同样是模型开始写前端代码前的思考文本，灰测路径表现为<mark class="body-mark">高速突发输出，中间反复停顿</mark>；V4 正式公开版则是均匀、连续的较高速流式输出。点击播放，直接观察差异。</p><section class="stream-lab" id="stream-lab" aria-labelledby="stream-lab-title"><div class="stream-lab-head"><div><small>Live timing reconstruction</small><h4 id="stream-lab-title">不要猜文风，直接看输出节奏</h4></div><button class="stream-replay" type="button">▶ 重新播放</button></div><p class="stream-note"><b>观察重点：</b>左边看“突然出现一大段 → 长时间停住 → 再突然出现”；右边看持续匀速增长。</p><div class="stream-panels"><article class="stream-panel grey" data-stream="grey"><header class="stream-panel-head"><div><span class="route">灰测思维链</span><h5>高速突发 + 多次停顿</h5></div><span class="stream-state" aria-live="polite">等待播放</span></header><div class="stream-progress"><i></i></div><pre class="stream-window" aria-label="灰测思维链输出现场"><code></code><span class="stream-cursor" aria-hidden="true"></span></pre><footer class="stream-panel-foot"><b>较长停顿点</b>每段结束约 2.6 秒；三个省略号短语后约 1.9 秒</footer></article><article class="stream-panel formal" data-stream="formal"><header class="stream-panel-head"><div><span class="route">V4 正式公开版</span><h5>均匀、持续、较高速</h5></div><span class="stream-state" aria-live="polite">等待播放</span></header><div class="stream-progress"><i></i></div><pre class="stream-window" aria-label="V4 正式版思维链输出现场"><code></code><span class="stream-cursor" aria-hidden="true"></span></pre><footer class="stream-panel-foot"><b>无额外停顿</b>从开头到结尾保持恒定节奏</footer></article></div></section><div class="proof-grid"><div class="proof"><b>直接证明</b>两条路径存在<mark class="key-mark">肉眼可见的不同输出时序与缓冲方式</mark>。</div><div class="proof limit"><b>边界限定</b>现场演示按原始观察重建节奏，并非原始 SSE 抓包；它用于解释现象，不能代替网络帧证据。</div></div><aside class="summary-note" aria-label="输出节奏证据总结"><b class="summary-note-title">Summary Note<span>总结笔记</span></b><ul><li>灰测思维链以高速突发块输出，并反复停顿</li><li>V4 正式版思维链从头至尾均匀持续输出</li><li>两条路径的输出节奏显示缓冲管线不同</li></ul></aside></div></article>
+<article class="node"><div class="node-id"><span class="level mid-high">中高</span><br>E03 · AUGUST</div><div><h3>现场演示：两条思维链输出路径不是同一种节奏</h3><p>同样是模型开始写前端代码前的思考文本，灰测路径表现为<mark class="body-mark">高速突发输出，中间反复停顿</mark>；V4 正式公开版则是均匀、连续的较高速流式输出。点击播放，直接观察差异。</p><section class="stream-lab" id="stream-lab" aria-labelledby="stream-lab-title"><div class="stream-lab-head"><div><small>Live timing reconstruction</small><h4 id="stream-lab-title">不要猜文风，直接看输出节奏</h4></div><button class="stream-replay" type="button">▶ 重新播放</button></div><p class="stream-note"><b>观察重点：</b>左边看“突然出现一大段 → 长时间停住 → 再突然出现”；右边看持续匀速增长。</p><div class="stream-panels"><article class="stream-panel grey" data-stream="grey"><header class="stream-panel-head"><div><span class="route">灰测思维链</span><h5>高速突发 + 多次停顿</h5></div><span class="stream-state" aria-live="polite">等待播放</span></header><div class="stream-progress"><i></i></div><pre class="stream-window" aria-label="灰测思维链输出现场"><code></code><span class="stream-cursor" aria-hidden="true"></span></pre><footer class="stream-panel-foot"><b>较长停顿点</b>每段结束约 2.6 秒；三个省略号短语后约 1.9 秒</footer></article><article class="stream-panel formal" data-stream="formal"><header class="stream-panel-head"><div><span class="route">V4 正式公开版</span><h5>均匀、持续、较高速</h5></div><span class="stream-state" aria-live="polite">等待播放</span></header><div class="stream-progress"><i></i></div><pre class="stream-window" aria-label="V4 正式版思维链输出现场"><code></code><span class="stream-cursor" aria-hidden="true"></span></pre><footer class="stream-panel-foot"><b>无额外停顿</b>从开头到结尾保持恒定节奏</footer></article></div><div class="recording-proof"><div class="recording-proof-copy"><small>Raw recordings / same prompt</small><b>演示之外，还有两段同题实测 GIF</b><span>直接对照灰测的突发停顿与 DeepSeek 正式版的持续流式。</span></div><button class="recording-open" type="button" aria-haspopup="dialog" aria-controls="recording-modal">仍有疑问？查看实测录屏</button></div></section><div class="proof-grid"><div class="proof"><b>直接证明</b>两条路径存在<mark class="key-mark">肉眼可见的不同输出时序与缓冲方式</mark>。</div><div class="proof limit"><b>边界限定</b>现场演示按原始观察重建节奏，并非原始 SSE 抓包；它用于解释现象，不能代替网络帧证据。</div></div><aside class="summary-note" aria-label="输出节奏证据总结"><b class="summary-note-title">Summary Note<span>总结笔记</span></b><ul><li>灰测思维链以高速突发块输出，并反复停顿</li><li>V4 正式版思维链从头至尾均匀持续输出</li><li>两条路径的输出节奏显示缓冲管线不同</li></ul></aside></div></article>
 <article class="node"><div class="node-id"><span class="level mid-high">中高</span><br>E04 · JULY</div><div><h3>Reasoning Token 与摘要思维链形成二选一两难</h3><p>先记住两个同时成立的事实：</p><div class="reasoning-facts"><div class="reasoning-fact"><small>Fact 01 / 计数</small><b>reasoning Token = 可见思维链经 DS 分词后的数量 + 2</b></div><div class="reasoning-fact"><small>Fact 02 / 输出</small><b>思维链大块吐出；正文逐 Token 吐出，速度差巨大</b></div></div><div class="reasoning-dilemma" aria-label="Reasoning Token 两难证据"><div class="dilemma-head">可见思维链只能是下面两种之一——但选哪边都有问题</div><div class="dilemma-paths"><div class="dilemma-path"><span class="path-label">假设 A</span><h4>它是摘要？</h4><div class="path-logic"><span>真实推理 ≠ 前端可见摘要</span><span class="conflict">但 usage 恰好 = 摘要长度 + 2</span></div><strong class="path-answer">→ reasoning Token 被按摘要重算</strong></div><div class="dilemma-path"><span class="path-label">假设 B</span><h4>它是原始文本？</h4><div class="path-logic"><span>原始思维链应与正文同为 Token 流</span><span class="conflict">但实际是“大块高速” vs“正文逐 Token”</span></div><strong class="path-answer">→ 可见思维链被缓冲或加工</strong></div></div><div class="dilemma-result"><b>无论选 A 还是 B：</b>可见思维链与 usage 至少有一个经过了额外处理。</div></div><div class="proof-grid"><div class="proof"><b>共同指向</b>最简解释是<mark class="key-mark">网关拿到摘要或缓冲结果后，用 DeepSeek Tokenizer 重包装 reasoning Token</mark>。</div><div class="proof limit"><b>证据边界</b>计数或速度单独看都不够；强度来自两者同时成立后形成的两难。</div></div><aside class="summary-note" aria-label="Reasoning Token 证据总结"><b class="summary-note-title">Summary Note<span>总结笔记</span></b><ul><li>若可见思维链是摘要，reasoning 计数不应恰好等于摘要 + 2</li><li>若可见思维链是原文，输出节奏不应与正文严重割裂</li><li>无论采用哪种解释，思维链或 usage 都经过了二次处理</li></ul></aside></div></article>
 <article class="node"><div class="node-id"><span class="level high">高</span><br>E05 · AUGUST</div><div><h3>高危安全提问触发无缝降级（Fallback）</h3><p>在稳定灰测会话中输入高危生物安全问题后，系统经历<mark class="body-mark">约 15 秒异常长 TTFT，随后输出模式突变为 DeepSeek 逐 Token 流式思维链</mark>，且该会话自此彻底脱离灰测。整个过程中 provider/model 响应头保持不变，底层时序与分块机制却已完全倒换。</p><div class="node-alert"><b>识别提醒：</b>回退后的思维链仍可能模仿上文思维链的部分文字特征。判断时应同时观察思维链的实际输出行为、TTFT，并在干净上下文中进行脏 Token 测试；脏 Token 测试与其他测试也可能受到上文结果污染。请理性区分，无法确定时可提交完整录屏供复核。</div><div class="proof-grid"><div class="proof"><b>直接证明</b>灰测上游在该类请求下触发熔断或拒绝，网关随后<mark class="key-mark">无缝降级回退至 0813 V4 Pro</mark>。</div><div class="proof limit"><b>边界限定</b>单一安全提问并非通用的模型指纹；T4 噬菌体反例说明拦截取决于具体风险等级与上下文。</div></div><aside class="summary-note" aria-label="Fallback 证据总结"><b class="summary-note-title">Summary Note<span>总结笔记</span></b><ul><li>高危问题使灰测会话经历约 15 秒 TTFT</li><li>长 TTFT 后，输出突变为 DeepSeek 逐 Token 流</li><li>触发 Fallback 的 Session 随后永久脱离灰测</li></ul></aside></div></article>
 <article class="node"><div class="node-id"><span class="level high">高</span><br>E06 · JULY</div><div><h3>TTFT、缓存合法性与生成速率三维联合聚类</h3><p>数据呈现明显的双峰分布：低延迟组生成速率约 200 字/秒且缓存数据正常；高延迟组生成速率约 80 字/秒且伴随假缓存。该证据的决定性在于<mark class="body-mark">延迟、缓存与生成速率三个独立维度同步分组</mark>，排除了单纯的"服务器排队"假象。</p><div class="proof-grid"><div class="proof"><b>直接证明</b>7 月系统底层<mark class="key-mark">至少存在两套物理处理链路或推理基础设施</mark>，并非同一集群在不同负载下的表现。</div><div class="proof limit"><b>边界限定</b>排队只能解释延迟，无法解释缓存逻辑与速率的同步聚类；但聚类本身仍无法直接为模型命名。</div></div><aside class="summary-note" aria-label="三维聚类证据总结"><b class="summary-note-title">Summary Note<span>总结笔记</span></b><ul><li>低延迟组约 200 字/秒，且缓存数据正常</li><li>高延迟组约 80 字/秒，且同时伴随假缓存</li><li>延迟、缓存与速率三个维度始终同步分组</li></ul></aside></div></article>
@@ -552,11 +574,35 @@ footer a{color:var(--blue)}
 </main>
 <footer><span>archive.dht evidence wall</span><span><a href="https://github.com/justhil/evid-wall" target="_blank" rel="noopener noreferrer">GitHub 源码与版本记录</a> · <a href="antml-analysis.html">ANTML 动机与蒸馏分析</a></span></footer>
 <div class="lightbox" role="dialog" aria-modal="true" aria-label="图片预览"><button type="button" aria-label="关闭">×</button><img alt="放大预览"></div>
+<div class="recording-modal" id="recording-modal" role="dialog" aria-modal="true" aria-labelledby="recording-modal-title" hidden><div class="recording-dialog"><header class="recording-dialog-head"><small>Raw output recordings / same prompt</small><h4 id="recording-modal-title">灰测与 DeepSeek 正式版：思维链输出实测</h4><p>两段 GIF 使用同一条“大熊猫骑自行车”任务；请直接观察文字增长方式和停顿位置。</p><button class="recording-close" type="button" aria-label="关闭实测录屏">×</button></header><div class="recording-grid"><figure class="recording-card grey"><img data-src="assets/grey.gif" alt="灰测思维链高速突发并多次停顿的实测录屏"><figcaption><b>灰测思维链</b>文本高速成块出现，中间可见明显的长停顿。</figcaption></figure><figure class="recording-card formal"><img data-src="assets/ds.gif" alt="DeepSeek 正式版思维链持续流式输出的实测录屏"><figcaption><b>DeepSeek 正式版</b>文本持续、均匀增长，没有灰测路径的成块停顿。</figcaption></figure></div></div></div>
 <script>
 const box=document.querySelector('.lightbox'),view=box.querySelector('img');
 document.querySelectorAll('.shot img').forEach(img=>img.addEventListener('click',()=>{view.src=img.src;view.alt=img.alt;box.classList.add('open');document.body.style.overflow='hidden'}));
 function closeBox(){box.classList.remove('open');view.removeAttribute('src');document.body.style.overflow=''}
 box.querySelector('button').addEventListener('click',closeBox);box.addEventListener('click',e=>{if(e.target===box)closeBox()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeBox()});
+
+const recordingModal=document.getElementById('recording-modal'),recordingOpen=document.querySelector('.recording-open');
+if(recordingModal&&recordingOpen){
+  const recordingClose=recordingModal.querySelector('.recording-close'),recordingImages=[...recordingModal.querySelectorAll('img[data-src]')];
+  function openRecordings(){
+    recordingImages.forEach(img=>{img.src=img.dataset.src});
+    recordingModal.hidden=false;document.body.style.overflow='hidden';recordingClose.focus();
+  }
+  function closeRecordings(){
+    if(recordingModal.hidden)return;
+    recordingModal.hidden=true;recordingImages.forEach(img=>img.removeAttribute('src'));document.body.style.overflow='';recordingOpen.focus();
+  }
+  recordingOpen.addEventListener('click',openRecordings);recordingClose.addEventListener('click',closeRecordings);
+  recordingModal.addEventListener('click',e=>{if(e.target===recordingModal)closeRecordings()});
+  recordingModal.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){e.preventDefault();closeRecordings();return}
+    if(e.key==='Tab'){
+      const focusable=[...recordingModal.querySelectorAll('button,[href],[tabindex]:not([tabindex="-1"])')];
+      if(!focusable.length)return;const first=focusable[0],last=focusable[focusable.length-1];
+      if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
+    }
+  });
+}
 
 const streamLab=document.getElementById('stream-lab');
 if(streamLab){
