@@ -162,6 +162,17 @@ section.block{padding:40px 0;border-bottom:1px solid var(--line)}
 .cache-conclusion b{display:block;margin-bottom:5px;font:700 13px/1.3 "Noto Serif SC","Songti SC",serif}
 .cache-conclusion p{margin:0;color:var(--muted);font-size:11.5px}
 .cache-conclusion .why b{color:var(--red)}
+/* reasoning-token dilemma */
+.reasoning-dilemma{margin-top:16px;border:1px solid var(--ink);background:var(--line)}
+.dilemma-head{padding:12px 15px;border-bottom:1px solid var(--ink);background:var(--accent-soft);color:#5a3e2c;font-size:12.5px;font-weight:800}
+.dilemma-paths{display:grid;grid-template-columns:1fr 1fr;gap:1px}
+.dilemma-path{padding:15px;background:var(--surface)}
+.dilemma-path .path-label{display:block;margin-bottom:7px;color:var(--accent);font:700 9px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase}
+.dilemma-path h4{margin:0 0 6px;font:700 14px/1.35 "Noto Serif SC","Songti SC",serif}
+.dilemma-path p{margin:0;color:var(--muted);font-size:11.5px}
+.dilemma-path strong{color:var(--ink)}
+.dilemma-result{padding:13px 15px;border-top:1px solid var(--ink);background:#20282b;color:#e8e5dc;font-size:12px;line-height:1.65}
+.dilemma-result b{color:#ffcf70}
 /* wall */
 .wall{display:grid;gap:20px}
 .cluster{padding:20px;border:1px solid var(--line);background:var(--surface)}
@@ -219,7 +230,7 @@ footer a{color:var(--blue)}
   .cache-punch{grid-template-columns:1fr}.cache-stat{border-right:0;border-bottom:1px solid var(--line)}.cache-stat:last-child{border-bottom:0}
   .cache-compare{grid-template-columns:1fr}.cache-arrow{min-height:48px;border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);transform:none}.cache-arrow:before{left:16px;top:19px}.cache-arrow:after{content:"↓"}
   .cache-arrow{font-size:0}.cache-arrow:after{font-size:24px}
-  .equations,.cache-conclusion{grid-template-columns:1fr}.equation.full{grid-column:auto}.cache-conclusion>div+div{border-left:0;border-top:1px solid var(--line)}
+  .equations,.cache-conclusion,.dilemma-paths{grid-template-columns:1fr}.equation.full{grid-column:auto}.cache-conclusion>div+div{border-left:0;border-top:1px solid var(--line)}
   .shots,.proof-grid,.limits,.method{grid-template-columns:1fr}
   .shot.wide,.shot.full{grid-column:auto}
   .shot img,.shot.tall img{height:auto;max-height:360px}
@@ -328,7 +339,7 @@ footer a{color:var(--blue)}
 </section>
 <div class="proof-grid"><div class="proof"><b>直接证明</b>异常不在 64-Token 缓存粒度本身，而在大量新增内容未反映为物理未命中；7 月 usage/cache 字段经过了无视真实命中状态的公式化重算。</div><div class="proof limit"><b>边界限定</b>单个样本用于直观展示；“新增任意长度后未命中仍小于 64”的总体规律仍依赖批量会话统计。该规律已被修复，不适用于 8 月新灰测。</div></div><div class="quote-strip"><span>"64 分块本身正常"</span><span>"异常是新增大量内容后 miss 仍 &lt;64"</span><span>"命中 = 下取整(Prompt/64)×64"</span></div><div class="node-actions"><a href="https://opncd.ai/share/VWXNvxEm" target="_blank" rel="noopener noreferrer">复核该原始会话 ↗</a><a href="https://github.com/YunhaoFu/dsv4ga-news-gather#-%E5%85%B1%E4%BA%AB%E5%AF%B9%E8%AF%9D%E9%93%BE%E6%8E%A5" target="_blank" rel="noopener noreferrer">查看更多 7 月样本 ↗</a></div></div></article>
 <article class="node"><div class="node-id"><span class="level high">高</span><br>E02 · JULY</div><div><h3>TTFT、缓存合法性与生成速率三维联合聚类</h3><p>数据呈现明显的双峰分布：低延迟组生成速率约 200 字/秒且缓存数据正常；高延迟组生成速率约 80 字/秒且伴随假缓存。该证据的决定性在于三个独立维度的强关联共振，排除了单纯的"服务器排队"假象。</p><div class="proof-grid"><div class="proof"><b>直接证明</b>7 月系统底层至少存在两套物理处理链路或推理基础设施，并非同一集群在不同负载下的表现。</div><div class="proof limit"><b>边界限定</b>排队只能解释延迟，无法解释缓存逻辑与速率的同步聚类；但聚类本身仍无法直接为模型命名。</div></div></div></article>
-<article class="node"><div class="node-id"><span class="level mid-high">中高</span><br>E03 · JULY</div><div><h3>推理 Token 对可见思维链文本二次计数</h3><p>接口返回的推理 Token 数量，严格等于将前端可见思维链文本代入 DeepSeek Tokenizer 计算后的长度 + 2。结合伪造缓存的现象，高度指向网关层在拿到上游生成的思维链摘要后，使用自身分词器重新包装了 usage 字段。</p><div class="proof-grid"><div class="proof"><b>直接证明</b>usage 字段存在由 DeepSeek 端发起的重新计量行为，符合协议转换层的特征。</div><div class="proof limit"><b>边界限定</b>重新计数的现象本身无法反推思维链摘要的真实生成源头。</div></div></div></article>
+<article class="node"><div class="node-id"><span class="level mid-high">中高</span><br>E03 · JULY</div><div><h3>Reasoning Token 与摘要思维链形成二选一两难</h3><p>接口返回的 reasoning Token 数量，严格等于<strong>前端可见思维链文本</strong>代入 DeepSeek Tokenizer 后的长度 + 2。这个数字不能脱离灰测思维链的输出形态单独阅读：可见内容以大块、间歇式方式吐出，速度也与后续正文的逐 Token 输出存在巨大差异。把计数和输出行为放在一起，会出现无法同时回避的两难。</p><div class="reasoning-dilemma" aria-label="Reasoning Token 两难证据"><div class="dilemma-head">无论把可见思维链解释成“摘要”还是“原文”，都会导向额外处理层</div><div class="dilemma-paths"><div class="dilemma-path"><span class="path-label">Path A / 它是摘要</span><h4>为什么 usage 计的恰好是摘要长度？</h4><p>如果底层模型存在一段更长的真实推理，而前端看到的只是摘要，那么 reasoning Token 理应对应<strong>实际推理消耗</strong>，不应恰好等于摘要用 DeepSeek 分词器重算后的长度 + 2。这个精确等式说明 usage 是拿可见摘要二次计量出来的。</p></div><div class="dilemma-path"><span class="path-label">Path B / 它是原始文本</span><h4>为什么它和正文像两条输出管线？</h4><p>如果前端看到的就是原始思维链，那么同一模型的原始生成流应与正文具有相近的逐 Token 时序。实际却是思维链以大块间歇输出，表观速度与正文差异巨大；这更像先生成、再摘要或缓冲后批量推送，而不是原始 Token 流。</p></div></div><div class="dilemma-result"><b>两难的共同结论：</b>可见思维链、底层真实推理与最终 usage 至少不是同一个未经处理的原始对象。要么可见文本是摘要且 usage 按摘要重算；要么它被缓冲、转换后输出，usage 仍不能代表原始推理过程。结合缓存字段重算，最简解释是网关层对思维链和计量字段进行了重新包装。</div></div><div class="proof-grid"><div class="proof"><b>直接证明</b>“可见思维链是原始推理流”与“reasoning Token 是真实推理消耗”不能同时成立；usage 高度符合对可见摘要使用 DeepSeek Tokenizer 二次计量。</div><div class="proof limit"><b>边界限定</b>精确计数或分块速度任何一项单独看都不足以反推源头；证据强度来自计数、速度差和大块输出模式三者合并后的两难。</div></div></div></article>
 <article class="node"><div class="node-id"><span class="level mid-high">中高</span><br>E04 · JULY</div><div><h3>API 能力与底层特征标识差异</h3><p>常规请求可正常返回 logprobs 概率，而灰测请求该字段始终为空；system_fingerprint 初期与公开版有明显差异，后被人工统一为 V4P；流式传输时的分包与中文断句边界也展现出完全不同的封装特征。</p><div class="proof-grid"><div class="proof"><b>直接证明</b>两条路径在底层 API 能力、流式封装机制或后端环境配置上存在明确差异。</div><div class="proof limit"><b>边界限定</b>相关字段可由代理网关伪造或修改，须与缓存及统计学证据结合研判。</div></div></div></article>
 <article class="node"><div class="node-id"><span class="level high">高</span><br>E05 · AUGUST</div><div><h3><code>antml</code> 呈现确定性的请求预处理与状态机规则</h3><p>系统对包含 <code>antml</code> 标签的文本展现出一套强特征的确定性解析状态机：未转义的标签会被直接剔除；重复拼接前缀不会按常规增加计费 Token；局部篡改后会从第一个不匹配的字符起开始吐字；且整套规则对英文大小写不敏感。该现象已被 mitu9527 与另一参与者完全复现。</p><div class="proof-grid"><div class="proof"><b>直接证明</b>8 月请求在进入底层模型分词前或在协议解析层经历了 Claude 风格的特征处理，强指向 Claude 请求链。</div><div class="proof limit"><b>边界限定</b>第三方兼容层理论上可主动复刻该规则；仅凭此无法证明其为官方直连 API，亦无法锁定具体型号。</div></div><details class="tech"><summary>技术展开：为什么纯"模型蒸馏学到了异常 Token"的解释不成立？</summary><div class="tech-body"><ol><li><strong>模型权重无法篡改输入计量：</strong>若标签作为普通文本传入，必须先经历分词并计入 Prompt Token。模型生成阶段的任何反应，都不可能让已经进入上下文的字符在计量上凭空蒸发。</li><li><strong>大小写敏感度存在本质差异：</strong><code>antml</code>、<code>ANTML</code> 及大小写混写在常规 Tokenizer 中对应完全不同的 Token ID，纯靠被动蒸馏无法天然获得覆盖所有排列组合的全局过滤规则。</li><li><strong>首个不匹配位置反映了确定性状态机：</strong>"逐字符对比前缀、剥离匹配项、遇错立刻截断并输出剩余部分"的逻辑，完全是词法解析器的标准编程行为，而非大模型的概率性 Token 预测。</li><li><strong>核心现象发生在模型推理之前：</strong>从 Token 计量到大小写规范化，所有特征均发生在实际生成之前的网络协议与预处理层。</li></ol><p><strong>唯一合理的保留解释：</strong>第三方中转或兼容层人为实现了同样的过滤规则。因此该证据锁定了请求链特征，但不证明具体的采购或调用渠道。</p></div></details><div class="node-actions"><a href="antml-analysis.html">阅读完整 ANTML 技术分析</a></div></div></article>
 <article class="node"><div class="node-id"><span class="level high">高</span><br>E06 · AUGUST</div><div><h3>会话分支（Fork）导致灰测脱落，原 Session 维持不变</h3><p>在同一用户账号、同一时间节点下，在原有灰测 Session 中继续对话仍能保持灰测；但一旦将其 Fork 为新会话，新分支立即跌落为公开版 DeepSeek 路径。</p><div class="proof-grid"><div class="proof"><b>直接证明</b>灰测路由状态绑定在具体的 Session 会话生命周期上，而非单纯按账号或全局请求分配。</div><div class="proof limit"><b>边界限定</b>仅能证明会话级路由机制，无法据此反推上游模型身份或路由分流的业务动机。</div></div><div class="quote-strip"><span>"fork session 会掉灰测"</span><span>"原 session 继续聊还会在"</span><span>"fork 的变成了 DS"</span></div></div></article>
@@ -385,7 +396,7 @@ footer a{color:var(--blue)}
 <div class="matrix"><table><thead><tr><th>置信度</th><th>时间线</th><th>核心证据</th><th>直接证明的结论</th><th>主要边界与局限</th></tr></thead><tbody>
 <tr><td>高</td><td>7 月</td><td>固定 64-Token 缓存重算</td><td>usage/cache 字段经过人为重写，处理链不同</td><td>仅适用于 7 月，无法据此命名上游</td></tr>
 <tr><td>高</td><td>7 月</td><td>TTFT、缓存、速率三维聚类</td><td>底层存在至少两套物理推理链路或基础设施</td><td>聚类统计无法直接反推模型版本号</td></tr>
-<tr><td>中高</td><td>7 月</td><td>Reasoning Token 长度二次映射</td><td>可见思维链经由 DeepSeek Tokenizer 重新计量</td><td>无法反推原始思维链摘要的来源</td></tr>
+<tr><td>中高</td><td>7 月</td><td>Reasoning Token 精确映射与摘要式分块输出</td><td>计数、速度差与分块模式形成两难，usage 按可见摘要重算</td><td>三项须结合使用，单项无法反推真实推理源头</td></tr>
 <tr><td>中高</td><td>7 月</td><td>logprobs、fingerprint、delta 差异</td><td>底层 API 接口能力、配置参数或封装存在差异</td><td>网关代理层具备人为覆写这些字段的能力</td></tr>
 <tr><td>高</td><td>8 月</td><td><code>antml</code> 过滤、Token、截断、大小写无关</td><td>完全符合 Claude 请求链特征，且经多方复现</td><td>无法证明是否为官方直连，无法咬定具体型号</td></tr>
 <tr><td>高</td><td>8 月</td><td>Fork 新会话脱落灰测，原 Session 维持</td><td>路由状态严格绑定在 Session 会话生命周期上</td><td>无法识别路由背后的具体业务动机</td></tr>
