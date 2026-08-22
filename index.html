@@ -29,13 +29,13 @@ header.bar{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);
 .hero{padding:48px 0 36px;border-bottom:1px solid var(--line)}
 .hero .eyebrow{margin:0 0 14px;color:var(--accent);font:700 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase}
 .hero h1{margin:0;font:700 24px/1.3 "Noto Serif SC","Songti SC",serif;letter-spacing:-.02em}
-.hero p.lead{max-width:680px;margin:18px 0 0;color:var(--muted);font-size:14px}
+.hero p.lead{max-width:680px;margin:18px 0 0;color:var(--ink);font-size:15px}
 .hero p.lead strong{color:var(--blue)}
 .hero-side{margin-top:28px;padding:18px 0 0;border-top:3px solid var(--ink);max-width:680px}
 .hero-side h2{margin:0 0 8px;font:700 15px/1.3 "Noto Serif SC","Songti SC",serif}
-.hero-side p{margin:0;color:var(--muted);font-size:13px}
+.hero-side p{margin:0;color:var(--ink);font-size:14px}
 .hero-side ul{list-style:none;margin:14px 0 0;padding:0}
-.hero-side li{padding:8px 0;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+.hero-side li{padding:8px 0;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink)}
 .hero-side li b{color:var(--ink)}
 /* notices */
 .notice{margin-top:20px;padding:14px 16px;border:1px solid #d4b094;background:var(--accent-soft);font-size:13px;color:#5a3e2c}
@@ -50,29 +50,29 @@ section.block{padding:40px 0;border-bottom:1px solid var(--line)}
 .shead{display:flex;gap:16px;align-items:baseline;margin-bottom:24px}
 .shead .num{flex:none;width:60px;color:var(--accent);font:700 10px/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase}
 .shead h2{margin:0;font:700 19px/1.25 "Noto Serif SC","Songti SC",serif;letter-spacing:-.015em}
-.shead p{margin:4px 0 0;color:var(--muted);font-size:13px}
+.shead p{margin:5px 0 0;color:var(--ink);font-size:14px}
 /* verdict */
 .verdict{display:grid;grid-template-columns:1fr;gap:0;border:1px solid var(--line)}
 .verdict .vp{padding:24px;background:var(--surface)}
 .verdict .vp .label{color:var(--accent);font:700 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase}
 .verdict .vp h3{margin:14px 0 10px;font:700 18px/1.3 "Noto Serif SC","Songti SC",serif}
 .verdict .vp h3 strong{color:var(--blue)}
-.verdict .vp p{margin:0;color:var(--muted);font-size:13px}
+.verdict .vp p{margin:0;color:var(--ink);font-size:14px}
 .verdict .vs{padding:22px 24px;border-top:1px solid var(--line);background:var(--blue-soft)}
 .verdict .vs .label{color:var(--accent);font:700 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase}
 .verdict .vs h3{margin:12px 0 8px;font:700 16px/1.3 "Noto Serif SC","Songti SC",serif}
-.verdict .vs p{margin:0;color:var(--muted);font-size:13px}
+.verdict .vs p{margin:0;color:var(--ink);font-size:14px}
 .verdict .vs dl{margin:16px 0 0}
 .verdict .vs dl div{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:8px 0;border-top:1px solid rgba(44,94,120,.18)}
 .verdict .vs dt{font-weight:700;font-size:12px}
-.verdict .vs dd{margin:0;color:var(--muted);font-size:12px}
+.verdict .vs dd{margin:0;color:var(--ink);font-size:13px}
 /* premises */
 .premises{display:grid;grid-template-columns:1fr;gap:1px;border:1px solid var(--line);background:var(--line)}
 .premise{padding:20px;background:var(--surface)}
 .premise:first-child{background:var(--blue-soft)}
 .premise .pnum{color:var(--accent);font:700 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em}
 .premise h3{margin:10px 0 6px;font:700 15px/1.3 "Noto Serif SC","Songti SC",serif}
-.premise p{margin:0;color:var(--muted);font-size:12.5px}
+.premise p{margin:0;color:var(--ink);font-size:13.5px}
 .epolicy{margin-top:16px;padding:14px 16px;border:1px solid #d4b094;background:var(--accent-soft);display:flex;gap:16px;align-items:center;justify-content:space-between}
 .epolicy p{margin:0;color:#5a3e2c;font-size:12.5px}
 .epolicy b{color:var(--accent)}
@@ -83,42 +83,234 @@ section.block{padding:40px 0;border-bottom:1px solid var(--line)}
 .era:last-child{background:var(--blue-soft)}
 .era time{color:var(--accent);font:700 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace}
 .era h3{margin:10px 0 6px;font:700 15px/1.25 "Noto Serif SC","Songti SC",serif}
-.era p{margin:0;color:var(--muted);font-size:12.5px}
+.era p{margin:0;color:var(--ink);font-size:13.5px}
 /* chain */
 .chain{border-top:1px solid var(--ink)}
-.node{display:grid;grid-template-columns:100px 1fr;gap:20px;padding:24px 0;border-bottom:1px solid var(--line)}
+.node{display:grid;grid-template-columns:100px minmax(0,1fr);gap:20px;padding:24px 0;border-bottom:1px solid var(--line)}
+.node>div{min-width:0}
 .node-id{font:700 10px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--muted)}
 .level{display:inline-block;margin-bottom:8px;padding:3px 8px;border-radius:99px;font-size:10px;letter-spacing:.03em}
 .level.high{background:var(--green-soft);color:var(--green)}
 .level.mid-high{background:var(--blue-soft);color:var(--blue)}
 .level.mid{background:var(--amber-soft);color:var(--amber)}
 .level.low{background:var(--red-soft);color:var(--red)}
-.node h3{margin:0 0 8px;font:700 16px/1.3 "Noto Serif SC","Songti SC",serif;letter-spacing:-.01em}
-.node>div>p{max-width:680px;margin:0;color:var(--muted);font-size:13px}
+.node h3{margin:0 0 8px;font:700 18px/1.3 "Noto Serif SC","Songti SC",serif;letter-spacing:-.01em}
+.key-mark{margin:0 .04em;padding:.06em .2em;background:#f0d487;color:var(--ink);font-size:1.06em;font-weight:900;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.body-mark{margin:0 .03em;padding:.04em .16em;background:#f5e6b8;color:var(--ink);font-size:1.035em;font-weight:850;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.key-strong{color:var(--ink);font-size:1.05em;font-weight:900}
+.node>div>p{max-width:680px;margin:0;color:var(--ink);font-size:14.5px}
 .proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:16px;border:1px solid var(--line);background:var(--line)}
-.proof{padding:14px 16px;background:var(--surface);font-size:12.5px}
+.proof{padding:14px 16px;background:var(--surface);color:var(--ink);font-size:13.5px}
 .proof b{display:block;margin-bottom:3px;color:var(--ink)}
 .proof.limit{background:var(--bg)}
-.quote-strip{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
-.quote-strip span{padding:5px 8px;border:1px solid var(--line);background:var(--bg);color:#4a5458;font:600 11px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace}
+.summary-note{margin-top:14px;border:1px solid var(--ink);display:grid;grid-template-columns:126px minmax(0,1fr);background:var(--surface)}
+.summary-note-title{padding:14px 13px;display:flex;flex-direction:column;justify-content:center;background:var(--ink);color:#fff;font:850 12px/1.25 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.06em;text-transform:uppercase}
+.summary-note-title span{display:block;margin-top:6px;color:#ffcf70;font:900 16px/1.2 Inter,"Noto Sans SC",sans-serif;letter-spacing:0}
+.summary-note ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr}
+.summary-note li{position:relative;min-height:58px;padding:15px 15px 14px 32px;border-left:1px solid var(--line);color:var(--ink);font-size:15px;line-height:1.5;font-weight:850}
+.summary-note li+li{border-top:1px solid var(--line)}
+.summary-note li:before{content:"◆";position:absolute;left:13px;top:19px;color:var(--accent);font-size:9px}
+.summary-note code{font-size:.9em;font-weight:900}
 .tech{margin-top:14px;border:1px solid #aac3ce;background:var(--blue-soft)}
 .tech summary{min-height:40px;padding:11px 44px 11px 14px;position:relative;display:flex;align-items:center;cursor:pointer;color:var(--blue);font-weight:700;font-size:12.5px;list-style:none}
 .tech summary::-webkit-details-marker{display:none}
 .tech summary:after{content:"＋";position:absolute;right:14px;font-size:18px;font-weight:400}
 .tech[open] summary:after{content:"−"}
-.tech-body{padding:4px 16px 16px;border-top:1px solid #aac3ce;color:var(--muted);font-size:12.5px}
+.antml-tech{margin-top:10px;border-color:var(--ink);background:var(--surface)}
+.antml-tech summary{min-height:56px;padding:15px 52px 15px 17px;border:0;color:var(--ink);font:800 17px/1.4 "Noto Serif SC","Songti SC",serif}
+.antml-tech summary:after{right:17px;color:var(--accent);font-size:22px}
+.antml-tech .tech-body{padding:15px 18px 17px;border-top:1px solid var(--ink);font-size:14.5px}
+.antml-tech .tech-body ol{margin:0;padding-left:21px}
+.antml-tech .tech-body li+li{margin-top:13px}
+.antml-tech .tech-body p{margin:0}
+.antml-tech .tech-body .token-invariant{padding:15px 17px;border-left:5px solid var(--red);background:var(--red-soft);color:var(--ink);font-size:16px;line-height:1.6;font-weight:800}
+.antml-tech .tech-body .token-invariant code{color:var(--red);font-weight:900}
+.antml-tech .tech-body .therefore{display:block;margin-top:11px;padding:12px 14px;background:#20282b;color:#fff;font-size:14px;font-weight:800}
+.antml-tech .tech-body .therefore strong{color:#ffcf70}
+.tech-body{padding:4px 16px 16px;border-top:1px solid #aac3ce;color:var(--ink);font-size:13.5px}
 .tech-body li+li{margin-top:8px}
 .tech-body strong{color:var(--ink)}
 .node-actions{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
 .node-actions a{min-height:38px;padding:0 14px;display:inline-flex;align-items:center;border:1px solid var(--blue);background:var(--blue);color:#f4f0e7;text-decoration:none;font-size:13px;font-weight:800}
 .node-alert{margin-top:14px;padding:13px 15px;border-left:4px solid var(--amber);background:var(--amber-soft);color:#665019;font-size:14px}
 .node-alert b{color:#59440e}
+/* ANTML preprocessing diagram */
+.antml-demo{margin-top:18px;border:1px solid var(--ink);background:var(--surface)}
+.antml-demo-head{padding:15px 17px;border-bottom:1px solid var(--ink);background:var(--accent-soft)}
+.antml-demo-head small{display:block;margin-bottom:6px;color:var(--accent);font:850 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase}
+.antml-demo-head h4{margin:0;font:700 21px/1.3 "Noto Serif SC","Songti SC",serif}
+.antml-demo-head p{margin:6px 0 0;color:var(--ink);font-size:14px;font-weight:700}
+.antml-input{padding:15px 17px;border-bottom:1px solid var(--line)}
+.antml-stage-label{display:block;margin-bottom:10px;color:var(--ink);font-size:17px;line-height:1.3;font-weight:900}
+.antml-tape{display:flex;align-items:stretch;overflow:auto;background:#20282b;color:#f1eee5;font:850 14px/1.35 "SFMono-Regular",Consolas,monospace}
+.antml-token{padding:12px 10px;border-right:1px solid #596468;white-space:nowrap}
+.antml-token.strip{background:#48352c;color:#ffcf70;text-decoration:line-through;text-decoration-thickness:2px}
+.antml-token.stop{background:#853d36;color:#fff;font-size:16px}
+.antml-token.keep{color:#c7dce3}
+.antml-machine{display:grid;grid-template-columns:1fr 48px 1fr 48px 1.15fr;border-bottom:1px solid var(--ink);background:var(--line);gap:1px}
+.antml-step{padding:16px;background:var(--surface);text-align:center}
+.antml-step b{display:block;margin-bottom:6px;font:800 18px/1.2 "SFMono-Regular",Consolas,monospace}
+.antml-step span{display:block;color:var(--ink);font-size:15px;font-weight:800;line-height:1.45}
+.antml-step.ok b{color:var(--accent)}
+.antml-step.halt{background:var(--red-soft)}
+.antml-step.halt b,.antml-step.halt span{color:var(--red)}
+.antml-next{display:grid;place-items:center;background:var(--bg);color:var(--accent);font-size:24px;font-weight:900}
+.antml-output{display:grid;grid-template-columns:1fr 1.25fr;gap:1px;background:var(--ink)}
+.antml-output>div{padding:16px 17px;background:var(--surface)}
+.antml-output>div:last-child{background:#20282b;color:#fff}
+.antml-output small{display:block;margin-bottom:9px;color:var(--ink);font:900 16px/1.3 Inter,"Noto Sans SC",sans-serif}
+.antml-output>div:last-child small{color:#fff}
+.antml-output b{display:block;font:800 19px/1.4 "SFMono-Regular",Consolas,monospace;overflow-wrap:anywhere}
+.antml-output strong{color:#ffcf70}
+.antml-impact{padding:15px 17px;border-top:1px solid var(--ink);background:var(--blue-soft);color:var(--ink);font-size:16px;line-height:1.55;font-weight:850;text-align:center}
+.antml-impact mark{padding:.05em .2em;background:#f0d487;color:var(--ink)}
+/* 64-token cache case */
+.cache-case{margin-top:18px;border:1px solid var(--ink);background:var(--surface)}
+.cache-case-head{padding:15px 18px;border-bottom:1px solid var(--ink);display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
+.cache-case-head .case-label{display:block;margin-bottom:6px;color:var(--accent);font:700 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase}
+.cache-case-head h4{margin:0;font:700 21px/1.3 "Noto Serif SC","Songti SC",serif}
+.cache-case-head p{max-width:440px;margin:5px 0 0;color:var(--ink);font-size:13.5px;line-height:1.55}
+.cache-source{flex:none;min-height:38px;padding:0 12px;display:inline-flex;align-items:center;border:1px solid var(--blue);color:var(--blue);text-decoration:none;font-size:13px;font-weight:850;white-space:nowrap}
+.cache-punch{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--ink)}
+.cache-stat{min-width:0;padding:18px;border-right:1px solid var(--line)}
+.cache-stat:last-child{border-right:0}
+.cache-stat .stat-label{display:block;margin-bottom:9px;color:var(--ink);font-size:17px;line-height:1.35;font-weight:900}
+.cache-stat b{display:block;font:800 34px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:-.06em}
+.cache-stat .stat-note{display:block;margin-top:8px;color:var(--ink);font-size:12.5px;line-height:1.45}
+.cache-stat.danger{background:var(--red-soft)}
+.cache-stat.danger b,.cache-stat.danger .stat-label{color:var(--red)}
+.cache-stat.long b{color:var(--blue)}
+.cache-stat.returned b{color:var(--ink)}
+.cache-compare{display:grid;grid-template-columns:minmax(250px,.85fr) 50px minmax(0,1.15fr);align-items:stretch;border-bottom:1px solid var(--ink)}
+.usage-panel,.payload-panel{min-width:0;padding:16px}
+.panel-label{margin-bottom:9px;color:var(--muted);font:700 9px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.09em;text-transform:uppercase}
+.usage-code{margin:0;padding:15px 16px;overflow:auto;background:#20282b;color:#e9e7df;font:15px/1.72 "SFMono-Regular",Consolas,monospace;white-space:pre}
+.usage-code .miss-line{display:block;margin:0 -16px;padding:1px 16px;background:#853d36;color:#fff;font-weight:800;box-shadow:inset 5px 0 #ffcf70}
+.usage-code .hit-line{color:#8fc5d8}
+.usage-note{margin:10px 0 0;color:var(--red);font-size:13px;font-weight:900}
+.cache-arrow{position:relative;display:flex;align-items:center;justify-content:center;border-left:1px solid var(--line);border-right:1px solid var(--line);background:var(--accent-soft);color:var(--red);font:900 22px/1 ui-monospace,SFMono-Regular,Consolas,monospace}
+.cache-arrow:before{content:"指向";position:absolute;top:13px;color:var(--accent);font:700 8px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em}
+.payload-panel{background:#e7e2d7}
+.payload-meta{margin-bottom:9px;display:flex;justify-content:space-between;gap:10px;color:var(--muted);font:700 9px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;text-transform:uppercase}
+.payload-meta>*{min-width:0;overflow-wrap:anywhere}
+.payload-meta strong{color:var(--blue)}
+.code-river{position:relative;height:260px;margin:0;overflow:hidden;padding:13px 14px 13px 38px;background:#20282b;color:#dfe5de;font:10px/1.55 "SFMono-Regular",Consolas,monospace;white-space:pre;tab-size:2}
+.code-river:after{content:"中间省略 2,000+ 行";position:absolute;left:0;right:0;top:50%;padding:13px 12px;transform:translateY(-50%);border-top:1px solid #7d6c48;border-bottom:1px solid #7d6c48;background:#3c382c;color:#f5d995;text-align:center;font:900 18px/1.25 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.02em}
+.code-river .ln{position:absolute;left:8px;color:#7d8a8e;user-select:none}
+.code-river .l1{top:14px}.code-river .l2{top:30px}.code-river .l3{top:46px}.code-river .l4{bottom:62px}.code-river .l5{bottom:46px}.code-river .l6{bottom:30px}.code-river .l7{bottom:14px}
+.payload-caption{margin:10px 0 0;color:var(--ink);font-size:13px;line-height:1.6}
+.payload-caption b{color:var(--ink)}
+.cache-math{padding:17px 18px;border-bottom:1px solid var(--ink);background:var(--blue-soft)}
+.cache-math-head{margin-bottom:14px}
+.cache-math-head small{display:block;margin-bottom:7px;color:var(--blue);font:800 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase}
+.cache-math-head h5{margin:0;font:700 20px/1.3 "Noto Serif SC","Songti SC",serif}
+.math-flow{display:grid;grid-template-columns:1fr 58px 1.35fr;align-items:stretch}
+.math-box{padding:15px 16px;border:1px solid #aac3ce;background:#eef3f2}
+.math-box small{display:block;margin-bottom:9px;color:var(--ink);font:900 17px/1.3 Inter,"Noto Sans SC",sans-serif}
+.math-box b{display:block;color:var(--ink);font:800 29px/1.15 "SFMono-Regular",Consolas,monospace}
+.math-box span{display:block;margin-top:8px;color:var(--ink);font-size:13px;line-height:1.4;font-weight:700}
+.math-divider{display:grid;place-items:center;color:var(--blue);font:900 17px/1 ui-monospace,SFMono-Regular,Consolas,monospace}
+.math-split{display:grid;grid-template-columns:1fr 1fr;gap:1px;border:1px solid #aac3ce;background:#aac3ce}
+.math-result{padding:14px;background:#eef3f2}
+.math-result small{display:block;margin-bottom:9px;color:var(--ink);font:900 16px/1.3 Inter,"Noto Sans SC",sans-serif}
+.math-result b{display:block;font:800 24px/1.2 "SFMono-Regular",Consolas,monospace}
+.math-result span{display:block;margin-top:8px;color:var(--ink);font-size:13px;line-height:1.4;font-weight:750}
+.math-result.hit b{color:var(--blue)}
+.math-result.miss{background:var(--red-soft)}
+.math-result.miss b,.math-result.miss span,.math-result.miss small{color:var(--red)}
+.math-match{margin-top:10px;padding:18px 14px;background:#20282b;color:#e8e5dc;font:850 22px/1.4 "SFMono-Regular",Consolas,monospace;text-align:center;letter-spacing:-.03em}
+.math-match strong{color:#ffcf70;font-size:1.16em}
+.math-crosscheck{margin-top:10px;padding:11px 13px;border-left:4px solid var(--blue);background:rgba(246,243,234,.82);color:var(--ink);font-size:12.5px;line-height:1.6}
+.math-crosscheck b{color:var(--ink)}
+.cache-verdict{display:grid;grid-template-columns:1fr 62px 1.35fr;align-items:stretch;border-bottom:1px solid var(--ink)}
+.cache-verdict-side{padding:19px 20px;background:var(--surface)}
+.cache-verdict-side small{display:block;margin-bottom:8px;color:var(--ink);font:850 13px/1.2 Inter,"Noto Sans SC",sans-serif}
+.cache-verdict-side b{display:block;font:700 19px/1.35 "Noto Serif SC","Songti SC",serif}
+.cache-verdict-side em{display:inline-block;margin-top:11px;padding:7px 11px;background:var(--green-soft);color:var(--green);font:900 15px/1.2 Inter,"Noto Sans SC",sans-serif;font-style:normal}
+.cache-verdict-vs{display:flex;align-items:center;justify-content:center;border-left:1px solid var(--line);border-right:1px solid var(--line);background:var(--bg);color:var(--ink);font:900 22px/1.15 "Noto Serif SC","Songti SC",serif;writing-mode:vertical-rl;text-orientation:upright;letter-spacing:.12em}
+.cache-verdict-side.alarm{background:var(--red-soft)}
+.cache-verdict-side.alarm small,.cache-verdict-side.alarm b{color:var(--red)}
+.cache-verdict-side.alarm b{font-size:22px}
+.cache-verdict-side.alarm em{background:var(--red);color:#fff;font-size:16px}
+/* reasoning-token dilemma */
+.reasoning-facts{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:12px;border:1px solid var(--line);background:var(--line)}
+.reasoning-fact{padding:12px 14px;background:var(--surface)}
+.reasoning-fact small{display:block;margin-bottom:6px;color:var(--accent);font:800 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase}
+.reasoning-fact b{display:block;font-size:15px;line-height:1.45}
+.reasoning-dilemma{margin-top:12px;border:1px solid var(--ink);background:var(--line)}
+.dilemma-head{padding:15px 17px;border-bottom:1px solid var(--ink);background:var(--accent-soft);color:#5a3e2c;font:800 17px/1.4 "Noto Serif SC","Songti SC",serif;text-align:center}
+.dilemma-paths{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:1px}
+.dilemma-paths:after{content:"OR";position:absolute;left:50%;top:22px;z-index:2;width:42px;height:42px;display:grid;place-items:center;transform:translateX(-50%);border:1px solid var(--ink);border-radius:50%;background:var(--ink);color:#fff;font:900 12px/1 ui-monospace,SFMono-Regular,Consolas,monospace}
+.dilemma-path{padding:21px;background:var(--surface)}
+.dilemma-path:nth-child(2){background:#f1eee5}
+.dilemma-path .path-label{display:inline-block;margin-bottom:12px;padding:6px 10px;background:var(--blue);color:#fff;font:900 12px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase}
+.dilemma-path:nth-child(2) .path-label{background:var(--accent)}
+.dilemma-path h4{margin:0 0 17px;font:700 28px/1.18 "Noto Serif SC","Songti SC",serif}
+.path-logic{display:grid;gap:7px}
+.path-logic span{display:block;padding:10px 12px;border-left:4px solid var(--line);background:var(--bg);color:var(--ink);font-size:14px;line-height:1.5}
+.path-logic span.conflict{border-color:var(--red);background:var(--red-soft);color:#693d38;font-weight:800}
+.path-answer{display:block;margin-top:15px;padding-top:13px;border-top:1px solid var(--line);color:var(--red);font-size:18px;line-height:1.4;font-weight:900}
+.dilemma-result{padding:19px 17px;border-top:1px solid var(--ink);background:#20282b;color:#e8e5dc;font-size:18px;line-height:1.45;text-align:center}
+.dilemma-result b{color:#ffcf70;font-size:1.08em}
+/* live output-path comparison */
+.stream-lab{margin-top:18px;border:1px solid var(--ink);background:var(--surface)}
+.stream-lab-head{padding:14px 16px;border-bottom:1px solid var(--ink);display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--blue-soft)}
+.stream-lab-head>div{min-width:0}
+.stream-lab-head small{display:block;margin-bottom:5px;color:var(--blue);font:800 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase}
+.stream-lab-head h4{margin:0;font:700 19px/1.3 "Noto Serif SC","Songti SC",serif}
+.stream-replay{flex:none;min-height:40px;padding:0 14px;border:1px solid var(--blue);background:var(--blue);color:#fff;font:850 13px/1 Inter,"Noto Sans SC",sans-serif;cursor:pointer}
+.stream-note{margin:0;padding:11px 16px;border-bottom:1px solid var(--line);color:var(--ink);font-size:14px;font-weight:700}
+.stream-note b{color:var(--accent)}
+.stream-panels{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--ink)}
+.stream-panel{min-width:0;background:var(--surface)}
+.stream-panel-head{min-height:92px;padding:14px 15px;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.stream-panel-head>div{min-width:0}
+.stream-panel-head .route{display:block;margin-bottom:7px;color:var(--blue);font:850 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase}
+.stream-panel.formal .route{color:var(--accent)}
+.stream-panel-head h5{margin:0;font:700 21px/1.25 "Noto Serif SC","Songti SC",serif}
+.stream-state{flex:none;min-width:100px;padding:7px 9px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:13px;font-weight:850;text-align:center}
+.stream-state.burst{border-color:var(--blue);background:var(--blue-soft);color:var(--blue)}
+.stream-state.pause{border-color:#d0a94c;background:#f3e5b7;color:#6d4f08}
+.stream-state.steady{border-color:#8db39f;background:var(--green-soft);color:var(--green)}
+.stream-progress{height:6px;background:#d6d1c5;overflow:hidden}
+.stream-progress i{display:block;width:0;height:100%;background:var(--blue);transition:width .08s linear}
+.stream-panel.formal .stream-progress i{background:var(--accent)}
+.stream-window{width:100%;max-width:100%;height:360px;margin:0;padding:16px;overflow-y:auto;overflow-x:hidden;background:#20282b;color:#edf0e8;font:14px/1.72 "SFMono-Regular",Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;scrollbar-color:#68777b #20282b}
+.stream-window code{font:inherit;white-space:inherit;overflow-wrap:anywhere;word-break:break-all}
+.stream-cursor{display:inline-block;width:7px;height:1.15em;margin-left:2px;vertical-align:-.16em;background:#ffcf70;animation:cursor-blink .7s steps(1) infinite}
+.stream-panel.done .stream-cursor{display:none}
+.stream-panel.done .stream-progress i{width:100%!important}
+.stream-panel-foot{min-height:64px;padding:11px 14px;display:block;justify-content:initial;flex-wrap:nowrap;background:var(--bg);color:var(--ink);font-size:12.5px;line-height:1.45;font-weight:750}
+.stream-panel-foot b{display:block;margin-bottom:3px;color:var(--blue);font-size:14px}
+.stream-panel.formal .stream-panel-foot b{color:var(--accent)}
+.recording-proof{padding:14px 16px;border-top:1px solid var(--ink);display:flex;align-items:center;justify-content:space-between;gap:18px;background:#f3e5b7}
+.recording-proof-copy small{display:block;margin-bottom:4px;color:var(--accent);font:850 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase}
+.recording-proof-copy b{display:block;color:var(--ink);font-size:16px;line-height:1.35}
+.recording-proof-copy span{display:block;margin-top:3px;color:var(--ink);font-size:12.5px;line-height:1.45;font-weight:700}
+.recording-open{flex:none;min-height:42px;padding:0 15px;border:1px solid var(--ink);background:var(--ink);color:#fff;font:900 13px/1.3 Inter,"Noto Sans SC",sans-serif;cursor:pointer}
+.recording-open:hover{background:var(--accent);border-color:var(--accent)}
+.recording-modal[hidden]{display:none}
+.recording-modal{position:fixed;inset:0;z-index:70;padding:24px;display:grid;place-items:center;background:rgba(18,24,26,.88)}
+.recording-dialog{width:min(1100px,96vw);max-height:calc(100vh - 48px);overflow:auto;border:1px solid #778184;background:var(--surface);box-shadow:0 22px 70px rgba(0,0,0,.45)}
+.recording-dialog-head{position:sticky;top:0;z-index:2;padding:15px 64px 14px 18px;border-bottom:1px solid var(--ink);background:var(--blue-soft)}
+.recording-dialog-head small{display:block;margin-bottom:5px;color:var(--blue);font:850 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase}
+.recording-dialog-head h4{margin:0;color:var(--ink);font:700 22px/1.25 "Noto Serif SC","Songti SC",serif}
+.recording-dialog-head p{margin:6px 0 0;color:var(--ink);font-size:13px;line-height:1.5;font-weight:700}
+.recording-close{position:absolute;right:14px;top:14px;width:40px;height:40px;border:1px solid var(--ink);background:var(--ink);color:#fff;font-size:24px;line-height:1;cursor:pointer}
+.recording-grid{padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px;background:#20282b}
+.recording-card{min-width:0;margin:0;border:1px solid #778184;background:var(--surface)}
+.recording-card img{display:block;width:100%;aspect-ratio:1.24/1;object-fit:contain;background:#fff}
+.recording-card figcaption{padding:12px 13px;border-top:1px solid var(--ink);color:var(--ink);font-size:13px;line-height:1.45;font-weight:750}
+.recording-card figcaption b{display:block;margin-bottom:4px;font-size:16px}
+.recording-card.grey figcaption b{color:var(--blue)}
+.recording-card.formal figcaption b{color:var(--accent)}
+@keyframes cursor-blink{50%{opacity:0}}
 /* wall */
 .wall{display:grid;gap:20px}
 .cluster{padding:20px;border:1px solid var(--line);background:var(--surface)}
 .cluster .stamp{color:var(--accent);font:700 10px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase}
 .cluster h3{margin:10px 0 6px;font:700 16px/1.25 "Noto Serif SC","Songti SC",serif}
-.cluster>p{margin:0 0 14px;color:var(--muted);font-size:12px}
+.cluster>p{margin:0 0 14px;color:var(--ink);font-size:13.5px}
 .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .shot{margin:0;border:1px solid var(--line);background:var(--bg);overflow:hidden}
 .shot.wide{grid-column:span 2}
@@ -127,8 +319,8 @@ section.block{padding:40px 0;border-bottom:1px solid var(--line)}
 .shot img{display:block;width:100%;height:200px;object-fit:contain;background:#d5d0c4;cursor:zoom-in}
 .shot.tall img{height:300px}
 .shot.full img{height:auto;max-height:440px}
-.shot figcaption{padding:10px 12px;border-top:1px solid var(--line);color:var(--muted);font-size:11px;line-height:1.5}
-.shot figcaption b{display:block;margin-bottom:3px;color:var(--ink);font-size:12px}
+.shot figcaption{padding:11px 12px;border-top:1px solid var(--line);color:var(--ink);font-size:12.5px;line-height:1.55}
+.shot figcaption b{display:block;margin-bottom:4px;color:var(--ink);font-size:14px}
 /* matrix */
 .matrix{overflow:auto;border-top:1px solid var(--ink)}
 table{width:100%;min-width:700px;border-collapse:collapse;font-size:12px}
@@ -137,13 +329,13 @@ th{color:var(--muted);font:700 10px/1.2 ui-monospace,SFMono-Regular,Consolas,mon
 td:first-child{font-weight:700}
 /* limits */
 .limits{counter-reset:item;display:grid;grid-template-columns:1fr 1fr;gap:0 32px;border-top:1px solid var(--ink)}
-.limit-item{position:relative;padding:16px 0 16px 42px;border-bottom:1px solid var(--line);color:var(--muted);font-size:12.5px}
+.limit-item{position:relative;padding:16px 0 16px 42px;border-bottom:1px solid var(--line);color:var(--ink);font-size:13.5px}
 .limit-item:before{counter-increment:item;content:counter(item,decimal-leading-zero);position:absolute;left:0;top:18px;color:var(--accent);font:700 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace}
 .limit-item b{color:var(--ink)}
 /* method */
 .method{display:grid;grid-template-columns:1fr 1fr;gap:32px}
 .method h3{margin:0 0 8px;font:700 14px/1.3 "Noto Serif SC","Songti SC",serif}
-.method p,.method li{color:var(--muted);font-size:12.5px}
+.method p,.method li{color:var(--ink);font-size:13.5px}
 .method ul{padding-left:18px;margin:8px 0}
 .method li+li{margin-top:4px}
 /* footer */
@@ -166,6 +358,17 @@ footer a{color:var(--blue)}
   .wrap{padding:0 16px}
   .hero{padding-top:36px}
   .node{grid-template-columns:1fr;gap:8px}
+  .summary-note{grid-template-columns:1fr}.summary-note-title{padding:11px 13px;display:block}.summary-note-title span{display:inline;margin:0 0 0 8px}.summary-note ul{grid-template-columns:1fr}.summary-note li{min-height:0;border-left:0;border-top:1px solid var(--line)}
+  .cache-case-head{display:block}.cache-source{margin-top:12px}
+  .antml-machine{grid-template-columns:1fr}.antml-next{min-height:38px;transform:none;font-size:0}.antml-next:after{content:"↓";font-size:24px}.antml-output{grid-template-columns:1fr}.antml-tape{display:grid;grid-template-columns:repeat(5,auto);font-size:10px}.antml-token{padding:10px 5px}
+  .cache-punch{grid-template-columns:1fr}.cache-stat{border-right:0;border-bottom:1px solid var(--line)}.cache-stat:last-child{border-bottom:0}
+  .cache-compare{grid-template-columns:1fr}.cache-arrow{min-height:48px;border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);transform:none}.cache-arrow:before{left:16px;top:19px}.cache-arrow:after{content:"↓"}
+  .cache-arrow{font-size:0}.cache-arrow:after{font-size:24px}
+  .math-flow{grid-template-columns:1fr}.math-divider{min-height:38px}.math-split{grid-template-columns:1fr 1fr}
+  .cache-verdict{grid-template-columns:1fr}.cache-verdict-vs{min-height:48px;border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);writing-mode:horizontal-tb;letter-spacing:.05em}
+  .reasoning-facts,.dilemma-paths{grid-template-columns:1fr}.dilemma-paths:after{content:"OR";left:auto;right:16px;top:calc(50% - 17px);transform:none}.dilemma-path:nth-child(2){border-top:1px solid var(--ink)}
+  .stream-lab-head{display:grid;grid-template-columns:1fr;align-items:start}.stream-replay{width:100%}.stream-panels{grid-template-columns:1fr}.stream-panel.formal{border-top:1px solid var(--ink)}.stream-window{height:320px}.stream-panel-head{min-height:0;display:grid;grid-template-columns:1fr}.stream-state{justify-self:start}
+  .recording-proof{display:grid}.recording-open{width:100%}.recording-modal{padding:10px}.recording-dialog{width:100%;max-height:calc(100vh - 20px)}.recording-dialog-head{padding:14px 58px 13px 14px}.recording-dialog-head h4{font-size:19px}.recording-grid{grid-template-columns:1fr;padding:10px}.recording-card img{height:auto;aspect-ratio:auto}
   .shots,.proof-grid,.limits,.method{grid-template-columns:1fr}
   .shot.wide,.shot.full{grid-column:auto}
   .shot img,.shot.tall img{height:auto;max-height:360px}
@@ -174,16 +377,16 @@ footer a{color:var(--blue)}
   .verdict .vs dl div{grid-template-columns:56px 1fr}
   footer{padding:20px 16px}
 }
-@media(max-width:400px){.quote-strip span{width:100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media(min-width:761px){
   .bar-inner nav a{font-size:13px}
   .hero p.lead{font-size:16px}
-  .hero-side p,.hero-side li,.notice,.shead p,.verdict .vp p,.verdict .vs p,.premise p,.epolicy p,.era p,.node>div>p,.proof,.tech-body,.limit-item,.method p,.method li{font-size:14px}
+  .hero-side p,.hero-side li,.notice,.shead p,.verdict .vp p,.verdict .vs p,.premise p,.epolicy p,.era p,.proof,.tech-body,.limit-item,.method p,.method li{font-size:15px}
+  .node>div>p{font-size:16px}
   .shot figcaption,table{font-size:13px}
-  .shot figcaption b,.verdict .vs dt,.verdict .vs dd{font-size:13px}
+  .shot figcaption b,.verdict .vs dt,.verdict .vs dd{font-size:15px}
 }
-@media print{header.bar,.lightbox{display:none!important}section.block{break-inside:avoid}body{background:var(--surface)}}
+@media print{header.bar,.lightbox,.recording-modal,.recording-proof{display:none!important}section.block{break-inside:avoid}body{background:var(--surface)}}
 </style>
 </head>
 <body>
@@ -213,16 +416,16 @@ footer a{color:var(--blue)}
 <section class="block" id="verdict">
 <div class="shead"><div class="num">01 / Assessment</div><div><h2>综合研判</h2><p>先明确核心确定性结论，再划定证据尚未覆盖的边界。</p></div></div>
 <div class="verdict">
-<article class="vp"><span class="label">Primary assessment</span><h3>8 月灰测<strong>大概率指向 Opus 5</strong></h3><p>围绕 <code>antml</code> 标签的过滤机制、输入 Token 计量异常、截断边界及大小写无关性，多项物理规则共同锁定了 Claude 风格的请求处理链。至于时事知识、流式传输形态和安全拒答行为仅作为辅助证据。需要说明的是，现有公开材料尚无法百分之百锁定特定版本号，亦无法分辨其究竟是官方直连 API、第三方中转还是其他托管服务。</p></article>
+<article class="vp"><span class="label">Primary assessment</span><h3>8 月灰测<strong>大概率指向 Opus 5</strong></h3><p>围绕 <code>antml</code> 标签的过滤机制、输入 Token 计量异常、截断边界及大小写无关性，<mark class="key-mark">多项物理规则共同锁定 Claude 风格请求处理链</mark>。至于时事知识、流式传输形态和安全拒答行为仅作为辅助证据。需要说明的是，现有公开材料尚无法百分之百锁定特定版本号，亦无法分辨其究竟是官方直连 API、第三方中转还是其他托管服务。</p></article>
 <aside class="vs"><span class="label">Cross-round finding</span><h3>7 月与 8 月不是同一模型路径</h3><p>存在争议，但普遍认为 8 月灰测模型前端水平强于 7 月灰测；7 月的生物回退为空回复，8 月灰测的生物回退为回退到 DSV4 Pro。固定 64-Token 缓存截断重算机制被修复，部分政治问题会被检测截断。</p><dl><div><dt>7 月</dt><dd>推测属于 Fable 系列，具体版本未定</dd></div><div><dt>8 月</dt><dd>强指向 Claude 请求链，Opus 5 为大概率候选</dd></div><div><dt>回退</dt><dd>触发高危安全拦截后，降级回退至 0813 V4 Pro 正式版链路</dd></div></dl></aside>
 </div>
 </section>
 <section class="block" id="premises">
 <div class="shead"><div class="num">02 / Premises</div><div><h2>分析方法论与前置定义</h2><p>本报告基于系统级客观指标识别路由链路切换，而非主观猜测模型文风。</p></div></div>
 <div class="premises">
-<article class="premise"><span class="pnum">P01 / GREY PATH</span><h3>灰测常态：摘要式思维链，大块分段输出</h3><p>在稳定的灰测会话中，最显著的特征是系统先完成内部推理，再将思维链摘要以较大 Chunk（数据块）分段吐出。这与公开版"逐 Token 实时流式输出"的时序和分包形态有着本质区别。</p></article>
-<article class="premise"><span class="pnum">P02 / FALLBACK</span><h3>高危安全拦截：长延迟后降级为流式输出</h3><p>当触发高危安全规则（如生物危害提问）时，系统并非直接报错中断，而是经历显著拉长的首字延迟（TTFT），随后切换为 DeepSeek 标志性的逐 Token 流式思维链；且该会话在此之后彻底脱离灰测，符合向 0813 V4 Pro 正式版的回退逻辑。</p></article>
-<article class="premise"><span class="pnum">P03 / CONTEXT</span><h3>排除上下文污染：被引导的公开版无法作为反例</h3><p>如果公开版 DeepSeek 在历史上下文中已经接触到示例输出、特定角色设定或异常 Token，它会自然顺应上下文进行模仿。这种"上下文被污染后的复现"不具备独立鉴别力。同理，后续单次交互未能复现安全拦截，也不能推翻之前的路由记录。</p></article>
+<article class="premise"><span class="pnum">P01 / GREY PATH</span><h3>灰测常态：摘要式思维链，大块分段输出</h3><p>在稳定的灰测会话中，最显著的特征是系统先完成内部推理，再将思维链摘要以<strong class="key-strong">较大 Chunk 分段吐出</strong>。这与公开版"逐 Token 实时流式输出"的时序和分包形态有着本质区别。</p></article>
+<article class="premise"><span class="pnum">P02 / FALLBACK</span><h3>高危安全拦截：长延迟后降级为流式输出</h3><p>当触发高危安全规则（如生物危害提问）时，系统并非直接报错中断，而是经历显著拉长的首字延迟（TTFT），随后<strong class="key-strong">切换为 DeepSeek 标志性的逐 Token 流式思维链</strong>；且该会话在此之后彻底脱离灰测，符合向 0813 V4 Pro 正式版的回退逻辑。</p></article>
+<article class="premise"><span class="pnum">P03 / CONTEXT</span><h3>排除上下文污染：被引导的公开版无法作为反例</h3><p>如果公开版 DeepSeek 在历史上下文中已经接触到示例输出、特定角色设定或异常 Token，它会自然顺应上下文进行模仿。这种<strong class="key-strong">"上下文被污染后的复现"不具备独立鉴别力</strong>。同理，后续单次交互未能复现安全拦截，也不能推翻之前的路由记录。</p></article>
 </div>
 <div class="epolicy"><p><b>证据准则：</b>关键实验均保留有完整录屏或原始 Session 数据备查。任何支持或反对的论点，必须附带可供交叉验证的截图或日志，空口无凭者一律不予采纳。更高级别的反证需包含完整时间线、请求抓包或无剪辑视频。</p><a href="discussion.html">提交正反证据</a></div>
 </section>
@@ -237,17 +440,52 @@ footer a{color:var(--blue)}
 <section class="block" id="chain">
 <div class="shead"><div class="num">04 / Chain</div><div><h2>完整证据链</h2><p>每个节点仅承载其能直接证明的狭义结论，最终的型号推论建立在多节点的交叉印证之上。</p></div></div>
 <div class="chain">
-<article class="node"><div class="node-id"><span class="level high">高</span><br>E01 · JULY</div><div><h3>固定 64-Token 缓存截断重算机制</h3><p>旧灰测中，未命中缓存（cache_miss）的输入长度严格小于 64，命中缓存（cache_hit）则恒为 64 的整数倍，完全契合公式 <code>hit = floor(input / 64) * 64</code>。真实的大模型推理服务会返回实际物理命中量，绝不会机械地按 64 粒度强行切分。</p><div class="proof-grid"><div class="proof"><b>直接证明</b>7 月的 usage/cache 字段经过了人为或网关层的特殊重算，其处理链路与常规 DeepSeek 不同。</div><div class="proof limit"><b>边界限定</b>无法由此直接推导上游模型身份；该规律已被修复，不适用于 8 月新灰测。</div></div><div class="quote-strip"><span>"所有非 cache 的 input token 全都小于 64"</span><span>"命中 = 下取整(input/64)×64"</span><span>"8 月明显假的缓存数据修好了"</span></div><div class="node-action"><a href="https://github.com/YunhaoFu/dsv4ga-news-gather#-%E5%85%B1%E4%BA%AB%E5%AF%B9%E8%AF%9D%E9%93%BE%E6%8E%A5" target="_blank" rel="noopener noreferrer">查看 7 月灰测原始对话分析样本 ↗</a></div></div></article>
-<article class="node"><div class="node-id"><span class="level high">高</span><br>E02 · JULY</div><div><h3>TTFT、缓存合法性与生成速率三维联合聚类</h3><p>数据呈现明显的双峰分布：低延迟组生成速率约 200 字/秒且缓存数据正常；高延迟组生成速率约 80 字/秒且伴随假缓存。该证据的决定性在于三个独立维度的强关联共振，排除了单纯的"服务器排队"假象。</p><div class="proof-grid"><div class="proof"><b>直接证明</b>7 月系统底层至少存在两套物理处理链路或推理基础设施，并非同一集群在不同负载下的表现。</div><div class="proof limit"><b>边界限定</b>排队只能解释延迟，无法解释缓存逻辑与速率的同步聚类；但聚类本身仍无法直接为模型命名。</div></div></div></article>
-<article class="node"><div class="node-id"><span class="level mid-high">中高</span><br>E03 · JULY</div><div><h3>推理 Token 对可见思维链文本二次计数</h3><p>接口返回的推理 Token 数量，严格等于将前端可见思维链文本代入 DeepSeek Tokenizer 计算后的长度 + 2。结合伪造缓存的现象，高度指向网关层在拿到上游生成的思维链摘要后，使用自身分词器重新包装了 usage 字段。</p><div class="proof-grid"><div class="proof"><b>直接证明</b>usage 字段存在由 DeepSeek 端发起的重新计量行为，符合协议转换层的特征。</div><div class="proof limit"><b>边界限定</b>重新计数的现象本身无法反推思维链摘要的真实生成源头。</div></div></div></article>
-<article class="node"><div class="node-id"><span class="level mid-high">中高</span><br>E04 · JULY</div><div><h3>API 能力与底层特征标识差异</h3><p>常规请求可正常返回 logprobs 概率，而灰测请求该字段始终为空；system_fingerprint 初期与公开版有明显差异，后被人工统一为 V4P；流式传输时的分包与中文断句边界也展现出完全不同的封装特征。</p><div class="proof-grid"><div class="proof"><b>直接证明</b>两条路径在底层 API 能力、流式封装机制或后端环境配置上存在明确差异。</div><div class="proof limit"><b>边界限定</b>相关字段可由代理网关伪造或修改，须与缓存及统计学证据结合研判。</div></div></div></article>
-<article class="node"><div class="node-id"><span class="level high">高</span><br>E05 · AUGUST</div><div><h3><code>antml</code> 呈现确定性的请求预处理与状态机规则</h3><p>系统对包含 <code>antml</code> 标签的文本展现出一套强特征的确定性解析状态机：未转义的标签会被直接剔除；重复拼接前缀不会按常规增加计费 Token；局部篡改后会从第一个不匹配的字符起开始吐字；且整套规则对英文大小写不敏感。该现象已被 mitu9527 与另一参与者完全复现。</p><div class="proof-grid"><div class="proof"><b>直接证明</b>8 月请求在进入底层模型分词前或在协议解析层经历了 Claude 风格的特征处理，强指向 Claude 请求链。</div><div class="proof limit"><b>边界限定</b>第三方兼容层理论上可主动复刻该规则；仅凭此无法证明其为官方直连 API，亦无法锁定具体型号。</div></div><details class="tech"><summary>技术展开：为什么纯"模型蒸馏学到了异常 Token"的解释不成立？</summary><div class="tech-body"><ol><li><strong>模型权重无法篡改输入计量：</strong>若标签作为普通文本传入，必须先经历分词并计入 Prompt Token。模型生成阶段的任何反应，都不可能让已经进入上下文的字符在计量上凭空蒸发。</li><li><strong>大小写敏感度存在本质差异：</strong><code>antml</code>、<code>ANTML</code> 及大小写混写在常规 Tokenizer 中对应完全不同的 Token ID，纯靠被动蒸馏无法天然获得覆盖所有排列组合的全局过滤规则。</li><li><strong>首个不匹配位置反映了确定性状态机：</strong>"逐字符对比前缀、剥离匹配项、遇错立刻截断并输出剩余部分"的逻辑，完全是词法解析器的标准编程行为，而非大模型的概率性 Token 预测。</li><li><strong>核心现象发生在模型推理之前：</strong>从 Token 计量到大小写规范化，所有特征均发生在实际生成之前的网络协议与预处理层。</li></ol><p><strong>唯一合理的保留解释：</strong>第三方中转或兼容层人为实现了同样的过滤规则。因此该证据锁定了请求链特征，但不证明具体的采购或调用渠道。</p></div></details><div class="node-actions"><a href="antml-analysis.html">阅读完整 ANTML 技术分析</a></div></div></article>
-<article class="node"><div class="node-id"><span class="level high">高</span><br>E06 · AUGUST</div><div><h3>会话分支（Fork）导致灰测脱落，原 Session 维持不变</h3><p>在同一用户账号、同一时间节点下，在原有灰测 Session 中继续对话仍能保持灰测；但一旦将其 Fork 为新会话，新分支立即跌落为公开版 DeepSeek 路径。</p><div class="proof-grid"><div class="proof"><b>直接证明</b>灰测路由状态绑定在具体的 Session 会话生命周期上，而非单纯按账号或全局请求分配。</div><div class="proof limit"><b>边界限定</b>仅能证明会话级路由机制，无法据此反推上游模型身份或路由分流的业务动机。</div></div><div class="quote-strip"><span>"fork session 会掉灰测"</span><span>"原 session 继续聊还会在"</span><span>"fork 的变成了 DS"</span></div></div></article>
-<article class="node"><div class="node-id"><span class="level high">高</span><br>E07 · AUGUST</div><div><h3>高危安全提问触发无缝降级（Fallback）</h3><p>在稳定的灰测会话中输入高危生物安全问题后，系统在经历约 15 秒的异常长 TTFT 后，输出模式突变为 DeepSeek 逐 Token 流式思维链，且该会话自此彻底脱离灰测。抓包显示整个过程中 provider/model 响应头保持不变，但底层时序与分块机制已完全倒换。</p><div class="node-alert"><b>识别提醒：</b>回退后的思维链仍可能模仿上文思维链的部分文字特征。判断时应同时观察思维链的实际输出行为、TTFT，并在干净上下文中进行脏 Token 测试；脏 Token 测试与其他测试也可能受到上文结果污染。请理性区分，无法确定时可提交完整录屏供复核。</div><div class="proof-grid"><div class="proof"><b>直接证明</b>灰测上游在该类请求下触发了熔断或拒绝，网关随后将请求无缝降级回退至 0813 V4 Pro 正式版。</div><div class="proof limit"><b>边界限定</b>单一安全提问并非通用的模型指纹；T4 噬菌体反例说明拦截取决于具体风险等级与上下文。</div></div><div class="quote-strip"><span>"思维链变成流式了"</span><span>"一问生物甲就没了"</span><span>"首字 15 秒，切了 DS 流式思维链"</span></div></div></article>
-<article class="node"><div class="node-id"><span class="level mid-high">中高</span><br>E08 · AUGUST</div><div><h3>思维链输出形态与分词边界的多路径佐证</h3><p>灰测链路呈现出明显的"大块摘要式"思维链推送，公开版则是"单字实时流式"；两者在部分中文词汇的切分边界与 Chunk 截断上也存在可观测的差异，与 Fallback 及 Fork 现象形成互证。</p><div class="proof-grid"><div class="proof"><b>直接证明</b>系统内部确实存在完全不同的流式封装、分词处理或输出管线。</div><div class="proof limit"><b>边界限定</b>截图缺少完整的原始 SSE 抓包帧；视觉分块与文风不可单独作为判定模型的依据。</div></div></div></article>
-<article class="node"><div class="node-id"><span class="level mid">中</span><br>E09 · CROSS-ROUND</div><div><h3>V4 Pro 正式版反向测试必须基于空白上下文</h3><p>在无历史记录的干净会话中，V4 Pro 正式版无法稳定通过全部异常 Token，多次测试均未出现正文固定输出，简单提问也不会像旧灰测那样跳过思考环节。任何在已被历史信息污染的会话中完成的"顺应模仿"，都不能作为否定路由差异的有效反证。</p><div class="proof-grid"><div class="proof"><b>直接证明</b>在空白会话受控变量下，7 月灰测与后续 V4 Pro 正式版的 Tokenizer 处理、后训练或路由策略存在显著差异。</div><div class="proof limit"><b>反证门槛</b>有效证伪必须在全新会话、相同参数和相同 Prompt 下进行，并提供完整上下文截图；受污染会话的续写无效。</div></div></div></article>
-<article class="node"><div class="node-id"><span class="level mid">中</span><br>E10 · AUGUST</div><div><h3>时事知识仅作为候选收窄的辅助旁证</h3><p>灰测模型展现出跨越至 2025 年 6 月乃至 10 月的知识切片，并在特定政界冷门考题中直接给出了 José Jerí 等最新信息。测试者本人亦明确指出"仅凭知识库无法定死型号"。</p><div class="proof-grid"><div class="proof"><b>直接证明</b>知识时效可用于收窄候选模型范围，为锁定 Opus 5 提供辅助侧面证据。</div><div class="proof limit"><b>边界限定</b>联网检索、RAG 外挂与后训练知识注入均会改变答案，无法据此绝对排除 Fable 5 或咬定 Opus 5。</div></div></div></article>
-<article class="node"><div class="node-id"><span class="level mid-high">中高</span><br>E11 · SYNTHESIS</div><div><h3>"7 月与 8 月非同一模型"是符合全部材料的最简解释</h3><p>7 月的核心特征在于缓存截断重算、Reasoning Token 映射与基础设施聚类；8 月则彻底修补了缓存漏洞，显现为 Claude 风格的输入预处理、会话级路由状态与安全降级机制。两者在多个技术维度上呈现出互不重叠的系统性差异。</p><div class="proof-grid"><div class="proof"><b>综合判断</b>7 月大概率属于 Fable 系列；8 月极大概率属于 Opus 5。</div><div class="proof limit"><b>边界保持</b>两轮测试的具体版本号均未获得官方层面的直接证实；8 月的具体接入渠道未知。</div></div><div class="quote-strip"><span>"和七月应该不是一个"</span><span>"七月可能是 Fable"</span><span>"知识库没法锤"</span></div></div></article>
+<article class="node"><div class="node-id"><span class="level high">高</span><br>E01 · AUGUST</div><div><h3><code>antml</code> 复现官方 Anthropic API 的确定性输入预处理</h3><p>这里的“系统”不是模型权重，而是<mark class="body-mark">官方 Anthropic API 在模型分词前执行的标签预处理</mark>。灰测请求逐项复现了它最不自然的边界：只循环剥离开头的 <code>antml:</code>，遇到第一个不匹配前缀立即停手，后面的 <code>antml:</code> 不再处理；并且大小写不敏感。</p><section class="antml-demo" aria-labelledby="antml-demo-title"><div class="antml-demo-head"><small>Deterministic parser / one glance</small><h4 id="antml-demo-title">不是“模型不想输出”——输入在到达模型前已经被改写</h4><p>看这一条输入如何穿过官方 Anthropic API 的预处理规则：</p></div><div class="antml-input"><span class="antml-stage-label">用户发送</span><div class="antml-tape" aria-label="ANTML 测试输入"><span class="antml-token strip">antml:</span><span class="antml-token strip">antml:</span><span class="antml-token stop">xxxxx:</span><span class="antml-token keep">antml:</span><span class="antml-token keep">payload</span></div></div><div class="antml-machine"><div class="antml-step ok"><b>① antml:</b><span>匹配开头<br>剥离</span></div><div class="antml-next" aria-hidden="true">→</div><div class="antml-step ok"><b>② antml:</b><span>继续匹配<br>再次剥离</span></div><div class="antml-next" aria-hidden="true">→</div><div class="antml-step halt"><b>③ xxxxx:</b><span>第一个不匹配<br>立即停止全部清洗</span></div></div><div class="antml-output"><div><small>模型最终看到</small><b>&lt;xxxxx:<strong>antml:</strong>payload&gt;</b></div><div><small>关键边界</small><b>停止以后，后面的 <strong>antml:</strong> 原样保留</b></div></div><div class="antml-impact">同一规则覆盖 <mark>32 种 ANTML 大小写组合</mark>，并由多名测试者独立复现。</div></section><details class="tech antml-tech"><summary>技术展开 1：为什么“纯模型蒸馏学到了异常 Token”不成立？</summary><div class="tech-body"><ol><li><strong>32 种大小写组合全部触发：</strong><code>antml</code> 五个字母共有 2⁵ = 32 种大小写排列，在常规 Tokenizer 中会对应不同的 Token 组合，却稳定触发同一种大小写无关规则。要用蒸馏解释，就必须额外假设训练数据定向覆盖了这套隐藏行为。</li><li><strong>首个不匹配位置形成精确边界：</strong>系统只循环剥离开头连续的 <code>antml:</code>，遇到第一个非匹配前缀立即停止，停止后再出现的 <code>antml:</code> 原样保留。这是确定性词法状态机的边界，而不是概率生成中偶然漏掉字符串。</li></ol></div></details><details class="tech antml-tech"><summary>技术展开 2：为什么不是 Glitch Token？</summary><div class="tech-body"><p class="token-invariant">无论在输入中叠加多少个 <code>antml:</code>，<br><strong>Anthropic 官方 API 返回的 input Token 数都一致。</strong></p><span class="therefore">如果它们作为普通或 Glitch Token 进入分词器，重复次数增加就应增加输入计数。计数完全不变，只能说明这些前缀在计量前已被剥离——<strong>问题发生在 API 预处理层，不是模型 Token 异常。</strong></span></div></details><div class="proof-grid"><div class="proof"><b>直接证明</b>灰测输入在模型推理前经历了<mark class="key-mark">与官方 Anthropic API 同边界的 ANTML 预处理</mark>，强指向 Claude 请求链。</div><div class="proof limit"><b>边界限定</b>第三方理论上可以专门复刻这套规则；因此它证明请求链特征，不单独证明官方直连，也不能单独锁定具体型号。</div></div><aside class="summary-note" aria-label="ANTML 证据总结"><b class="summary-note-title">Summary Note<span>总结笔记</span></b><ul><li>ANTML 前缀会在模型分词前被 API 剥离</li><li>ANTML 预处理遇到首个非匹配前缀便停止，后续内容保留</li><li>32 种 ANTML 大小写组合均触发同一规则</li></ul></aside><div class="node-actions"><a href="antml-analysis.html">阅读完整 ANTML 技术分析</a></div></div></article>
+<article class="node"><div class="node-id"><span class="level high">高</span><br>E02 · JULY</div><div><h3>固定 64-Token 缓存截断重算机制</h3><p><strong>64 Token 一块，是 DeepSeek 的正常机制。</strong>异常只看一件事：<mark class="body-mark">上下文刚加入数万 Token 的全新内容，未命中却仍然小于 64</mark>。下面直接看一个真实回合。</p>
+<section class="cache-case" aria-labelledby="cache-case-title">
+<div class="cache-case-head"><div><span class="case-label">Raw session / VWXNvxEm / message 06</span><h4 id="cache-case-title">42 Token，装得下一整份 2,028 行程序？</h4><p>上一回合刚生成一份完整的 <code>game.js</code>。到下一次请求，它第一次作为历史消息进入上下文；usage 却声称未命中只有 42 Token。</p></div><a class="cache-source" href="https://opncd.ai/share/VWXNvxEm" target="_blank" rel="noopener noreferrer">打开原始会话 ↗</a></div>
+<div class="cache-punch" aria-label="样本关键数字"><div class="cache-stat returned"><span class="stat-label">上轮返回的 output Token</span><b>41,827</b><span class="stat-note">其中包含完整程序工具调用</span></div><div class="cache-stat long"><span class="stat-label">新进入上下文的文件字符数</span><b>86,699</b><span class="stat-note">共 2,028 行 JavaScript</span></div><div class="cache-stat danger"><span class="stat-label">本轮缓存未命中 Token</span><b>42</b><span class="stat-note">usage 字段：input</span></div></div>
+<div class="cache-compare">
+<div class="usage-panel"><div class="panel-label">本轮返回的 usage JSON · 原样字段</div><pre class="usage-code" aria-label="本轮 usage JSON"><code>{
+  "total": 96861,
+<span class="miss-line">  "input": 42,</span>
+  "output": 74,
+  "reasoning": 1897,
+  "cache": {
+    "write": 0,
+<span class="hit-line">    "read": 94848</span>
+  }
+}</code></pre><p class="usage-note">▲ 页面所称“未命中”就是这里的 input: 42</p></div>
+<div class="cache-arrow" aria-hidden="true">→</div>
+<div class="payload-panel"><div class="payload-meta"><span>本轮新增的历史输入</span><strong>game.js · 86,699 chars</strong></div><pre class="code-river" aria-label="新输入中的长程序节选"><code><span class="ln l1">1</span>'use strict';
+<span class="ln l2">2</span>/* ==================================
+<span class="ln l3">3</span>   逆转法庭 ～午夜的钟声～
+   NDS 风格网页游戏 · 原创剧本
+   全部图形为程序化像素绘制
+   ...
+   function renderTop() { ... }
+   function renderBtm() { ... }
+   const Script = [ ... ];
+   const CrossExams = { ... };
+   ...
+<span class="ln l4">2025</span>document.addEventListener('keydown',
+<span class="ln l5">2026</span>  tryTitleMusic, { once: false });
+<span class="ln l6">2027</span>
+<span class="ln l7">2028</span>loop();</code></pre><p class="payload-caption"><b>这不是用户只发了一个“继续”。</b>这是上轮返回的完整 assistant message，其中仅代码就有 86,699 个字符；下一轮必须携带它才能继续会话。</p></div>
+</div>
+<div class="cache-math"><div class="cache-math-head"><small>Why exactly 42?</small><h5>42 从哪来？它正好是总输入除以 64 后的余数</h5></div><div class="math-flow"><div class="math-box"><small>本轮总输入</small><b>94,890</b><span>cache.read 94,848 + input 42</span></div><div class="math-divider">÷ 64</div><div class="math-split"><div class="math-result hit"><small>1,482 个整块</small><b>94,848</b><span>usage 标成 cache.read</span></div><div class="math-result miss"><small>最后的尾数</small><b>42</b><span>usage 标成 input</span></div></div></div><div class="math-match">94,890 = 1,482 × 64 + <strong>42</strong>　→　返回数字一位不差</div><div class="math-crosscheck"><b>再核对刚新增的内容：</b>上轮新输出 41,827 Token = 653 个整块 + 35；下一轮 <code>cache.read</code> 恰好增加 41,792 = 653 × 64。新内容的整块部分也被整体划进了“命中”。</div></div>
+<div class="cache-verdict" aria-label="正常缓存粒度与异常结果对照"><div class="cache-verdict-side"><small>正常机制</small><b>DeepSeek 缓存<br>每 64 Token 一块</b><em>这很正常</em></div><div class="cache-verdict-vs">但是</div><div class="cache-verdict-side alarm"><small>本轮实际结果</small><b>新增 41,827 Token<br>未命中却只有 42</b><em>异常在这里</em></div></div>
+</section>
+<div class="proof-grid"><div class="proof"><b>直接证明</b>usage 没按实际缓存命中量统计，而是<mark class="key-mark">把总 Prompt 套入 64-Token 公式后重算</mark>。</div><div class="proof limit"><b>边界限定</b>单个样本用于直观展示；总体规律仍依赖批量会话统计。该问题已修复，不适用于 8 月新灰测。</div></div><aside class="summary-note" aria-label="64 Token 缓存证据总结"><b class="summary-note-title">Summary Note<span>总结笔记</span></b><ul><li>64-Token 分块是 DeepSeek 缓存的正常机制</li><li>新增数万 Token 后，缓存 miss 仍小于 64 才是异常</li><li>返回命中量始终等于下取整(Prompt/64)×64</li></ul></aside><div class="node-actions"><a href="https://opncd.ai/share/VWXNvxEm" target="_blank" rel="noopener noreferrer">复核该原始会话 ↗</a><a href="https://github.com/YunhaoFu/dsv4ga-news-gather#-%E5%85%B1%E4%BA%AB%E5%AF%B9%E8%AF%9D%E9%93%BE%E6%8E%A5" target="_blank" rel="noopener noreferrer">查看更多 7 月样本 ↗</a></div></div></article>
+<article class="node"><div class="node-id"><span class="level mid-high">中高</span><br>E03 · AUGUST</div><div><h3>现场演示：两条思维链输出路径不是同一种节奏</h3><p>同样是模型开始写前端代码前的思考文本，灰测路径表现为<mark class="body-mark">高速突发输出，中间反复停顿</mark>；V4 正式公开版则是均匀、连续的较高速流式输出。点击播放，直接观察差异。</p><section class="stream-lab" id="stream-lab" aria-labelledby="stream-lab-title"><div class="stream-lab-head"><div><small>Live timing reconstruction</small><h4 id="stream-lab-title">不要猜文风，直接看输出节奏</h4></div><button class="stream-replay" type="button">▶ 重新播放</button></div><p class="stream-note"><b>观察重点：</b>左边看“突然出现一大段 → 长时间停住 → 再突然出现”；右边看持续匀速增长。</p><div class="stream-panels"><article class="stream-panel grey" data-stream="grey"><header class="stream-panel-head"><div><span class="route">灰测思维链</span><h5>高速突发 + 多次停顿</h5></div><span class="stream-state" aria-live="polite">等待播放</span></header><div class="stream-progress"><i></i></div><pre class="stream-window" aria-label="灰测思维链输出现场"><code></code><span class="stream-cursor" aria-hidden="true"></span></pre><footer class="stream-panel-foot"><b>较长停顿点</b>每段结束约 2.6 秒；三个省略号短语后约 1.9 秒</footer></article><article class="stream-panel formal" data-stream="formal"><header class="stream-panel-head"><div><span class="route">V4 正式公开版</span><h5>均匀、持续、较高速</h5></div><span class="stream-state" aria-live="polite">等待播放</span></header><div class="stream-progress"><i></i></div><pre class="stream-window" aria-label="V4 正式版思维链输出现场"><code></code><span class="stream-cursor" aria-hidden="true"></span></pre><footer class="stream-panel-foot"><b>无额外停顿</b>从开头到结尾保持恒定节奏</footer></article></div><div class="recording-proof"><div class="recording-proof-copy"><small>Raw recordings / same prompt</small><b>演示之外，还有两段同题实测 GIF</b><span>直接对照灰测的突发停顿与 DeepSeek 正式版的持续流式。</span></div><button class="recording-open" type="button" aria-haspopup="dialog" aria-controls="recording-modal">仍有疑问？查看实测录屏</button></div></section><div class="proof-grid"><div class="proof"><b>直接证明</b>两条路径存在<mark class="key-mark">肉眼可见的不同输出时序与缓冲方式</mark>。</div><div class="proof limit"><b>边界限定</b>现场演示按原始观察重建节奏，并非原始 SSE 抓包；它用于解释现象，不能代替网络帧证据。</div></div><aside class="summary-note" aria-label="输出节奏证据总结"><b class="summary-note-title">Summary Note<span>总结笔记</span></b><ul><li>灰测思维链以高速突发块输出，并反复停顿</li><li>V4 正式版思维链从头至尾均匀持续输出</li><li>两条路径的输出节奏显示缓冲管线不同</li></ul></aside></div></article>
+<article class="node"><div class="node-id"><span class="level mid-high">中高</span><br>E04 · JULY</div><div><h3>Reasoning Token 与摘要思维链形成二选一两难</h3><p>先记住两个同时成立的事实：</p><div class="reasoning-facts"><div class="reasoning-fact"><small>Fact 01 / 计数</small><b>reasoning Token = 可见思维链经 DS 分词后的数量 + 2</b></div><div class="reasoning-fact"><small>Fact 02 / 输出</small><b>思维链大块吐出；正文逐 Token 吐出，速度差巨大</b></div></div><div class="reasoning-dilemma" aria-label="Reasoning Token 两难证据"><div class="dilemma-head">可见思维链只能是下面两种之一——但选哪边都有问题</div><div class="dilemma-paths"><div class="dilemma-path"><span class="path-label">假设 A</span><h4>它是摘要？</h4><div class="path-logic"><span>真实推理 ≠ 前端可见摘要</span><span class="conflict">但 usage 恰好 = 摘要长度 + 2</span></div><strong class="path-answer">→ reasoning Token 被按摘要重算</strong></div><div class="dilemma-path"><span class="path-label">假设 B</span><h4>它是原始文本？</h4><div class="path-logic"><span>原始思维链应与正文同为 Token 流</span><span class="conflict">但实际是“大块高速” vs“正文逐 Token”</span></div><strong class="path-answer">→ 可见思维链被缓冲或加工</strong></div></div><div class="dilemma-result"><b>无论选 A 还是 B：</b>可见思维链与 usage 至少有一个经过了额外处理。</div></div><div class="proof-grid"><div class="proof"><b>共同指向</b>最简解释是<mark class="key-mark">网关拿到摘要或缓冲结果后，用 DeepSeek Tokenizer 重包装 reasoning Token</mark>。</div><div class="proof limit"><b>证据边界</b>计数或速度单独看都不够；强度来自两者同时成立后形成的两难。</div></div><aside class="summary-note" aria-label="Reasoning Token 证据总结"><b class="summary-note-title">Summary Note<span>总结笔记</span></b><ul><li>若可见思维链是摘要，reasoning 计数不应恰好等于摘要 + 2</li><li>若可见思维链是原文，输出节奏不应与正文严重割裂</li><li>无论采用哪种解释，思维链或 usage 都经过了二次处理</li></ul></aside></div></article>
+<article class="node"><div class="node-id"><span class="level high">高</span><br>E05 · AUGUST</div><div><h3>高危安全提问触发无缝降级（Fallback）</h3><p>在稳定灰测会话中输入高危生物安全问题后，系统的<mark class="body-mark">输出模式突变为 DeepSeek 逐 Token 流式思维链，ANTML 前缀也不再被过滤</mark>，且该会话自此彻底脱离灰测。整个过程中 provider/model 响应头保持不变，底层时序与分块机制却已完全倒换。</p><div class="node-alert"><b>识别提醒：</b>回退后的思维链仍可能模仿上文思维链的部分文字特征。判断时应同时观察思维链的实际输出行为、TTFT，并在干净上下文中进行脏 Token 测试；脏 Token 测试与其他测试也可能受到上文结果污染。请理性区分，无法确定时可提交完整录屏供复核。</div><div class="proof-grid"><div class="proof"><b>直接证明</b>灰测上游在该类请求下触发熔断或拒绝，网关随后<mark class="key-mark">无缝降级回退至 0813 V4 Pro</mark>。</div><div class="proof limit"><b>边界限定</b>单一安全提问并非通用的模型指纹；T4 噬菌体反例说明拦截取决于具体风险等级与上下文。</div></div><aside class="summary-note" aria-label="Fallback 证据总结"><b class="summary-note-title">Summary Note<span>总结笔记</span></b><ul><li>Fallback 后，思维链输出回归正常 DeepSeek 模式，ANTML 前缀也不再被过滤</li><li>provider/model 响应头保持不变，但底层处理链路已经切换</li><li>触发 Fallback 的 Session 随后永久脱离灰测</li></ul></aside><div class="node-actions"><a href="https://drive.google.com/file/d/1VAeY4Jb_01fX2u2TC4z4q0WE0LoQ-CYi/view?usp=sharing" target="_blank" rel="noopener noreferrer">观看 / 下载实测录屏 ↗</a><a href="https://pan.quark.cn/s/7094c40b3fbb" target="_blank" rel="noopener noreferrer">观看 / 下载第二个独立实测录屏 ↗</a></div></div></article>
+<article class="node"><div class="node-id"><span class="level high">高</span><br>E06 · JULY</div><div><h3>TTFT、缓存合法性与生成速率三维联合聚类</h3><p>数据呈现明显的双峰分布：低延迟组生成速率约 200 字/秒且缓存数据正常；高延迟组生成速率约 80 字/秒且伴随假缓存。该证据的决定性在于<mark class="body-mark">延迟、缓存与生成速率三个独立维度同步分组</mark>，排除了单纯的"服务器排队"假象。</p><div class="proof-grid"><div class="proof"><b>直接证明</b>7 月系统底层<mark class="key-mark">至少存在两套物理处理链路或推理基础设施</mark>，并非同一集群在不同负载下的表现。</div><div class="proof limit"><b>边界限定</b>排队只能解释延迟，无法解释缓存逻辑与速率的同步聚类；但聚类本身仍无法直接为模型命名。</div></div><aside class="summary-note" aria-label="三维聚类证据总结"><b class="summary-note-title">Summary Note<span>总结笔记</span></b><ul><li>低延迟组约 200 字/秒，且缓存数据正常</li><li>高延迟组约 80 字/秒，且同时伴随假缓存</li><li>延迟、缓存与速率三个维度始终同步分组</li></ul></aside></div></article>
+<article class="node"><div class="node-id"><span class="level mid-high">中高</span><br>E07 · JULY</div><div><h3>API 能力与底层特征标识差异</h3><p>常规请求可正常返回 logprobs 概率，而灰测请求该字段始终为空；system_fingerprint 初期与公开版有明显差异，后被人工统一为 V4P；流式传输时的分包与中文断句边界也展现出完全不同的封装特征。</p><div class="proof-grid"><div class="proof"><b>直接证明</b>两条路径在<mark class="key-mark">底层 API 能力、流式封装或后端配置上存在明确差异</mark>。</div><div class="proof limit"><b>边界限定</b>相关字段可由代理网关伪造或修改，须与缓存及统计学证据结合研判。</div></div><aside class="summary-note" aria-label="API 能力证据总结"><b class="summary-note-title">Summary Note<span>总结笔记</span></b><ul><li>正式路径返回 logprobs，灰测路径则始终为空</li><li>灰测 fingerprint 初期不同，后来被统一为 V4P</li><li>两条路径的流式分包与中文断句边界不同</li></ul></aside></div></article>
+<article class="node"><div class="node-id"><span class="level mid">中</span><br>E08 · AUGUST</div><div><h3>时事知识仅作为候选收窄的辅助旁证</h3><p>灰测模型展现出跨越至 2025 年 6 月乃至 10 月的知识切片，并在特定政界冷门考题中直接给出了 José Jerí 等最新信息。测试者本人亦明确指出"仅凭知识库无法定死型号"。</p><div class="proof-grid"><div class="proof"><b>直接证明</b>知识时效<mark class="key-mark">只能用于收窄候选范围</mark>，可为 Opus 5 排序提供辅助参考。</div><div class="proof limit"><b>边界限定</b>联网检索、RAG 外挂与后训练知识注入均会改变答案，无法据此绝对排除 Fable 5 或咬定 Opus 5。</div></div><aside class="summary-note" aria-label="知识时效证据总结"><b class="summary-note-title">Summary Note<span>总结笔记</span></b><ul><li>时事知识只能用于收窄上游模型的候选范围</li><li>搜索、RAG 与后训练都可能制造较新的知识表现</li><li>知识时效不能单独锁定 Opus 5</li></ul></aside></div></article>
+<article class="node"><div class="node-id"><span class="level mid">中</span><br>E09 · CROSS-ROUND</div><div><h3>V4 Pro 正式版反向测试必须基于空白上下文</h3><p>在无历史记录的干净会话中，V4 Pro 正式版无法稳定通过全部异常 Token，多次测试均未出现正文固定输出，简单提问也不会像旧灰测那样跳过思考环节。<mark class="body-mark">被历史上下文引导后的"顺应模仿"，不能作为有效反证</mark>。</p><div class="proof-grid"><div class="proof"><b>直接证明</b>在空白会话受控变量下，<mark class="key-mark">7 月灰测与 V4 Pro 正式版存在显著差异</mark>。</div><div class="proof limit"><b>反证门槛</b>有效证伪必须在全新会话、相同参数和相同 Prompt 下进行，并提供完整上下文截图；受污染会话的续写无效。</div></div><aside class="summary-note" aria-label="正式版反测总结"><b class="summary-note-title">Summary Note<span>总结笔记</span></b><ul><li>有效反测必须在全新的空白会话中进行</li><li>历史上下文污染会诱导正式版顺应模仿</li><li>被上下文诱导的模仿不能构成有效反证</li></ul></aside></div></article>
+<article class="node"><div class="node-id"><span class="level mid-high">中高</span><br>E10 · SYNTHESIS</div><div><h3>"7 月与 8 月非同一模型"是符合全部材料的最简解释</h3><p>7 月核心特征是缓存截断重算、Reasoning Token 映射与基础设施聚类；8 月则转为 Claude 风格输入预处理与安全降级机制。<mark class="body-mark">两轮特征在多个技术维度上发生系统性断裂</mark>。</p><div class="proof-grid"><div class="proof"><b>综合判断</b><mark class="key-mark">7 月大概率属于 Fable；8 月极大概率属于 Opus 5</mark>。</div><div class="proof limit"><b>边界保持</b>两轮测试的具体版本号均未获得官方层面的直接证实；8 月的具体接入渠道未知。</div></div><aside class="summary-note" aria-label="跨期综合总结"><b class="summary-note-title">Summary Note<span>总结笔记</span></b><ul><li>7 月链路特征集中于缓存重算、计数与基础设施</li><li>8 月链路特征转为 ANTML、Fallback 与输出路径</li><li>多个技术维度同时断裂，说明两轮并非同一模型链路</li></ul></aside></div></article>
+<article class="node"><div class="node-id"><span class="level low">低</span><br>E11 · SUPPORTING</div><div><h3>补充观察：Fork 后脱落灰测，原 Session 维持不变</h3><p>在同一用户账号、同一时间节点下，原灰测 Session 继续对话仍能保持灰测；将其 Fork 成新会话后，新分支则落入公开版 DeepSeek 路径。这个现象与“灰测资格保存在 Session 上”相容，但并不具有强鉴别力。</p><div class="proof-grid"><div class="proof"><b>有限观察</b>Fork 后<strong class="key-strong">新会话可能重新决定灰测路由</strong>。</div><div class="proof limit"><b>为什么只列为低置信度</b>正常灰度发布、A/B 测试也经常按 Session 分流；这一现象不能用于判断上游模型。</div></div><aside class="summary-note" aria-label="Fork 路由观察总结"><b class="summary-note-title">Summary Note<span>总结笔记</span></b><ul><li>原 Session 继续对话时仍保持灰测路由</li><li>Fork 产生的新 Session 会落回 DeepSeek 公开路径</li><li>常规 A/B 分流也能解释 Fork 现象，因此证据权重低</li></ul></aside></div></article>
 </div>
 </section>
 <section class="block" id="wall">
@@ -294,17 +532,17 @@ footer a{color:var(--blue)}
 <section class="block" id="matrix">
 <div class="shead"><div class="num">06 / Matrix</div><div><h2>证据矩阵</h2><p>严格按照"证据在物理层面上能直接证明什么"进行评级，杜绝推论升级。</p></div></div>
 <div class="matrix"><table><thead><tr><th>置信度</th><th>时间线</th><th>核心证据</th><th>直接证明的结论</th><th>主要边界与局限</th></tr></thead><tbody>
+<tr><td>高</td><td>8 月</td><td><code>antml</code> 过滤、Token、截断、大小写无关</td><td>复现官方 Anthropic API 的输入预处理边界，强指向 Claude 请求链</td><td>第三方理论上可主动复刻；无法证明官方直连或具体型号</td></tr>
 <tr><td>高</td><td>7 月</td><td>固定 64-Token 缓存重算</td><td>usage/cache 字段经过人为重写，处理链不同</td><td>仅适用于 7 月，无法据此命名上游</td></tr>
-<tr><td>高</td><td>7 月</td><td>TTFT、缓存、速率三维聚类</td><td>底层存在至少两套物理推理链路或基础设施</td><td>聚类统计无法直接反推模型版本号</td></tr>
-<tr><td>中高</td><td>7 月</td><td>Reasoning Token 长度二次映射</td><td>可见思维链经由 DeepSeek Tokenizer 重新计量</td><td>无法反推原始思维链摘要的来源</td></tr>
-<tr><td>中高</td><td>7 月</td><td>logprobs、fingerprint、delta 差异</td><td>底层 API 接口能力、配置参数或封装存在差异</td><td>网关代理层具备人为覆写这些字段的能力</td></tr>
-<tr><td>高</td><td>8 月</td><td><code>antml</code> 过滤、Token、截断、大小写无关</td><td>完全符合 Claude 请求链特征，且经多方复现</td><td>无法证明是否为官方直连，无法咬定具体型号</td></tr>
-<tr><td>高</td><td>8 月</td><td>Fork 新会话脱落灰测，原 Session 维持</td><td>路由状态严格绑定在 Session 会话生命周期上</td><td>无法识别路由背后的具体业务动机</td></tr>
+<tr><td>中高</td><td>跨路径对照</td><td>灰测突发停顿与 V4 均匀流式现场演示</td><td>两条路径具有肉眼可见的不同输出时序与缓冲方式</td><td>演示按观察重建，不等同于原始 SSE 抓包</td></tr>
+<tr><td>中高</td><td>7 月</td><td>Reasoning Token 精确映射与摘要式分块输出</td><td>计数、速度差与分块模式形成两难，usage 按可见摘要重算</td><td>三项须结合使用，单项无法反推真实推理源头</td></tr>
 <tr><td>高</td><td>8 月</td><td>高危安全提问后突变流式并脱落灰测</td><td>上游熔断后降级回退至 0813 V4 Pro 正式版</td><td>安全拦截受具体 Prompt 风险等级调节</td></tr>
-<tr><td>中高</td><td>8 月</td><td>摘要块式、逐 Token 流式与分词断句</td><td>存在完全不同的流式推送机制与输出处理路径</td><td>缺少完整的网络层原始 SSE 数据帧</td></tr>
-<tr><td>中</td><td>正式版对照</td><td>空白会话下脏 Token 与免思考无法稳定复现</td><td>公开正式版并未直接沿用 7 月旧灰测链路</td><td>上下文被引导后的顺应模仿不构成有效反例</td></tr>
+<tr><td>高</td><td>7 月</td><td>TTFT、缓存、速率三维聚类</td><td>底层存在至少两套物理推理链路或基础设施</td><td>聚类统计无法直接反推模型版本号</td></tr>
+<tr><td>中高</td><td>7 月</td><td>logprobs、fingerprint、delta 差异</td><td>底层 API 接口能力、配置参数或封装存在差异</td><td>网关代理层具备人为覆写这些字段的能力</td></tr>
 <tr><td>中</td><td>8 月</td><td>2025 年时事知识与冷门政界考题</td><td>仅能作为收窄模型候选范围的辅助参考</td><td>受联网检索、RAG 外挂与后训练知识影响极大</td></tr>
+<tr><td>中</td><td>正式版对照</td><td>空白会话下脏 Token 与免思考无法稳定复现</td><td>公开正式版并未直接沿用 7 月旧灰测链路</td><td>上下文被引导后的顺应模仿不构成有效反例</td></tr>
 <tr><td>中高</td><td>跨期对比</td><td>多个独立技术维度发生系统性断裂</td><td>7 月与 8 月绝非同一模型链路</td><td>两轮测试的具体底层版本号均未被直接证明</td></tr>
+<tr><td>低</td><td>8 月</td><td>Fork 新会话脱落灰测，原 Session 维持</td><td>新会话创建时可能重新决定灰测路由</td><td>正常灰度发布也可出现，不具备模型鉴别力</td></tr>
 <tr><td>中低</td><td>全周期</td><td>模型自述、行文文风、标点偏好、猜数字</td><td>仅作为行为相似性的背景观察</td><td>易受 Prompt 注入与微调影响，不入核心证据链</td></tr>
 </tbody></table></div>
 </section>
@@ -322,6 +560,7 @@ footer a{color:var(--blue)}
 <div class="limit-item"><b>8 月高危生物提问并非直接被拒：</b>实际观测到的是经历显著长延迟后降级为 DeepSeek 流式输出，并伴随整个会话永久脱离灰测状态。</div>
 <div class="limit-item"><b>严禁将历史上下文污染后的模型模仿视为反例：</b>当公开模型在上文中已读取到特定 Token、角色或逻辑结构时，其延续生成的行为纯属正常预测，在缺乏空白会话对照的前提下不具备鉴别力。</div>
 <div class="limit-item"><b>后续单次交互未能复现安全拦截，不能推翻既有路由事实：</b>触发行为受上下文、会话所处状态及具体 Prompt 扰动影响极大，必须控制变量严谨复测。</div>
+<div class="limit-item"><b>Fork 后脱落灰测不是模型指纹：</b>正常灰度发布和 A/B 测试也可能在新 Session 创建时重新分流；该现象仅作会话路由状态的补充观察，不进入核心型号归因。</div>
 <div class="limit-item"><b>调用渠道、托管方式与底层商业动机尚不在可证实范围内：</b>现有纯技术抓包证据仅能证明链路行为，无法直接穿透至商业合作模式、具体数据流向或实体部署方式。</div>
 </div>
 </section>
@@ -335,11 +574,133 @@ footer a{color:var(--blue)}
 </main>
 <footer><span>archive.dht evidence wall</span><span><a href="https://github.com/justhil/evid-wall" target="_blank" rel="noopener noreferrer">GitHub 源码与版本记录</a> · <a href="antml-analysis.html">ANTML 动机与蒸馏分析</a></span></footer>
 <div class="lightbox" role="dialog" aria-modal="true" aria-label="图片预览"><button type="button" aria-label="关闭">×</button><img alt="放大预览"></div>
+<div class="recording-modal" id="recording-modal" role="dialog" aria-modal="true" aria-labelledby="recording-modal-title" hidden><div class="recording-dialog"><header class="recording-dialog-head"><small>Raw output recordings / same prompt</small><h4 id="recording-modal-title">灰测与 DeepSeek 正式版：思维链输出实测</h4><p>两段 GIF 使用同一条“大熊猫骑自行车”任务；请直接观察文字增长方式和停顿位置。</p><button class="recording-close" type="button" aria-label="关闭实测录屏">×</button></header><div class="recording-grid"><figure class="recording-card grey"><img data-src="assets/grey.gif" alt="灰测思维链高速突发并多次停顿的实测录屏"><figcaption><b>灰测思维链</b>文本高速成块出现，中间可见明显的长停顿。</figcaption></figure><figure class="recording-card formal"><img data-src="assets/ds.gif" alt="DeepSeek 正式版思维链持续流式输出的实测录屏"><figcaption><b>DeepSeek 正式版</b>文本持续、均匀增长，没有灰测路径的成块停顿。</figcaption></figure></div></div></div>
 <script>
 const box=document.querySelector('.lightbox'),view=box.querySelector('img');
 document.querySelectorAll('.shot img').forEach(img=>img.addEventListener('click',()=>{view.src=img.src;view.alt=img.alt;box.classList.add('open');document.body.style.overflow='hidden'}));
 function closeBox(){box.classList.remove('open');view.removeAttribute('src');document.body.style.overflow=''}
 box.querySelector('button').addEventListener('click',closeBox);box.addEventListener('click',e=>{if(e.target===box)closeBox()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeBox()});
+
+const recordingModal=document.getElementById('recording-modal'),recordingOpen=document.querySelector('.recording-open');
+if(recordingModal&&recordingOpen){
+  const recordingClose=recordingModal.querySelector('.recording-close'),recordingImages=[...recordingModal.querySelectorAll('img[data-src]')];
+  function openRecordings(){
+    recordingImages.forEach(img=>{img.src=img.dataset.src});
+    recordingModal.hidden=false;document.body.style.overflow='hidden';recordingClose.focus();
+  }
+  function closeRecordings(){
+    if(recordingModal.hidden)return;
+    recordingModal.hidden=true;recordingImages.forEach(img=>img.removeAttribute('src'));document.body.style.overflow='';recordingOpen.focus();
+  }
+  recordingOpen.addEventListener('click',openRecordings);recordingClose.addEventListener('click',closeRecordings);
+  recordingModal.addEventListener('click',e=>{if(e.target===recordingModal)closeRecordings()});
+  recordingModal.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){e.preventDefault();closeRecordings();return}
+    if(e.key==='Tab'){
+      const focusable=[...recordingModal.querySelectorAll('button,[href],[tabindex]:not([tabindex="-1"])')];
+      if(!focusable.length)return;const first=focusable[0],last=focusable[focusable.length-1];
+      if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
+    }
+  });
+}
+
+const streamLab=document.getElementById('stream-lab');
+if(streamLab){
+  const greySteps=[
+    {text:`I'm calculating the distance constraints for the leg segments across different pedal positions throughout the rotation cycle, checking that the combined thigh and shin lengths can accommodate the full range of motion without the segments becoming too short or too long relative to each other.\n\n`,pause:2600},
+    {text:`Computing inverse kinematics per frame...`,pause:1900},
+    {text:` Writing animation loop...`,pause:1900},
+    {text:` I'll update the SVG transforms and attributes dynamically with JavaScript. For the panda's appearance, I'm adding a white body with black shoulder patches, a white head with black ears and eye patches, and facial features like the nose and mouth. I'm also considering a cute red helmet for safety, plus a front basket with bamboo shoots and maybe a bamboo leaf in the panda's mouth. The background will have a gradient sky, sun, drifting clouds, layered hills, and a scrolling bamboo grove along the road.\n\n`,pause:2600},
+    {text:`Now I'm layering in motion effects like movement lines behind the panda and dust puffs at the road, plus falling leaves for atmosphere. For responsiveness, I'm setting the SVG to fill the viewport with a viewBox and using CSS to loop the scrolling background by duplicating the pattern and animating it infinitely.\n\n`,pause:2600},
+    {text:`Writing SVG code...`,pause:1900},
+    {text:` Finalizing the animation keyframes and working through the bike geometry — wheel radius at 62 pixels with rear wheel center positioned at x=330, and the road surface aligned at y=440 to match the wheel placement. Now I'm positioning the panda on the bike—placing the hip point at the saddle, then building out the body as an ellipse leaning forward, with the shoulder, head, and starting to sketch the arms.`,pause:2600}
+  ];
+  const formalText=`The user wants an HTML file with an animation of a giant panda riding a bicycle. No testing needed. I should create a single HTML file with CSS/SVG/canvas animation showing a panda riding a bike.\n\nLet me create a nice HTML file with an animated panda riding a bicycle. I'll use SVG for the panda and bike, with CSS animations for pedaling legs, rotating wheels, moving scenery, etc.\n\nWorking directory: C:\\Users\\neter\\Downloads\\codextmp\\show\n\nLet me write a single HTML file with inline SVG and CSS animations. Make it visually appealing:\n\n- A panda (black and white body) sitting on a bicycle\n- Wheels rotating with spokes\n- Legs pedaling (two legs moving in opposite phases)\n- The whole bike moving across the screen (or staying centered with the background scrolling)\n- Maybe a sun, clouds, trees scrolling in background\n- Panda head, ears, eyes, arms holding handlebars\n\nLet me design the SVG carefully.`;
+  const panels={
+    grey:streamLab.querySelector('[data-stream="grey"]'),
+    formal:streamLab.querySelector('[data-stream="formal"]')
+  };
+  const contexts={};
+  let runID=0,hasPlayed=false;
+  function pseudoTokens(text){
+    const parts=text.match(/\s+|[A-Za-z]+(?:['’][A-Za-z]+)?|\d+(?:[.,]\d+)*|[^\sA-Za-z\d]/g)||[];
+    const tokens=[];let pending='';
+    for(const part of parts){
+      if(/^\s+$/.test(part)){pending+=part;continue}
+      if(/^[A-Za-z]/.test(part)){
+        if(part.length>7){
+          const suffix=part.match(/(?:ically|ation|tion|ment|ness|able|ally|ing|ed|ly)$/i);
+          const suffixCut=suffix?part.length-suffix[0].length:0;
+          const cut=suffixCut>=3?Math.min(suffixCut,part.length-3):Math.ceil(part.length*.58);
+          tokens.push(pending+part.slice(0,cut),part.slice(cut));
+        }else tokens.push(pending+part);
+        pending='';
+      }else if(/^\d/.test(part)){
+        tokens.push(pending+part);pending='';
+      }else if(tokens.length&&!pending){
+        tokens[tokens.length-1]+=part;
+      }else{
+        tokens.push(pending+part);pending='';
+      }
+    }
+    if(pending)tokens.push(pending);
+    return tokens;
+  }
+  const greyTokenSteps=greySteps.map(step=>({...step,tokens:pseudoTokens(step.text)}));
+  const formalTokens=pseudoTokens(formalText);
+  function setup(name,total){
+    const panel=panels[name];
+    panel.classList.remove('done');
+    const ctx=contexts[name]={panel,code:panel.querySelector('code'),state:panel.querySelector('.stream-state'),bar:panel.querySelector('.stream-progress i'),window:panel.querySelector('.stream-window'),total,written:0};
+    ctx.code.textContent='';ctx.bar.style.width='0%';ctx.state.className='stream-state';ctx.state.textContent='准备中';
+    return ctx;
+  }
+  function setState(ctx,label,kind){ctx.state.textContent=label;ctx.state.className='stream-state '+kind}
+  function typeTokens(ctx,tokens,tps,id,label,kind){
+    return new Promise(resolve=>{
+      setState(ctx,label,kind);let index=0;const delay=1000/tps;
+      function tick(){
+        if(id!==runID){resolve(false);return}
+        ctx.code.textContent+=tokens[index++];ctx.written++;
+        ctx.bar.style.width=(ctx.written/ctx.total*100).toFixed(1)+'%';ctx.window.scrollTop=ctx.window.scrollHeight;
+        if(index<tokens.length)setTimeout(tick,delay);else resolve(true);
+      }
+      tick();
+    });
+  }
+  function pause(ctx,ms,id,label){
+    setState(ctx,label,'pause');
+    return new Promise(resolve=>setTimeout(()=>resolve(id===runID),ms));
+  }
+  function finish(ctx){ctx.panel.classList.add('done');ctx.bar.style.width='100%';setState(ctx,'播放完成','')}
+  async function playGrey(ctx,id){
+    for(const step of greyTokenSteps){
+      if(!await typeTokens(ctx,step.tokens,42,id,'正在播放','burst'))return;
+      if(!await pause(ctx,step.pause,id,'正在播放'))return;
+    }
+    finish(ctx);
+  }
+  async function playFormal(ctx,id){
+    if(await typeTokens(ctx,formalTokens,32,id,'正在播放','steady'))finish(ctx);
+  }
+  function showStatic(){
+    const grey=setup('grey',1),formal=setup('formal',1);
+    grey.code.textContent=greySteps.map(s=>s.text).join('');formal.code.textContent=formalText;
+    [grey,formal].forEach(ctx=>{ctx.bar.style.width='100%';ctx.panel.classList.add('done');ctx.state.textContent='完整文本';ctx.window.scrollTop=0});
+  }
+  function play(){
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){showStatic();return}
+    hasPlayed=true;const id=++runID;
+    const greyTotal=greyTokenSteps.reduce((n,s)=>n+s.tokens.length,0);
+    const grey=setup('grey',greyTotal),formal=setup('formal',formalTokens.length);
+    playGrey(grey,id);playFormal(formal,id);
+  }
+  streamLab.querySelector('.stream-replay').addEventListener('click',play);
+  if('IntersectionObserver'in window){
+    const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)&&!hasPlayed){play();observer.disconnect()}},{threshold:.28});
+    observer.observe(streamLab);
+  }else play();
+}
 </script>
 </body>
 </html>
