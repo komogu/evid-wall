@@ -12,6 +12,8 @@ export default {
 
       if (request.method === "GET" && url.pathname === "/api/evidence") return listEvidence(env, url);
       if (request.method === "POST" && url.pathname === "/api/evidence") return createEvidence(request, env, ip);
+      if (request.method === "GET" && url.pathname.startsWith("/api/rebuttals/")) return listRebuttals(env, url.pathname.slice(15));
+      if (request.method === "POST" && url.pathname.startsWith("/api/rebuttals/")) return createRebuttal(request, env, ip, url.pathname.slice(15));
       if (request.method === "GET" && url.pathname.startsWith("/api/files/")) return getFile(env, url.pathname.slice(11));
       return json({ error: "接口不存在。" }, 404);
     } catch (error) {
@@ -135,6 +137,37 @@ async function getFile(env, fileId) {
 
 function safeInlineType(type) {
   return ["image/png", "image/jpeg", "image/webp", "image/gif"].includes(type);
+}
+
+async function listRebuttals(env, evidenceId) {
+  if (!/^[0-9a-f-]{36}$/.test(evidenceId)) return json({ error: "证据不存在。" }, 404);
+  const { results } = await env.DB.prepare(`
+    SELECT id, side, author, content, created_at
+    FROM rebuttal
+    WHERE evidence_id = ? AND status = 'published'
+    ORDER BY created_at ASC`).bind(evidenceId).all();
+  return json({ rebuttals: results.map(r => ({ id: r.id, side: r.side, author: r.author, content: r.content, createdAt: r.created_at })) });
+}
+
+async function createRebuttal(request, env, ip, evidenceId) {
+  if (!/^[0-9a-f-]{36}$/.test(evidenceId)) return json({ error: "证据不存在。" }, 404);
+  const evidence = await env.DB.prepare(`SELECT id, status FROM evidence WHERE id = ?`).bind(evidenceId).first();
+  if (!evidence || evidence.status !== "published") return json({ error: "证据不存在。" }, 404);
+  const body = await request.json();
+  const side = clean(body.side, 3);
+  const author = clean(body.author, 40);
+  const content = clean(body.content, 2000);
+  if (!['pro', 'con'].includes(side) || !author || !content) return json({ error: "请完整填写反驳信息。" }, 400);
+  const ipHash = await hash(`${env.IP_SALT}:${ip}`);
+  const dayStart = Math.floor(Date.now() / 86400000) * 86400000;
+  const quota = await env.DB.prepare(`
+    SELECT COUNT(*) cnt FROM rebuttal
+    WHERE ip_hash = ? AND created_at >= ?`).bind(ipHash, dayStart).first();
+  if ((quota?.cnt || 0) >= Number(env.MAX_DAILY_SUBMISSIONS)) return json({ error: "今日反驳次数已达上限。" }, 429);
+  const id = crypto.randomUUID();
+  await env.DB.prepare(`INSERT INTO rebuttal (id, evidence_id, side, author, content, ip_hash, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)`)
+    .bind(id, evidenceId, side, author, content, ipHash, Date.now()).run();
+  return json({ id }, 201);
 }
 
 function clean(value, max) {

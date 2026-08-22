@@ -25,3 +25,16 @@ CREATE TABLE IF NOT EXISTS evidence_file (
 CREATE INDEX IF NOT EXISTS evidence_public_idx ON evidence(status, created_at DESC);
 CREATE INDEX IF NOT EXISTS evidence_ip_day_idx ON evidence(ip_hash, created_at);
 CREATE INDEX IF NOT EXISTS evidence_file_entry_idx ON evidence_file(evidence_id);
+
+CREATE TABLE IF NOT EXISTS rebuttal (
+  id TEXT PRIMARY KEY,
+  evidence_id TEXT NOT NULL,
+  side TEXT NOT NULL CHECK (side IN ('pro', 'con')),
+  author TEXT NOT NULL CHECK (length(author) BETWEEN 1 AND 40),
+  content TEXT NOT NULL CHECK (length(content) BETWEEN 1 AND 2000),
+  status TEXT NOT NULL DEFAULT 'published' CHECK (status IN ('published', 'hidden')),
+  ip_hash TEXT NOT NULL,
+  created_at INTEGER NOT NULL,
+  FOREIGN KEY (evidence_id) REFERENCES evidence(id) ON DELETE CASCADE
+);
+CREATE INDEX IF NOT EXISTS rebuttal_entry_idx ON rebuttal(evidence_id, created_at ASC);
